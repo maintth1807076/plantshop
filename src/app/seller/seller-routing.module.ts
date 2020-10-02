@@ -6,6 +6,7 @@ import {TreeComponent} from './tree/tree.component';
 import {CategoryComponent} from './category/category.component';
 import {DetailComponent} from './tree/detail/detail.component';
 import {CreateComponent} from './tree/create/create.component';
+import {EditTreeComponent} from './tree/edit-tree/edit-tree.component';
 
 
 const routes: Routes = [
@@ -27,8 +28,12 @@ const routes: Routes = [
         component: CreateComponent,
       },
       {
-        path: 'tree/:id',
+        path: 'tree/detail/:id',
         component: DetailComponent,
+      },
+      {
+        path: 'tree/edit/:id',
+        component: EditTreeComponent,
       },
       {
         path: 'category',

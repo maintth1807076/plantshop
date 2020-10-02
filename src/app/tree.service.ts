@@ -27,8 +27,8 @@ export class TreeService {
   addTree(data) {
     return this.http.post(this.apiServer + '/api/trees', data, this.options);
   }
-  updateTree(id) {
-    return this.http.put(this.apiServer + '/api/trees/' + id, this.options);
+  updateTree(id, data) {
+    return this.http.put(this.apiServer + '/api/trees/' + id, data, this.options);
   }
   deleteTree(id) {
     return this.http.delete(this.apiServer + '/api/trees/' + id, this.options);
