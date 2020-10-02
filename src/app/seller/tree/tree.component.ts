@@ -34,10 +34,10 @@ export class TreeComponent implements OnInit {
       () => console.log('Complete')
     );
   }
-  deletePost(id){
-    this.service.deleteTree(id).subscribe(data => {
-      this.listTree = this.listTree.filter(item => item.id !== id);
-      console.log('Tree deleted successfully!');
-    });
-  }
+  // deletePost(id){
+  //   this.service.deleteTree(id).subscribe(data => {
+  //     this.listTree = this.listTree.filter(item => item.id !== id);
+  //     console.log('Tree deleted successfully!');
+  //   });
+  // }
 }

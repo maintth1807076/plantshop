@@ -13,7 +13,6 @@ export class CreateComponent implements OnInit {
   createForm: FormGroup;
   loading = false;
   submitted = false;
-  returnUrl: string;
   constructor(private fb: FormBuilder, private service: TreeService,  private router: Router,   private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,7 +20,12 @@ export class CreateComponent implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required],
       quantity: ['', Validators.required],
-      imageDetail: ['', Validators.required],
+      image: ['', Validators.required],
+      imageDetail: ['' ],
+      description: ['' ],
+      detail: ['' ],
+      status: [''],
+      category: [''],
     });
   }
   get f() { return this.createForm.controls; }
@@ -35,13 +39,18 @@ export class CreateComponent implements OnInit {
       'name': this.f.name.value,
       'price': this.f.price.value,
       'quantity': this.f.quantity.value,
+      'image': this.f.image.value,
       'imageDetail': this.f.imageDetail.value,
+      'description': this.f.description.value,
+      'detail': this.f.detail.value,
+      'status': this.f.status.value,
+      'category': this.f.category.value,
     };
 
     this.service.addTree(data).subscribe(
       data => {
         console.log(data);
-        this.router.navigateByUrl('/tree');
+        this.router.navigateByUrl('/seller/tree');
       },
       error => {
         this.loading = false;
