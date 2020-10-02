@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="menu-course" >
-          <a routerLink="/tree/create-edit" class="btn btn-success">Create New Post</a>
+          <a routerLink="/tree/create" class="btn btn-success">Thêm mới cây</a>
 
         </div>
         <div class="accordion table-data">
@@ -38,7 +38,7 @@
                   <td><span>{{item.price}}</span></td>
                   <td><span>{{item.details}}</span></td>
                   <td><span>{{item.quantity}}</span></td>
-                  <td><span [routerLink]="['/tree',item.id]">Detail</span> | <span [routerLink]="['/tree/create-edit']" [queryParams]="{id: item.id}">Edit</span></td>
+                  <td><span [routerLink]="['/tree',item.id]">Detail</span> | <span [routerLink]="['/tree/create']" [queryParams]="{id: item.id}">Edit</span></td>
                 </tr>
                 </tbody>
               </table>
