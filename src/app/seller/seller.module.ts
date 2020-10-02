@@ -5,16 +5,14 @@ import { SellerRoutingModule } from './seller-routing.module';
 import { ManageComponent } from './manage/manage.component';
 import { TreeComponent } from './tree/tree.component';
 import { CategoryComponent } from './category/category.component';
-import { CreateEditComponent } from './tree/create-edit/create-edit.component';
 import { DetailComponent } from './tree/detail/detail.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateComponent } from './tree/create/create.component';
-import { EditComponent } from './tree/edit/edit.component';
 
 
 @NgModule({
-  declarations: [ManageComponent, TreeComponent, CategoryComponent, CreateEditComponent, DetailComponent, CreateComponent, EditComponent],
+  declarations: [ManageComponent, TreeComponent, CategoryComponent, DetailComponent, CreateComponent],
   imports: [
     CommonModule,
     SellerRoutingModule,
