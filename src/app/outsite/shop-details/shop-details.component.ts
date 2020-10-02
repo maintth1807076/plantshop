@@ -10,7 +10,7 @@ import { TreeService } from 'src/app/tree.service';
 })
 export class ShopDetailsComponent implements OnInit {
   tree: any = {};
-  idTree:string
+  idTree: string;
   constructor(private http: HttpClient, private service: TreeService,  private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
     this.getTree(this.idTree); }
@@ -23,5 +23,5 @@ export class ShopDetailsComponent implements OnInit {
       console.log(data['data']);
       this.tree = data['data'];
     });
-   }
+  }
 }
