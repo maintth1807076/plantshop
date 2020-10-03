@@ -25,11 +25,11 @@ export class CreateComponent implements OnInit {
       price: ['', Validators.required],
       quantity: ['', Validators.required],
       image: ['', Validators.required],
-      imageDetail: ['' ],
-      description: ['' ],
-      detail: ['' ],
-      status: [''],
-      category: [''],
+      imageDetail: ['', Validators.required],
+      description: ['', Validators.required],
+      detail: ['', Validators.required],
+      status: ['', Validators.required],
+      category: ['', Validators.required],
     });
   }
   get f() { return this.createForm.controls; }
