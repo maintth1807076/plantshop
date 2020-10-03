@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { SellerComponent } from './seller/seller.component';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
 
 
 
@@ -16,14 +19,15 @@ import { SellerComponent } from './seller/seller.component';
     LoginComponent,
     RegisterComponent,
     SellerComponent,
-   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, ReactiveFormsModule
-   
+    FormsModule, ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
