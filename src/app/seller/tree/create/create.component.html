@@ -57,7 +57,7 @@
           <div class="col-6">
             <label for="inputAvatar">Ảnh <span class="text-danger">*</span> </label>
             <input type="file" formControlName="image" id="inputAvatar" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
+                   [ngClass]="{ 'is-invalid': submitted && f.image.errors }" (change)="uploadFile($event.target.files)">
             <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
               <div *ngIf="f.image.errors.required">Avatar không hợp lệ</div>
             </div>
