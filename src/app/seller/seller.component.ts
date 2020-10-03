@@ -17,9 +17,7 @@ export class SellerComponent implements OnInit {
     await this.loadScript('/assets/js/jquery.js');
     await this.loadScript('/assets/js/plugins.js');
     await this.loadScript('/assets/js/functions.js');
-    await this.loadScript('/assets/plugins/chartjs/chart.min.js');
-    await this.loadScript('/assets/plugins/chartjs/utils.js');
-    await this.loadScript('/assets/plugins/moment/moment.min.js');
+    await this.loadScript('/assets/js/select2.full.js');
     await this.loadScript('/assets/js/scripts.js');
     await this.loadScript('/assets/js/custom.js');
 

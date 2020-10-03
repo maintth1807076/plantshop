@@ -31,6 +31,11 @@ export class EditTreeComponent implements OnInit {
       price: ['', Validators.required],
       quantity: ['', Validators.required],
       image: ['', Validators.required],
+      imageDetail: ['', Validators.required ],
+      description: ['', Validators.required ],
+      detail: ['', Validators.required],
+      status: ['', Validators.required],
+      category: ['', Validators.required],
     });
   }
   get f(){
