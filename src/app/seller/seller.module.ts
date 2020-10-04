@@ -9,9 +9,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateComponent } from './tree/create/create.component';
 import { EditTreeComponent } from './tree/edit-tree/edit-tree.component';
+import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { DetailCategoryComponent } from './category/detail-category/detail-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 
 @NgModule({
-  declarations: [ManageComponent, TreeComponent, CategoryComponent, DetailComponent, CreateComponent, EditTreeComponent],
+  declarations: [ManageComponent, TreeComponent, CategoryComponent, DetailComponent, CreateComponent, EditTreeComponent, CreateCategoryComponent, DetailCategoryComponent, EditCategoryComponent],
   imports: [
     CommonModule,
     SellerRoutingModule,

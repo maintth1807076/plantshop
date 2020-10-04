@@ -7,6 +7,9 @@ import {CategoryComponent} from './category/category.component';
 import {DetailComponent} from './tree/detail/detail.component';
 import {CreateComponent} from './tree/create/create.component';
 import {EditTreeComponent} from './tree/edit-tree/edit-tree.component';
+import {CreateCategoryComponent} from './category/create-category/create-category.component';
+import {DetailCategoryComponent} from './category/detail-category/detail-category.component';
+import {EditCategoryComponent} from './category/edit-category/edit-category.component';
 
 
 const routes: Routes = [
@@ -38,6 +41,18 @@ const routes: Routes = [
       {
         path: 'category',
         component: CategoryComponent,
+      },
+      {
+        path: 'category/create',
+        component: CreateCategoryComponent,
+      },
+      {
+        path: 'category/detail/:id',
+        component: DetailCategoryComponent,
+      },
+      {
+        path: 'category/edit/:id',
+        component: EditCategoryComponent,
       },
     ],
   },
