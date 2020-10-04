@@ -2,14 +2,14 @@
   <div class="container-fluid">
     <div class="row  ">
       <div class="menu-course">
-        <a routerLink="/seller/tree" class="btn btn-success">Quay lại</a>
+        <a routerLink="/seller/category" class="btn btn-success">Quay lại</a>
 
       </div>
       <div class="card " style="width: 90%; margin-left: 5%;">
         <div class="col-lg-12 ">
           <div class="wrapper row">
             <div class="preview col-md-6">
-              <img src="{{tree.image}}" alt="" style="width: 90%;">
+              <img src="{{category.image}}" alt="" style="width: 80%;">
               <!--              <div class="preview-pic tab-content">-->
               <!--                <div class="tab-pane active" id="pic-1"><img/></div>-->
               <!--                <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>-->
@@ -27,15 +27,12 @@
 
             </div>
             <div class="details col-md-6">
-              <h3 class="product-title"><p><b>Tên cây :</b></p>{{tree.name}}</h3>
-              <h4 class="price"><p><b>Giá : </b></p> <span>{{tree.price }} Đồng</span></h4>
-              <p class="product-description"><b>Mô tả : </b>{{tree.quantity}}</p>
-              <p class="product-description"><b>Mô tả : </b>{{tree.description}}</p>
-              <p class="product-description"><b>Chi tiết : </b>{{tree.detail}}</p>
-              <p class="product-description"><b> Ngày tạo :</b> {{tree.createdAt|date:'yyyy-MM-dd HH:mm:ss':'VI'}}</p>
+              <h3 class="product-title"><p><b>Tên cây :</b></p>{{category.name}}</h3>
+              <p class="product-description"><b>Mô tả : </b>{{category.description}}</p>
+              <p class="product-description"><b> Ngày tạo :</b> {{category.createdAt|date:'yyyy-MM-dd HH:mm:ss':'VI'}}</p>
               <div class="menu-course">
-                <a [routerLink]="['/seller/tree/create']"
-                   [queryParams]="{id: tree.id}" class="btn btn-success">Chỉnh sửa</a>
+                <a [routerLink]="['/seller/category/create']"
+                   [queryParams]="{id: category.id}" class="btn btn-success">Chỉnh sửa</a>
               </div>
             </div>
           </div>

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-lg-7 center p-30 background-white b-r-6 mt-5 mb-5">
+    <div class="col-lg-12 m-t-10 mb-4 text-center">
+      <h3>Chỉnh sửa danh mục</h3>
+    </div>
+    <form [formGroup]="editCategoryForm" (ngSubmit)="editCategory()">
+      <div class="col-lg-12 form-group ">
+        <div class="row">
+          <div class="col-8">
+            <label for="inputName">Tên Cây <span class="text-danger">*</span></label>
+            <input type="text" formControlName="name" id="inputName" class="form-control"
+                   [(ngModel)]="category.name"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Tên không hợp lệ</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="status">Trạng thái <span class="text-danger">*</span></label>
+            <select class="form-control " formControlName="status" id="status"
+                    [(ngModel)]="category.status"  [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+              <option value="1" selected>Active</option>
+              <option value="0">Deactivate</option>
+            </select>
+            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+              <div *ngIf="f.status.errors.required">không hợp lệ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 form-group ">
+            <label for="inputAvatar">Ảnh <span class="text-danger">*</span> </label>
+            <input  value="" type="file" formControlName="image" id="inputAvatar" class="form-control"
+                    [(ngModel)]="category.image" [ngClass]="{ 'is-invalid': submitted && f.image.errors }" (change)="uploadFile($event.target.files)">
+            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+              <div *ngIf="f.image.errors.required">Không hợp lệ</div>
+            </div>
+            <img src="{{url}}" alt="">
+      </div>
+      <div class="col-lg-12 form-group ">
+        <label for="inputDescription">Mô tả <span class="text-danger">*</span></label>
+        <textarea name="textarea" formControlName="description" id="inputDescription" class="form-control"
+                  [(ngModel)]="category.description"    [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">không hợp lệ</div>
+        </div>
+      </div>
+      <div class="col-lg-12 form-group mt-5">
+        <div class="row">
+          <div class="col-6">
+            <button [disabled]="loading" class="btn btn-primary" style="width: 100%;">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Tạo mới
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-danger " style="width: 100%;">Hủy bỏ</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

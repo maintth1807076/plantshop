@@ -11,16 +11,28 @@ export class TreeService {
   private options = {headers: new HttpHeaders().set('Authorization', token)};
 
   constructor( private http: HttpClient) { }
+  getAllCategory() {
+    return this.http.get(this.apiServer + '/api/categories', this.options);
+  }
+
+  getCategory(id) {
+    return this.http.get(this.apiServer + '/api/categories/' + id, this.options);
+  }
+  addCategory(data) {
+    return this.http.post(this.apiServer + '/api/categories', data, this.options);
+  }
+  updateCategory(id, data) {
+    return this.http.put(this.apiServer + '/api/categories/' + id, data, this.options);
+  }
+  deleteCategory(id) {
+    return this.http.delete(this.apiServer + '/api/categories/' + id, this.options);
+  }
 
   getAllTree() {
 
     return this.http.get(this.apiServer + '/api/trees', this.options);
   }
 
-  loadCategory() {
-
-    return this.http.get(this.apiServer + '/api/categories', this.options);
-  }
   getTreeService(id) {
     return this.http.get(this.apiServer + '/api/trees/' + id, this.options);
   }

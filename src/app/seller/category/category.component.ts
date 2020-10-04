@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {TreeService} from '../../tree.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  id: any;
+  p: any;
+  listCategory: any[];
 
-  ngOnInit(): void {
+
+  constructor(private http: HttpClient, private service: TreeService, private router: Router) {
+
   }
 
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void {
+
+    this.service.getAllCategory().subscribe((data: any[]) => {
+        this.listCategory = data['datas'];
+        console.log(this.listCategory);
+      },
+      (error) => console.log(error),
+      () => console.log('Complete')
+    );
+  }
 }
