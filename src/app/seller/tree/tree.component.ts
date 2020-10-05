@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TreeService} from '../../tree.service';
 import {Router} from '@angular/router';
-
+import {takeWhile} from 'rxjs/operators';
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
@@ -13,7 +13,7 @@ export class TreeComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
-
+  alive: boolean = true;
 
   constructor(private http: HttpClient, private service: TreeService, private router: Router) {
 
@@ -25,7 +25,8 @@ export class TreeComponent implements OnInit {
 
   loadData(): void {
 
-    this.service.getAllTree().subscribe((data: any[]) => {
+    this.service.getAllTree()
+      .pipe(takeWhile(() => this.alive)).subscribe((data: any[]) => {
         // @ts-ignore
         this.listTree = data.datas;
         console.log(this.listTree);
@@ -102,6 +103,18 @@ export class TreeComponent implements OnInit {
       default:
         break;
     }
+  }
+  search(val: any) {
+    console.log(val);
+    var arr = [];
+    var data = this.listTree;
+    for (let index = 0; index < data.length; index++) {
+      var text = (data[index].name + data[index].price).toLowerCase()
+      if (text.indexOf(val.toLowerCase()) != -1) {
+        arr.push(data[index])
+      }
+    }
+    this.listTree = arr
   }
   // deletePost(id){
   //   this.service.deleteTree(id).subscribe(data => {
