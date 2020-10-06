@@ -1,0 +1,35 @@
+<section id="page-content" class="sidebar-left background-grey">
+  <div class="container-wide">
+    <div class="row">
+      <!-- Content-->
+      <div class="content col-lg-9 background-white">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- end: Content-->
+      <!-- Sidebar-->
+      <div class="sidebar col-lg-3" style="height: 700px;">
+        <!--widget newsletter-->
+        <div class="widget clearfix widget-archive">
+          <h4 class="widget-title">Tài Khoản</h4>
+          <div class="widget-desc">
+            <!-- Single Checkbox -->
+            <div class="custom-control d-flex align-items-center mb-3">
+              <i class="icon-user mr-2 mb-1 fa-2x"></i> <a routerLink="/user/profile"> Thông Tin Tài Khoản</a>
+            </div>
+            <!-- Single Checkbox -->
+            <div class="custom-control d-flex align-items-center mb-3">
+              <i class="icon-bell mr-2 mb-1 fa-2x"></i> <a routerLink="/user/notification"> Thông Báo</a>
+            </div>
+            <div class="custom-control d-flex align-items-center mb-3">
+              <i class="icon-clipboard mr-2 mb-1 fa-2x"></i> <a routerLink="/user/order"> Quản Lí Đơn Hàng</a>
+            </div>
+            <div class="custom-control d-flex align-items-center mb-3">
+              <i class="icon-heart mr-2 mb-1 fa-2x"></i> <a routerLink="/user/wishlist"> Sản Phẩm Yêu Thích</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end: Sidebar-->
+    </div>
+  </div>
+</section>

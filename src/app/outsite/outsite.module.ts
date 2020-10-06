@@ -15,14 +15,21 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ShopSellerComponent } from './shop-seller/shop-seller.component';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { UserComponent } from './user/user.component';
+import { ManageOrderComponent } from './user/manage-order/manage-order.component';
+import { ProfileUserComponent } from './user/profile-user/profile-user.component';
+import { NotificationUserComponent } from './user/notification-user/notification-user.component';
+import { WishlistComponent } from './user/wishlist/wishlist.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent],
-  imports: [
-    CommonModule,
-    OutsiteRoutingModule,
-    NgxPaginationModule
-  ]
+  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent],
+    imports: [
+        CommonModule,
+        OutsiteRoutingModule,
+        NgxPaginationModule,
+        ReactiveFormsModule
+    ]
 })
 export class OutsiteModule { }

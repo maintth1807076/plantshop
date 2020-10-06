@@ -52,5 +52,11 @@ export class TreeService {
   doRegister(data){
     return this.http.post(this.apiServer + '/auth/register', data);
   }
+  getUser(id) {
+    return this.http.get(this.apiServer + '/api/users/' + id, this.options);
+  }
+  updateUser(id, data){
+    return this.http.put(this.apiServer + '/api/users/' + id, data, this.options);
+  }
 }
 

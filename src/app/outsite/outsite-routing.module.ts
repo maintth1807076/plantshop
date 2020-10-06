@@ -13,6 +13,11 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { ShopSellerComponent } from "./shop-seller/shop-seller.component";
 import { ProductModalComponent } from './product-modal/product-modal.component';
+import {UserComponent} from './user/user.component';
+import {ManageOrderComponent} from './user/manage-order/manage-order.component';
+import {ProfileUserComponent} from './user/profile-user/profile-user.component';
+import {NotificationUserComponent} from './user/notification-user/notification-user.component';
+import {WishlistComponent} from './user/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -25,10 +30,10 @@ const routes: Routes = [
 
         children: [
           {
-            path: 'product-modal', 
-            component: ProductModalComponent, 
+            path: 'product-modal',
+            component: ProductModalComponent,
           },
-         
+
         ],
       },
       {
@@ -72,10 +77,29 @@ const routes: Routes = [
         path: 'shop-seller',
         component: ShopSellerComponent
       },
-      // {
-      //   path: 'product-modal',
-      //   component:ProductModalComponent
-      // },
+      {
+        path: 'user',
+        component:UserComponent,
+        children: [
+          {
+            path: 'order',
+            component:ManageOrderComponent
+          },
+          {
+            path: 'profile',
+            component:ProfileUserComponent
+          },
+          {
+            path: 'notification',
+            component:NotificationUserComponent
+          },
+          {
+            path: 'wishlist',
+            component:WishlistComponent
+          },
+        ],
+      },
+
     ]
     }
 
