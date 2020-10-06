@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TreeService} from '../../tree.service';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
