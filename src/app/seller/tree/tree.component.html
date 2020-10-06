@@ -14,6 +14,15 @@
                 Danh sách
                 <i class="fa pull-right accordion__angle--animated" aria-hidden="true"></i>
               </h4>
+              <div class="mb-2" style=" display: flex;
+                            align-items: center;">
+                <div class="">
+                  <span> Tìm kiếm: </span>
+                </div>
+                <input style="padding: 5px; border: 1px solid; border-radius: 15px; margin: 10px;"
+                       placeholder="search" type="text" value="" (input)="search($event.target.value)"
+                       class="bg-0 b-0">
+              </div>
             </div>
             <div id="table-two" class="collapse show table-responsive">
               <table class="table table-hover mb-4">
@@ -23,7 +32,7 @@
                     <div style="width: 100px;">Thời gian <i (click)="sortBy($event, 'time')" class="fa fa-arrow-up"></i></div>
                   </th>
                   <th scope="col">Ảnh</th>
-                  <th scope="col" >Tên <i (click)="sortBy($event, 'time')" class="fa fa-arrow-up"></i> </th>
+                  <th scope="col" >Tên <i (click)="sortBy($event, 'name')" class="fa fa-arrow-up"></i> </th>
                   <th scope="col">Giá</th>
                   <th scope="col">Số lượng</th>
                   <th scope="col">danh mục</th>
