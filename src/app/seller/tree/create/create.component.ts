@@ -17,6 +17,7 @@ export class CreateComponent implements OnInit {
   loading = false;
   submitted = false;
   url: string;
+  selectedValue: Map<string, string> = new Map<string, string>();
   constructor(private storage: AngularFireStorage, private fb: FormBuilder, private service: TreeService,  private router: Router,   private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class CreateComponent implements OnInit {
       imageDetail: ['' ],
       description: ['' ],
       detail: ['' ],
-      status: [''],
+      status: [],
       category: [''],
     });
   }

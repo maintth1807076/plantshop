@@ -34,16 +34,16 @@
                             <th class="cart-product-subtotal">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let item of items">
                         <tr>
                             <td class="cart-product-remove">
-                                <a href="#"><i class="fa fa-times"></i></a>
+                                <a (click)="remove(item.product.id)"><i class="fa fa-times"></i></a>
                             </td>
                             <td class="cart-product-thumbnail">
                                 <a href="#">
                                     <img src="../../../assets/img/product.jpeg" alt="Bolt Sweatshirt">
                                 </a>
-                                <div class="cart-product-thumbnail-name">Bolt Sweatshirt</div>
+                                <div class="cart-product-thumbnail-name">{{item.product.name}}</div>
                             </td>
                             <td class="cart-product-description">
                                 <p><span>Bolt Sweatshirt</span>
@@ -53,110 +53,17 @@
                                 </p>
                             </td>
                             <td class="cart-product-price">
-                                <span class="amount">$20.00</span>
+                                <span class="amount">${{item.product.price}}</span>
                             </td>
                             <td class="cart-product-quantity">
                                 <div class="quantity">
                                     <input type="button" class="minus" value="-">
-                                    <input type="text" class="qty" value="1" name="quantity">
+                                    <input type="text" class="qty" value="{{item.quantity}}" name="quantity">
                                     <input type="button" class="plus" value="+">
                                 </div>
                             </td>
                             <td class="cart-product-subtotal">
                                 <span class="amount">$20.00</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="cart-product-remove">
-                                <a href="#"><i class="fa fa-times"></i></a>
-                            </td>
-                            <td class="cart-product-thumbnail">
-                                <a href="#">
-                                    <img alt="Consume Tshirt" src="../../../assets/img/product.jpeg">
-                                </a>
-                                <div class="cart-product-thumbnail-name">Consume Tshirt</div>
-                            </td>
-                            <td class="cart-product-description">
-                                <p><span>Consume Tshirt</span>
-                                    <span>Size: S</span>
-                                    <span>Color: Blue</span>
-                                    <span>Gender: Women</span>
-                                </p>
-                            </td>
-                            <td class="cart-product-price">
-                                <span class="amount">$18.99</span>
-                            </td>
-                            <td class="cart-product-quantity">
-                                <div class="quantity">
-                                    <input type="button" class="minus" value="-">
-                                    <input type="text" class="qty" value="1" name="quantity">
-                                    <input type="button" class="plus" value="+">
-                                </div>
-                            </td>
-                            <td class="cart-product-subtotal">
-                                <span class="amount">$18.99</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="cart-product-remove">
-                                <a href="#"><i class="fa fa-times"></i></a>
-                            </td>
-                            <td class="cart-product-thumbnail">
-                                <a href="#">
-                                    <img src="../../../assets/img/product.jpeg" alt="Logo Tshirt">
-                                </a>
-                                <div class="cart-product-thumbnail-name">Logo Tshirt</div>
-                            </td>
-                            <td class="cart-product-description">
-                                <p><span>Logo Tshirt</span>
-                                    <span>Size: L</span>
-                                    <span>Color: Grey</span>
-                                    <span>Gender: Man</span>
-                                </p>
-                            </td>
-                            <td class="cart-product-price">
-                                <span class="amount">$9.00</span>
-                            </td>
-                            <td class="cart-product-quantity">
-                                <div class="quantity">
-                                    <input type="button" class="minus" value="-">
-                                    <input type="text" class="qty" value="2" name="quantity">
-                                    <input type="button" class="plus" value="+">
-                                </div>
-                            </td>
-                            <td class="cart-product-subtotal">
-                                <span class="amount">$18.00</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="cart-product-remove">
-                                <a href="#"><i class="fa fa-times"></i></a>
-                            </td>
-                            <td class="cart-product-thumbnail">
-                                <a href="#">
-                                    <img src="../../../assets/img/product.jpeg" alt="Grey Sweatshirt">
-                                </a>
-                                <div class="cart-product-thumbnail-name">Grey Sweatshirt</div>
-                            </td>
-                            <td class="cart-product-description">
-                                <p><span>Grey Sweatshirt</span>
-                                    <span>Size: L</span>
-                                    <span>Color: Grey</span>
-                                    <span>Gender: Man</span>
-                                </p>
-                            </td>
-                            <td class="cart-product-price">
-                                <span class="amount">$22.99</span>
-                            </td>
-                            <td class="cart-product-quantity">
-                                <div class="quantity">
-                                    <input type="button" class="minus" value="-">
-                                    <input type="text" class="qty" value="3" name="quantity">
-                                    <input type="button" class="plus" value="+">
-                                </div>
-                            </td>
-                            <td class="cart-product-subtotal">
-                                <span class="amount">$68.97</span>
                             </td>
                         </tr>
                     </tbody>
