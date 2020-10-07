@@ -27,14 +27,6 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-
-        children: [
-          {
-            path: 'product-modal',
-            component: ProductModalComponent,
-          },
-
-        ],
       },
       {
         path: 'about',
