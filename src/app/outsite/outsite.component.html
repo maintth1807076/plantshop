@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="author" content="INSPIRO"/>
-    <meta name="description" content="Themeforest Template Polo, html template">
+    <meta name="description" content="Plants shop">
     <link rel="icon" type="image/png" href="../../assets/img/banner-2.jpg">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
@@ -23,16 +23,16 @@
                 <div class="row">
                     <div class="col-md-6 pt-1">
                         <ul class="top-menu">
-                            <li class="border-right pr-2"><a href="#">Kênh người bán</a></li>
-                            <li class="ml-3"><a href="#">hotline: 09546477</a></li>
+                            <li class="border-right pr-2"><a routerLink="/seller/manage">Kênh người bán</a></li>
+                            <li class="ml-3"><a routerLink="/contact">hotline: 09546477</a></li>
 
                         </ul>
                     </div>
                     <div class="col-md-3"></div>
                     <div class="col-md-2 pt-1" >
                         <ul class="top-menu p-l-40 ">
-                            <li ><a href="#" >Đăng nhập</a></li>
-                            <li><a href="#" >Đăng kí</a></li>
+                            <li ><a routerLink="/login">Đăng nhập</a></li>
+                            <li><a routerLink="/register">Đăng kí</a></li>
                         </ul>
                     </div>
                     <div class="col-md-1 pt-1">
@@ -60,7 +60,7 @@
                 <div class="container">
                     <!--Logo-->
                     <div id="logo">
-                        <a href="#">
+                        <a routerLink="/home">
 
                             <span class="logo-default"> <img src="../../assets/img/logo.png" alt="" style="width: 70%;"></span>
                             <!-- <span class="logo-dark">CACTI</span> -->
@@ -70,10 +70,10 @@
                     <!-- Search -->
                     <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
                             class="icon-x"></i></a>
-<!--                        <form class="search-form" action="search-results-page.html" method="get">-->
-<!--                            <input class="form-control" name="q" type="text" placeholder="Tìm kiếm..."/>-->
-<!--                            &lt;!&ndash; <span class="text-muted"> </span> &ndash;&gt;-->
-<!--                        </form>-->
+                        <form class="search-form" action="search-results-page.html" method="get" ngNoForm>
+                            <input class="form-control" name="q" type="text" placeholder="Tìm kiếm..."/>
+                            <!-- <span class="text-muted"> </span> -->
+                        </form>
                     </div>
                     <!-- end: search -->
                     <div class="header-extras m-l-15">
@@ -87,39 +87,26 @@
                                     <div class="p-dropdown-content">
                                         <div class="widget-mycart">
                                             <h4>My Cart</h4>
-                                            <div class="cart-item">
-                                                <div class="cart-image"> <a href="#"><img src="../../assets/img/product.jpeg"></a></div>
+                                            <div class="cart-item" *ngFor="let item of items">
+                                                <div class="cart-image"> <a href="#"><img src="{{item.product.image}}"></a></div>
                                                 <div class="cart-product-meta">
-                                                    <a href="#">Bolt Sweatshirt</a>
-                                                    <span>3 x 28$</span>
+                                                    <a href="#">{{item.product.name}}</a>
+                                                    <span>{{item.quantity}} x {{item.product.price}}</span>
                                                 </div>
                                                 <div class="cart-item-remove">
-                                                    <a href="#"><i class="icon-x"></i></a></div>
-                                            </div>
-                                            <div class="cart-item">
-                                                <div class="cart-image"> <a href="#"><img src="../../assets/img/product.jpeg"></a></div>
-                                                <div class="cart-product-meta">
-                                                    <a href="#">Yellow Sweatshirt</a>
-                                                    <span>1 x 18$</span>
-                                                </div>
-                                                <div class="cart-item-remove">
-                                                    <a href="#"><i class="icon-x"></i></a></div>
+                                                    <a (click)="remove(item.product.id)"><i class="icon-x"></i></a></div>
                                             </div>
                                             <hr>
                                             <div class="cart-total">
                                                 <div class="cart-total-labels">
-                                                    <span>Subtotal</span>
-                                                    <span>Taxes</span>
-                                                    <span><strong>Total</strong></span>
+                                                    <span><strong>Tổng tiền </strong></span>
                                                 </div>
                                                 <div class="cart-total-prices">
-                                                    <span>320$</span>
-                                                    <span>8%</span>
-                                                    <span><strong>385$</strong></span>
+                                                    <span><strong >{{total}}đ.</strong></span>
                                                 </div>
                                             </div>
                                             <div class="cart-buttons text-right">
-                                                <button class="btn btn-xs">Checkout</button>
+                                                <button class="btn btn-xs" routerLink="/shop-cart">Xem giỏ hàng</button>
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +139,6 @@
                                         </ul>
                                     </li>
                                     <li ><a href="/blog">Blog</a></li>
-                                    <li ><a href="/portfolio">Portfolio</a></li>
                                     <li ><a href="/about">Giới thiệu</a></li>
                                     <li ><a href="/contact">Liên hệ</a></li>
 
@@ -204,7 +190,7 @@
 
 
                     <div class="col-lg-4">
-                        <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">
+                        <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post" ngNoForm>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
@@ -213,7 +199,7 @@
                             </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                    <span class="input-group-text" id="basic-addon"><i class="fa fa-envelope"></i></span>
                                 </div>
                                 <input type="email" aria-required="true" required name="widget-contact-form-email" class="form-control required email" placeholder="Email">
                             </div>
@@ -252,7 +238,7 @@
                     </div>
 
                     <div class="col-lg-6">
-
+                  <p>© 2020 Cactus shop. Tất cả các quyền được bảo lưu.</p>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="order-select">
-                            <form method="get">
+                            <form method="get" ngNoForm>
                                 <select class="form-control">
                                     <option selected="selected" value="order">Giá</option>
                                     <option value="popularity">Giá: Thấp đến cao</option>
@@ -29,38 +29,40 @@
                 <!--Product list-->
                 <div class="shop">
                     <div class="grid-layout grid-4-columns" data-item="grid-item">
-                        <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 6, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
+                        <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 10, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
                             <div class="product"  >
                                 <div class="product-image">
-                                    <a  [routerLink]="['/shop-details',item.id]" ><img alt="Shop product image!" src="../../../assets/img/product.jpeg">
+                                    <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                                     </a>
-                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="Shop product image!" src="../../../assets/img/product.jpeg">
+                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                                     </a>
-                                    <span class="product-new">NEW</span>
                                     <span class="product-wishlist">
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
-                                    <div class="product-overlay">
-                                        <a data-lightbox="ajax">Xem nhanh</a>
-                                    </div>
+                                  <div class="product-overlay row ml-0">
+                                    <a [routerLink]="['/shop-details',item.id]" class="col-6 border-right"><i
+                                      class="fa fa-eye btn-white"></i></a>
+                                    <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
+                                                                                     style="color: white;"></i></a>
+                                  </div>
                                 </div>
-                                <div class="product-description">
-                                    <div class="product-category">Cây nội thất <a (click)="addToCart(item.id)">Mua</a></div>
-                                    <div class="product-title">
-                                        <h3><a  [routerLink]="['/shop-details',item.id]" >{{item.name}}</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>{{item.price}}</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                    <div class="product-reviews"><a href="#">6 customer reviews</a>
-                                    </div>
+                              <div class="product-description">
+                                <div class="product-category pl-2">{{item.category}}</div>
+                                <div class="product-title pl-2">
+                                  <h3><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
                                 </div>
+
+                                <div class="product-rate pl-2">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="product-reviews pr-2" style="font-size: 20px; color: red">
+                                  <ins>{{item.price}}đ</ins>
+                                </div>
+                              </div>
                             </div>
                         </div>
 
