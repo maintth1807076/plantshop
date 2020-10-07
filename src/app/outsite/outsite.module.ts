@@ -20,7 +20,7 @@ import { ManageOrderComponent } from './user/manage-order/manage-order.component
 import { ProfileUserComponent } from './user/profile-user/profile-user.component';
 import { NotificationUserComponent } from './user/notification-user/notification-user.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         CommonModule,
         OutsiteRoutingModule,
         NgxPaginationModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ]
 })
 export class OutsiteModule { }

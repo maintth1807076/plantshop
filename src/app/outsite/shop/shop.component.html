@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="product-description">
-                                    <div class="product-category">Cây nội thất</div>
+                                    <div class="product-category">Cây nội thất <a (click)="addToCart(item.id)">Mua</a></div>
                                     <div class="product-title">
                                         <h3><a  [routerLink]="['/shop-details',item.id]" >{{item.name}}</a></h3>
                                     </div>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                     <hr>
                     <!-- Pagination -->
