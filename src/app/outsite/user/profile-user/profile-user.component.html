@@ -10,7 +10,7 @@
             <div class="row">
               <label class="col-lg-3 mt-2" for="inputFullname">Họ và tên <span class="text-danger">*</span> :</label>
               <input type="text" formControlName="fullname" id="inputFullname" class="form-control col-lg-7"
-                     [(ngModel)]="user.name" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }">
+                     [(ngModel)]="user.fullname" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }">
               <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
                 <div *ngIf="f.fullname.errors.required">Họ và tên không hợp lệ</div>
               </div>
@@ -26,34 +26,31 @@
               </div>
             </div>
           </div>
-          <div class="form-group col-lg-12">
-            <div class="row">
-              <label class="col-lg-3 mt-2" for="gender">Giới tính <span class="text-danger">*</span> :</label>
-              <select class="form-control col-lg-7" formControlName="gender" name="gender" required>
-                <option value="">Chọn giới tính</option>
-                <option value="1">Nữ</option>
-                <option value="2">Nam</option>
-              </select>
+          <div class="form-group col-lg-12 ">
+            <label class="sr-only" for="inputPassword">Mật khẩu</label>
+            <input type="password" formControlName="password" id="inputPassword" class="form-control"
+                   placeholder="Mật khẩu" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password không hợp lệ</div>
             </div>
           </div>
-          <!--       <div class="form-group">-->
-          <!--          <label class="sr-only" for="gender" for="inputBirthday">Ngày sinh</label>-->
-          <!--          <input formControlName="birthday" id="inputBirthday" class="form-control" type="date"-->
-          <!--                 name="dateofbirth" placeholder="Ảnh đại diện"-->
-          <!--                 [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">-->
-          <!--          <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">-->
-          <!--              <div *ngIf="f.birthday.errors.required"> Ngày sinh không hợp lệ</div>-->
-          <!--          </div>-->
-          <!--      </div>-->
+          <div class="col-lg-12  form-group ">
+            <label for="gender" class="sr-only">Giới tính</label>
+            <select class="form-control" formControlName="gender" name="gender" required>
+              <option value="">Chọn giới tính</option>
+              <option value="1">Nữ</option>
+              <option value="2">Nam</option>
+            </select>
+          </div>
         </div>
         <div class="col-lg-4 border-left ">
-          <div class="form-group col-lg-12 row ">
-            <label for="inputAvatar">Ảnh đại diện <span class="text-danger">*</span> : </label>
-            <img src="{{url}}" alt="" style="width:50%;border-radius: 50%;">
-            <input value="" type="file" formControlName="image" id="inputAvatar" class="form-control col-lg-6"
-                   [(ngModel)]="user.avatar" [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }"
-                   (change)="uploadFile1($event.target.files)">
-            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+          <div class="form-group col-lg-12">
+            <label for="inputAvatar" class="sr-only">Ảnh </label>
+            <img src="{{url}}" alt="" style="width:50%;">
+            <input type="file" formControlName="avatar" id="inputAvatar" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }"
+                   (change)="uploadFile($event.target.files)">
+            <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
               <div *ngIf="f.avatar.errors.required">Không hợp lệ</div>
             </div>
           </div>

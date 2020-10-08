@@ -58,5 +58,10 @@ export class TreeService {
   updateUser(id, data){
     return this.http.put(this.apiServer + '/api/users/' + id, data, this.options);
   }
+  getAllUser() {
+
+    return this.http.get(this.apiServer + '/api/users', this.options);
+  }
+
 }
 

@@ -86,7 +86,7 @@ const routes: Routes = [
             component:ManageOrderComponent
           },
           {
-            path: 'profile',
+            path: 'profile/:id',
             component:ProfileUserComponent
           },
           {

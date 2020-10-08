@@ -24,12 +24,11 @@ export class ProfileUserComponent implements OnInit {
   constructor(private storage: AngularFireStorage, private fb: FormBuilder, private service: TreeService, private router: Router, private route: ActivatedRoute) {
   }
 
-
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     // this.id = this.route.snapshot.paramMap.get('id');
     this.service.getUser(this.id).subscribe(data => {
-      this.user = data['datas'];
+      this.user = data['data'];
       this.url = this.user.avatar;
       console.log(data);
     });
@@ -42,32 +41,28 @@ export class ProfileUserComponent implements OnInit {
       gender: ['', Validators.required],
     });
   }
-
-  get f() {
+  get f(){
     return this.updateForm.controls;
   }
 
-  update() {
+  update(){
     this.submitted = true;
     if (this.updateForm.invalid) {
-      return;
-    }
+      return; }
     this.loading = true;
     console.log(this.updateForm.value);
     this.service.updateUser(this.id, this.updateForm.value).subscribe(data => {
       console.log('Post updated successfully!');
-      // this.router.navigateByUrl('/outsite/use');
     });
   }
-
-  uploadFile1(event: FileList) {
+  uploadFile(event : FileList) {
     console.log(event);
     // The File object
-    const file = event.item(0);
+    const file = event.item(0)
 
     // Validation for Images Only
     if (file.type.split('/')[0] !== 'image') {
-      console.error('unsupported file type :( ');
+      console.error('unsupported file type :( ')
       return;
     }
     const filePath = `TreeImages/${new Date().getTime()}_${file.name}`;
