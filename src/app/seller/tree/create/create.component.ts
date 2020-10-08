@@ -13,11 +13,14 @@ import {Observable} from "rxjs";
 })
 export class CreateComponent implements OnInit {
   listCategory: any[];
+  categories: any[];
   downloadURL: Observable<string>;
   createForm: FormGroup;
   loading = false;
   submitted = false;
   url: string;
+  id: any;
+  tree: any = {};
   constructor(private storage: AngularFireStorage, private fb: FormBuilder, private service: TreeService,  private router: Router,   private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,7 +34,7 @@ export class CreateComponent implements OnInit {
       description: ['', Validators.required],
       detail: ['', Validators.required],
       status: ['', Validators.required],
-      category: [''],
+      categories: ['', Validators.required],
     });
   }
   get f() { return this.createForm.controls; }
@@ -50,9 +53,15 @@ export class CreateComponent implements OnInit {
       'description': this.f.description.value,
       'detail': this.f.detail.value,
       'status': this.f.status.value,
-      'category': this.f.category.value,
+      'categories': this.f.categories.value,
     };
-
+    // this.id = this.route.snapshot.params['id'];
+    // // this.id = this.route.snapshot.paramMap.get('id');
+    // this.service.getTreeService(this.id).subscribe(data => {
+    //   this.tree = data['datas'];
+    //   this.categories = this.tree.categories;
+    //   console.log(data);
+    // });
     this.service.addTree(data).subscribe(
       data => {
         console.log(data);
