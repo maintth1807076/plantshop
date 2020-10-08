@@ -8,9 +8,9 @@
                             <div class="product-image">
                                 <!-- Carousel slider -->
                                 <div class="carousel dots-inside dots-dark arrows-visible" data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut" data-autoplay="2500" data-lightbox="gallery">
-                                    <a href="../../../assets/img/product.jpeg" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="../../../assets/img/product.jpeg">
+                                    <a href="{{tree.image}}" data-lightbox="image" ><img alt="Shop product image!" src="{{tree.image}}">
                                     </a>
-                                    <a href="../../../assets/img/product.jpeg" data-lightbox="image" title="Shop product image!"><img alt="Shop product image!" src="../../../assets/img/product.jpeg">
+                                    <a href="{{tree.image}}" data-lightbox="image" ><img alt="Shop product image!" src="{{tree.image}}">
                                     </a>
                                 </div>
                                 <!-- Carousel slider -->
@@ -18,11 +18,11 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="product-description" *ngIf="tree">
-                                <div class="product-category">Women</div>
+                                <div class="product-category">{{tree.category}}</div>
                                 <div class="product-title">
                                     <h3><a href="#">{{tree.name}}</a></h3>
                                 </div>
-                                <div class="product-price"><ins>{{tree.price}}</ins>
+                                <div class="product-price"><ins style="color: red;">{{tree.price}}đ</ins>
                                 </div>
                                 <div class="product-rate">
                                     <i class="fa fa-star"></i>
@@ -31,76 +31,25 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-half-o"></i>
                                 </div>
-                                <div class="product-reviews"><a href="#">3 customer reviews</a>
-                                </div>
                                 <div class="seperator m-b-10"></div>
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked
-                                    up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-                                    going through the cites of the word in</p>
+                                <p>{{tree.description}}</p>
                                 <div class="product-meta">
-                                    <p>Tags: <a href="#" rel="tag">Clothing</a>, <a rel="tag" href="#">T-shirts</a>
-                                    </p>
                                 </div>
                                 <div class="seperator m-t-20 m-b-10"></div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h6>Select the size</h6>
-                                    <ul class="product-size">
-                                        <li>
-                                            <label>
-                                                <input type="radio" checked="checked" value="option1" name="product-size"><span>xs</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="radio" checked="checked" value="option1" name="product-size"><span>s</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="radio" checked="checked" value="option1" name="product-size"><span>m</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="radio" checked="checked" value="option1" name="product-size"><span>l</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input type="radio" checked="checked" value="option1" name="product-size"><span>xl</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h6>Select the color</h6>
-                                    <label class="sr-only">Color</label>
-                                    <select style="padding:10px">
-                                        <option value="">Select color…</option>
-                                        <option value="">White</option>
-                                        <option value="" selected="selected">Green</option>
-                                        <option value="">Brown</option>
-                                        <option value="">Yellow</option>
-                                        <option value="">Pink</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h6>Select quantity</h6>
+                                    <h6>Số lượng</h6>
                                     <div class="cart-product-quantity">
                                         <div class="quantity m-5">
                                             <input onclick="minus()" type="button" class="minus" value="-">
-                                            <input  id="quantity" type="text" class="qty " value="1">
+                                            <input  id="quantity" type="text" class="qty " value="{{tree.quantity}}">
                                             <input onclick="plus()" type="button" class="plus " value="+">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <h6>Add to Cart</h6>
-                                    <a class="btn" href="#"><i class="icon-shopping-cart"></i> Add to cart</a>
+                                    <a class="btn" (click)="addToCart(tree.id)" ><i class="icon-shopping-cart"></i> Thêm vào giỏi hàng</a>
                                 </div>
                             </div>
                         </div>
@@ -122,18 +71,18 @@
                                         <div class=" col-12 row">
                                             <div class="col-7"><a
                                                     href="#"
-                                                    class="btn btn-light btn-shadow w-100 " target="_blank">Theo dõi</a>
+                                                    class="btn btn-light btn-shadow w-100 " target="_blank">Chat ngay</a>
                                             </div>
                                             <div class="col-5"><a
-                                                    href="#"
+                                                    routerLink="/shop-seller"
                                                     class="btn btn-light btn-shadow " target="_blank"
-                                                    style="width: 100px;">Chat</a>
+                                                    style="width: 100px;">Xem shop</a>
                                             </div>
                                         </div>
-                
+
                                     </div>
-                                   
-                
+
+
                                 </div>
                             </div>
                             <div class=" col-lg-8 row">
@@ -181,7 +130,7 @@
                         </div>
                     </div>
                     <!-- Product additional tabs -->
-                
+
                     <div class="tabs tabs-folder">
                         <ul class="nav nav-tabs" id="myTab3" role="tablist">
                             <li class="nav-item">
@@ -196,55 +145,15 @@
                         </ul>
                         <div class="tab-content" id="myTabContent3">
                             <div class="tab-pane fade active show" id="home3" role="tabpanel" aria-labelledby="home-tab">
-                                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                                    minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis
-                                    dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
-                                    necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
-                                    recusandae. </p>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                                    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
-                                    mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
-                                    expedita distinctio.</p>
+                               <p>{{tree.description}}</p>
                             </div>
                             <div class="tab-pane fade " id="profile3" role="tabpanel" aria-labelledby="profile-tab">
-                                <table class="table table-striped table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td>Size</td>
-                                            <td>Small, Medium &amp; Large</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Color</td>
-                                            <td>Pink &amp; White</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Waist</td>
-                                            <td>26 cm</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Length</td>
-                                            <td>40 cm</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Chest</td>
-                                            <td>33 inches</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fabric</td>
-                                            <td>Cotton, Silk &amp; Synthetic</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Warranty</td>
-                                            <td>3 Months</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                               <p>{{tree.details}}</p>
                             </div>
                             <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="comments" id="comments">
                                     <div class="comment_number">
-                                        Reviews <span>(3)</span>
+                                       Đánh giá <span>(3)</span>
                                     </div>
                                     <div class="comment-list">
                                         <!-- Comment -->
@@ -329,212 +238,39 @@
         <section class="p-t-0">
             <div class="container">
                 <div class="heading-text heading-line text-center">
-                    <h4>Sản phẩm tương tự</h4>
+                    <h5>Sản phẩm tương tự</h5>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="widget-shop">
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Women</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Bolt Sweatshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><del>$30.00</del><ins>$15.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Women</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Consume Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Man</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Logo Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="grid-articles carousel post-carousel" data-items="3" data-dots="false">
+                <article class="post-entry" *ngFor="let item of listTree" [routerLink]="['/shop-details']"
+                         [queryParams]="{id:item.id}">
+                  <a [routerLink]="['/shop-details',item.id]" class="post-image"><img alt="" src="{{item.image}}"></a>
+                  <div class="post-entry-overlay">
+                    <div class="post-entry-meta">
+                      <div class="product-description">
+                        <div class="product-category">{{item.category}}</div>
+                        <div class="product-title">
+                          <h3><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="widget-shop">
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Man</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Logo Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Women</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Consume Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Man</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Logo Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="product-price">
+                          <ins>{{item.price}}</ins>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="widget-shop">
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Women</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Bolt Sweatshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><del>$30.00</del><ins>$15.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Women</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Consume Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product">
-                                <div class="product-image">
-                                    <a href="#"><img src="../../../assets/img/product.jpeg" alt="Shop product image!">
-                                    </a>
-                                </div>
-                                <div class="product-description">
-                                    <div class="product-category">Man</div>
-                                    <div class="product-title">
-                                        <h3><a href="#">Logo Tshirt</a></h3>
-                                    </div>
-                                    <div class="product-price"><ins>$39.00</ins>
-                                    </div>
-                                    <div class="product-rate">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+
+                        <div class="product-rate">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o"></i>
                         </div>
+                        <div class="product-reviews"><a href="#">3 lượt xem</a>
+                        </div>
+                      </div>
+
                     </div>
-                </div>
+                  </div>
+                </article>
+
+              </div>
             </div>
         </section>
         <!-- end: SHOP WIDGET PRODUTCS -->
-    
