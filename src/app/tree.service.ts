@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-const token = localStorage.getItem('user');
+const user = JSON.parse(localStorage.getItem('user'));
 @Injectable({
   providedIn: 'root'
 })
 export class TreeService {
   private apiServer = 'http://localhost:8080';
 
-  private options = {headers: new HttpHeaders().set('Authorization', token)};
+  private options;
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    if (user != null){
+      this.options = {headers: new HttpHeaders().set('Authorization', user['token'])};
+    }
+  }
   getAllCategory() {
-    return this.http.get(this.apiServer + '/api/categories', this.options);
+    return this.http.get(this.apiServer + '/categories', this.options);
   }
 
   getCategory(id) {
-    return this.http.get(this.apiServer + '/api/categories/' + id, this.options);
+    return this.http.get(this.apiServer + '/categories/' + id, this.options);
   }
   addCategory(data) {
     return this.http.post(this.apiServer + '/api/categories', data, this.options);
@@ -30,11 +34,11 @@ export class TreeService {
 
   getAllTree() {
 
-    return this.http.get(this.apiServer + '/api/trees', this.options);
+    return this.http.get(this.apiServer + '/trees', this.options);
   }
 
   getTreeService(id) {
-    return this.http.get(this.apiServer + '/api/trees/' + id, this.options);
+    return this.http.get(this.apiServer + '/trees/' + id, this.options);
   }
   addTree(data) {
     return this.http.post(this.apiServer + '/api/trees', data, this.options);
@@ -52,6 +56,9 @@ export class TreeService {
   doRegister(data){
     return this.http.post(this.apiServer + '/auth/register', data);
   }
+  doLogout(){
+    return this.http.get(this.apiServer + '/auth/logout', this.options)
+  }
   getUser(id) {
     return this.http.get(this.apiServer + '/api/users/' + id, this.options);
   }
@@ -61,6 +68,9 @@ export class TreeService {
   getAllUser() {
 
     return this.http.get(this.apiServer + '/api/users', this.options);
+  }
+  addOrder(data) {
+    return this.http.post(this.apiServer + '/api/orders', data, this.options);
   }
 
 }

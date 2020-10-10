@@ -30,13 +30,31 @@
                     </div>
                     <div class="col-md-3"></div>
                     <div class="col-md-2 pt-1" >
-                        <ul class="top-menu p-l-40 ">
+                        <ul class="top-menu p-l-40 " *ngIf="!checkLogin">
                             <li ><a routerLink="/login">Đăng nhập</a></li>
                             <li><a routerLink="/register">Đăng kí</a></li>
                         </ul>
+                      <ul class="top-menu p-l-70 " *ngIf="checkLogin">
+                        <li class="pr-3" >
+                          <div class="p-dropdown" >
+                            <img class="rounded-circle mr-1" src="{{url}}" style="width:28%;"> <span>{{user.fullName}}</span>
+                            <div class="p-dropdown-content">
+                              <div class="widget-myaccount">
+                                <ul class="text-center">
+                                  <li><a routerLink="/user/profile"><i class="icon-log-out"></i>Tài khoản của tôi</a>
+                                  </li>
+                                  <li><a (click)="logout()" routerLink=""><i class="icon-log-out"></i>Đăng xuất</a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                     <div class="col-md-1 pt-1">
-                        <ul class="top-menu">
+                        <ul class="top-menu ">
+
                             <li>
                                 <div class="p-dropdown">
                                     <a href="#"><i class="icon-globe"></i><span>EN</span></a>

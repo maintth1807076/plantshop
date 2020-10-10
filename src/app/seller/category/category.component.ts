@@ -24,7 +24,7 @@ export class CategoryComponent implements OnInit {
 
   loadData(): void {
 
-    this.service.getAllCategory().subscribe((data: any[]) => {
+    this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
         console.log(this.listCategory);
       },

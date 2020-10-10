@@ -36,10 +36,15 @@
         <div class="row">
           <div class="col-8">
             <label for="categories">Danh mục <span class="text-danger">*</span></label>
-            <select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-g5ue" tabindex="-1" aria-hidden="true"
+<!--            <select class="js-example-basic-multiple js-states form-control select2-hidden-accessible " multiple="" data-select2-id="select2-data-61-g5ue" tabindex="-1" aria-hidden="true"-->
+<!--                    formControlName="categories" id="categories"-->
+<!--                    [ngClass]="{ 'is-invalid': submitted && f.categories.errors }">-->
+<!--              <option [value]="item.id" *ngFor="let item of listCategory" >{{item.name}}</option>-->
+<!--            </select>-->
+            <select class="" multiple=""
                     formControlName="categories" id="categories"
                     [ngClass]="{ 'is-invalid': submitted && f.categories.errors }">
-              <option [value]="item.id" *ngFor="let item of categories" >{{item.name}}</option>
+              <option [value]="item.id" *ngFor="let item of listCategory" >{{item.name}}</option>
             </select>
             <div *ngIf="submitted && f.categories.errors" class="invalid-feedback">
               <div *ngIf="f.categories.errors.required">không hợp lệ</div>

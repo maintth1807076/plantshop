@@ -21,10 +21,11 @@ import { ProfileUserComponent } from './user/profile-user/profile-user.component
 import { NotificationUserComponent } from './user/notification-user/notification-user.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { PayComponent } from './pay/pay.component';
 
 
 @NgModule({
-  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent],
+  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent, PayComponent],
     imports: [
         CommonModule,
         OutsiteRoutingModule,

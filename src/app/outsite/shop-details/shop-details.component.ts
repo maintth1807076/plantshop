@@ -23,7 +23,7 @@ this.loadData();
   }
   loadData():void{
 
-    this.service.getAllTree().subscribe((data:any[]) => {
+    this.service.getAllTree().subscribe(data => {
         //@ts-ignore
         this.listTree = data.datas ;
         console.log(this.listTree);

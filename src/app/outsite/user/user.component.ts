@@ -20,19 +20,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData();
   }
 
-  loadData():void{
-
-    this.service.getAllUser().subscribe((data:any[]) => {
-        //@ts-ignore
-        this.listUser = data.datas ;
-        console.log(this.listUser);
-      },
-      (error) => console.log(error),
-      () => console.log("Complete")
-    )
-  }
 
 }

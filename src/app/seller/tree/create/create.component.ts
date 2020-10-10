@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
       description: ['', Validators.required],
       detail: ['', Validators.required],
       status: ['', Validators.required],
-      category: [''],
+      categories: [''],
     });
   }
   get f() { return this.createForm.controls; }
@@ -41,6 +41,22 @@ export class CreateComponent implements OnInit {
     if (this.createForm.invalid) {
       return; }
     this.loading = true;
+    let categories = [];
+    let categoriesId = this.f.categories.value;
+    for (let categoryId of categoriesId){
+      // this.service.getCategory(categoryId).subscribe(data => {
+      //   let category = data['data'];
+      //   categories.push(category);
+      // })
+      // console.log(categoryId);
+      for (let i = 0; i < this.listCategory.length ; i++) {
+        if ( this.listCategory[i].id == categoryId){
+          categories.push(this.listCategory[i]);
+          break;
+        }
+      }
+    }
+    console.log(categories);
     let data = {
       'name': this.f.name.value,
       'price': this.f.price.value,
@@ -50,9 +66,9 @@ export class CreateComponent implements OnInit {
       'description': this.f.description.value,
       'detail': this.f.detail.value,
       'status': this.f.status.value,
-      'category': this.f.category.value,
+      // 'categories': categories,
     };
-
+    console.log(data);
     this.service.addTree(data).subscribe(
       data => {
         console.log(data);
@@ -95,12 +111,16 @@ export class CreateComponent implements OnInit {
   }
   loadData(){
 
-    this.service.getAllCategory().subscribe((data: any[]) => {
+    this.service.getAllCategory().subscribe((data) => {
         this.listCategory = data['datas'];
         console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log('Complete')
     );
+  }
+
+  chooseCategory(item: any) {
+    console.log(item);
   }
 }

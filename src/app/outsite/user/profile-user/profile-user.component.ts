@@ -25,8 +25,8 @@ export class ProfileUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    // this.id = this.route.snapshot.paramMap.get('id');
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.id = user['id'];
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
       this.url = this.user.avatar;
@@ -34,9 +34,7 @@ export class ProfileUserComponent implements OnInit {
     });
 
     this.updateForm = this.fb.group({
-      fullname: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      fullName: ['', Validators.required],
       avatar: ['', Validators.required],
       gender: ['', Validators.required],
     });
@@ -50,10 +48,21 @@ export class ProfileUserComponent implements OnInit {
     if (this.updateForm.invalid) {
       return; }
     this.loading = true;
+    let data = {
+      'fullName': this.f.fullName.value,
+      'avatar': this.url,
+      'gender':this.f.gender.value ,
+    }
     console.log(this.updateForm.value);
-    this.service.updateUser(this.id, this.updateForm.value).subscribe(data => {
-      console.log('Post updated successfully!');
-    });
+    console.log(this.url);
+    this.service.updateUser(this.id, data).subscribe(data=> {
+        console.log('Post updated successfully!');
+      },
+      (error) => console.log(error),
+      () => {
+       this.loading = false;
+        console.log('Complete')}
+    );
   }
   uploadFile(event : FileList) {
     console.log(event);
@@ -76,6 +85,7 @@ export class ProfileUserComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.url = url;
+              this.user['avatar'] = url;
               // this.urls.push(url);
             }
           });

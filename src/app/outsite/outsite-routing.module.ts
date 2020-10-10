@@ -18,6 +18,7 @@ import {ManageOrderComponent} from './user/manage-order/manage-order.component';
 import {ProfileUserComponent} from './user/profile-user/profile-user.component';
 import {NotificationUserComponent} from './user/notification-user/notification-user.component';
 import {WishlistComponent} from './user/wishlist/wishlist.component';
+import {PayComponent} from './pay/pay.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
         component: CheckoutComponent
       },
       {
+        path: 'pay',
+        component: PayComponent,
+      },
+      {
         path: 'portfolio',
         component: PortfolioComponent
       },
@@ -86,7 +91,7 @@ const routes: Routes = [
             component:ManageOrderComponent
           },
           {
-            path: 'profile/:id',
+            path: 'profile',
             component:ProfileUserComponent
           },
           {
