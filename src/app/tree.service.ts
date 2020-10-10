@@ -6,6 +6,7 @@ const token = localStorage.getItem('user');
   providedIn: 'root'
 })
 export class TreeService {
+
   private apiServer = 'http://localhost:8080';
 
   private options = {headers: new HttpHeaders().set('Authorization', token)};
@@ -62,6 +63,8 @@ export class TreeService {
 
     return this.http.get(this.apiServer + '/api/users', this.options);
   }
-
+  addOrder(data) {
+    return this.http.post(this.apiServer + '/api/orders', data, this.options);
+  }
 }
 

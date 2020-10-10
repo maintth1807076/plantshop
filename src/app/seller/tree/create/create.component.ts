@@ -23,15 +23,15 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
     this.createForm = this.fb.group({
-      name: ['', Validators.required],
-      price: ['', Validators.required],
-      quantity: ['', Validators.required],
-      image: ['', Validators.required],
-      imageDetail: ['', Validators.required],
-      description: ['', Validators.required],
-      detail: ['', Validators.required],
-      status: ['', Validators.required],
-      category: [''],
+      // name: ['', Validators.required],
+      // price: ['', Validators.required],
+      // quantity: ['', Validators.required],
+      // image: ['', Validators.required],
+      // imageDetail: ['', Validators.required],
+      // description: ['', Validators.required],
+      // detail: ['', Validators.required],
+      // status: ['', Validators.required],
+      categories: [''],
     });
   }
   get f() { return this.createForm.controls; }
@@ -41,29 +41,33 @@ export class CreateComponent implements OnInit {
     if (this.createForm.invalid) {
       return; }
     this.loading = true;
-    let data = {
-      'name': this.f.name.value,
-      'price': this.f.price.value,
-      'quantity': this.f.quantity.value,
-      'image': this.url,
-      'imageDetail': this.f.imageDetail.value,
-      'description': this.f.description.value,
-      'detail': this.f.detail.value,
-      'status': this.f.status.value,
-      'category': this.f.category.value,
-    };
 
-    this.service.addTree(data).subscribe(
-      data => {
-        console.log(data);
-        this.router.navigateByUrl('/seller/tree');
-      },
-      error => {
-        this.loading = false;
-      });
+    let data = {
+      // 'name': this.f.name.value,
+      // 'price': this.f.price.value,
+      // 'quantity': this.f.quantity.value,
+      // 'image': this.url,
+      // 'imageDetail': this.f.imageDetail.value,
+      // 'description': this.f.description.value,
+      // 'detail': this.f.detail.value,
+      // 'status': this.f.status.value,
+      'categories': this.f.categories.value,
+    };
+    console.log(data);
+    // this.service.addTree(data).subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.router.navigateByUrl('/seller/tree');
+    //   },
+    //   error => {
+    //     this.loading = false;
+    //   });
+  }
+  chooseCategory(event) {
+    console.log(event);
   }
   uploadFile(event : FileList) {
-    console.log(event);
+
     // The File object
     const file = event.item(0)
 
@@ -98,6 +102,31 @@ export class CreateComponent implements OnInit {
     this.service.getAllCategory().subscribe((data: any[]) => {
         this.listCategory = data['datas'];
         console.log(this.listCategory);
+      },
+      (error) => console.log(error),
+      () => console.log('Complete')
+    );
+  }
+  saveOrder() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    let orderDetails = [];
+    for (var i = 0; i < cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      let orderDetail = {
+        "tree_id": item['product']['id'],
+        "unitPrice": item['product']['price'],
+        "quantity": item['quantity'],
+        "user_id": "",
+      }
+      orderDetails.push(orderDetail);
+    }
+    console.log(orderDetails);
+    let data = {
+      "shipAddress": "Ha Noi",
+      "orderDetails": orderDetails
+    }
+    this.service.addOrder(data).subscribe((data) => {
+        console.log(data);
       },
       (error) => console.log(error),
       () => console.log('Complete')
