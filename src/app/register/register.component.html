@@ -13,11 +13,11 @@
           </div>
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="col-lg-12 form-group">
-              <label class="sr-only" for="inputFullname">Họ và tên</label>
-              <input type="text" formControlName="fullname" id="inputFullname" class="form-control"
-                     placeholder="Họ và tên" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }">
-              <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
-                <div *ngIf="f.fullname.errors.required">Họ và tên không hợp lệ</div>
+              <label class="sr-only" for="inputFullName">Họ và tên</label>
+              <input type="text" formControlName="fullName" id="inputFullName" class="form-control"
+                     placeholder="Họ và tên" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+              <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                <div *ngIf="f.fullName.errors.required">Họ và tên không hợp lệ</div>
               </div>
             </div>
             <div class="col-lg-12 form-group">
