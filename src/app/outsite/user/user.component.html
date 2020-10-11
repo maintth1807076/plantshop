@@ -13,8 +13,8 @@
           <h4 class="widget-title">Tài Khoản</h4>
           <div class="widget-desc"  >
             <!-- Single Checkbox -->
-            <div class="custom-control d-flex align-items-center mb-3" *ngFor="let item of listUser| paginate: { itemsPerPage: 1, currentPage: p, id: id  }">
-              <i class="icon-user mr-2 mb-1 fa-2x"></i> <a [routerLink]="['/user/profile', item.id]" [queryParams]="{id: item.id}"> Thông Tin Tài Khoản</a>
+            <div class="custom-control d-flex align-items-center mb-3" >
+              <i class="icon-user mr-2 mb-1 fa-2x"></i> <a [routerLink]="['/user/profile']"> Thông Tin Tài Khoản</a>
             </div>
             <!-- Single Checkbox -->
             <div class="custom-control d-flex align-items-center mb-3">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TreeService } from '../tree.service';
+import {stringify} from 'querystring';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
     }
     this.service.doLogin(data).subscribe(
     data => {
-      localStorage.setItem('user', data['data']);
+      localStorage.setItem('user', JSON.stringify(data['data']));
       this.router.navigate([this.returnUrl]);
     },
     error => {

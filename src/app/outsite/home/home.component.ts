@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
   loadCategory():void{
 
-    this.service.getAllCategory().subscribe((data:any[]) => {
+    this.service.getAllCategory().subscribe(data => {
         //@ts-ignore
         this.listCategory = data.datas ;
         console.log(this.listCategory);
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
   loadData():void{
 
-    this.service.getAllTree().subscribe((data:any[]) => {
+    this.service.getAllTree().subscribe(data => {
         //@ts-ignore
         this.listTree = data.datas ;
         console.log(this.listTree);

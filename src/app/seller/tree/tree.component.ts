@@ -26,7 +26,7 @@ export class TreeComponent implements OnInit {
   loadData(): void {
 
     this.service.getAllTree()
-      .pipe(takeWhile(() => this.alive)).subscribe((data: any[]) => {
+      .pipe(takeWhile(() => this.alive)).subscribe(data => {
         // @ts-ignore
         this.listTree = data.datas;
         console.log(this.listTree);

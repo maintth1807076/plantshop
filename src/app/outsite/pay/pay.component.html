@@ -1,0 +1,111 @@
+<section id="shop-cart">
+  <div class="container">
+    <div class="shop-cart">
+      <div class="table table-sm table-striped table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th class="cart-product-thumbnail">Sản phẩm</th>
+            <th class="cart-product-price">Đơn giá</th>
+            <th class="cart-product-quantity">Số lượng</th>
+            <th class="cart-product-subtotal">Tổng tiền</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let item of items">
+          <tr>
+            <td class="cart-product-thumbnail">
+              <a href="#">
+                <img src="{{item.product.image}}" alt="Bolt Sweatshirt">
+              </a>
+              <div class="cart-product-thumbnail-name">{{item.product.name}}</div>
+            </td>
+            <td class="cart-product-price">
+              <span class="amount">{{item.product.price}}đ</span>
+            </td>
+            <td class="cart-product-quantity">
+              <div class="quantity">
+                <span>{{item.quantity}}</span>
+              </div>
+            </td>
+            <td class="cart-product-description">
+              <p>{{total}}
+              </p>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <a class="btn" data-target="#modal" data-toggle="modal" href="#" *ngIf="!checkOrder">ghfh</a>
+        </div>
+          <div class="col-lg-6 p-r-10 ">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                <tr>
+                  <td class="cart-product-name">
+                    <strong>Tổng tiền</strong>
+                  </td>
+                  <td class="cart-product-name text-right">
+                    <span class="amount color lead"><strong>{{total}}đ</strong></span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <button routerLink="/checkout" class="btn btn-success" *ngIf="checkOrder" (click)="saveOrder()">
+              Thanh toán
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<hr>
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true"
+     style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-label">Thông tin giao hàng</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="row" [formGroup]="orderForm" (ngSubmit)="saveOrder()">
+              <div class="col-lg-6 form-group">
+                <label for="inputAddress">Địa chỉ <span class="text-danger">*</span></label>
+                <input type="text" formControlName="shipAddress" id="inputAddress" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.shipAddress.errors }">
+                <div *ngIf="submitted && f.shipAddress.errors" class="invalid-feedback">
+                  <div *ngIf="f.shipAddress.errors.required">không hợp lệ</div>
+                </div>
+              </div>
+              <div class="col-lg-6  form-group">
+                <label for="inputPhone">Địa chỉ <span class="text-danger">*</span></label>
+                <input type="text" formControlName="shipAddress" id="inputPhone" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.shipPhone.errors }">
+                <div *ngIf="submitted && f.shipPhone.errors" class="invalid-feedback">
+                  <div *ngIf="f.shipPhone.errors.required">không hợp lệ</div>
+                </div>
+                <input type="text" class="form-control" placeholder="Số điện thoại">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-b" data-dismiss="modal">Close</button>
+        <button [disabled]="loading" class="btn btn-primary" style="width: 100%;">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
