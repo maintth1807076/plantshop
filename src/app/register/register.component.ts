@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      fullname: ['', Validators.required],
+      fullName: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       avatar: ['', Validators.required],
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       return; }
        this.loading = true;
     let data = {
-      'fullname': this.f.fullname.value,
+      'fullName': this.f.fullName.value,
       'email': this.f.email.value,
       'password': this.f.password.value,
       'avatar': this.url,

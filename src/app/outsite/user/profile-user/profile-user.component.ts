@@ -35,6 +35,7 @@ export class ProfileUserComponent implements OnInit {
 
     this.updateForm = this.fb.group({
       fullName: ['', Validators.required],
+      email: ['', Validators.required],
       avatar: ['', Validators.required],
       gender: ['', Validators.required],
     });
@@ -50,8 +51,10 @@ export class ProfileUserComponent implements OnInit {
     this.loading = true;
     let data = {
       'fullName': this.f.fullName.value,
+      'email': this.user['email'],
       'avatar': this.url,
       'gender':this.f.gender.value ,
+
     }
     console.log(this.updateForm.value);
     console.log(this.url);
