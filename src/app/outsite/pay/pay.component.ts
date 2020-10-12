@@ -19,7 +19,6 @@ export class PayComponent implements OnInit {
   p: any;
   listTree: any[];
   totalPrice: number;
-  checkOrder: boolean = true;
   user: any = {};
   order: any = {};
   orderForm: FormGroup;
@@ -33,15 +32,12 @@ export class PayComponent implements OnInit {
       this.user = data['data'];
       console.log(data);
     });
-
-    if (user == null && this.order.value == null){
-      this.checkOrder = false;
-    }
-    this.loadCart();
     this.orderForm = this.fb.group({
-      shipAddress: [''],
-      shipPhone: [''],
+      shipAddress: ['', Validators.required],
+      shipPhone: ['', Validators.required],
     });
+    this.loadCart();
+
   }
   loadCart(): void {
     this.total = 0;
@@ -67,10 +63,10 @@ export class PayComponent implements OnInit {
     for (var i = 0; i < cart.length; i++) {
       let item = JSON.parse(cart[i]);
       let orderDetail = {
-        "tree_id": item['product']['id'],
+        "treeId": item['product']['id'],
         "unitPrice": item['product']['price'],
         "quantity": item['quantity'],
-        "user_id": "",
+        "order_id": "",
       }
       orderDetails.push(orderDetail);
     }
@@ -82,8 +78,10 @@ export class PayComponent implements OnInit {
     let data = {
       "shipAddress": this.f.shipAddress.value,
       "shipPhone": this.f.shipPhone.value,
-      "orderDetails": orderDetails
+      "orderDetails": orderDetails,
+      "user_id": this.id,
     }
+    console.log(data);
     this.service.addOrder(data).subscribe((data) => {
         console.log(data);
         this.order = data;

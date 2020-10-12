@@ -21,15 +21,14 @@ export class OutsiteComponent implements OnInit {
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
     this.id = user['id'];
+    if (user == null){
+      this.checkLogin = false;
+    }
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
       this.url = this.user.avatar;
       console.log(data);
     });
-
-    if (user == null){
-      this.checkLogin = false;
-    }
     this.loadCart();
   }
 

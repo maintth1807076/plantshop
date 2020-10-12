@@ -37,7 +37,31 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <a class="btn" data-target="#modal" data-toggle="modal" href="#" *ngIf="!checkOrder">ghfh</a>
+          <form class="row" [formGroup]="orderForm" (ngSubmit)="saveOrder()">
+            <div class="col-lg-6 form-group">
+              <label for="inputAddress">Địa chỉ <span class="text-danger">*</span></label>
+              <input type="text" formControlName="shipAddress" id="inputAddress" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.shipAddress.errors }">
+              <div *ngIf="submitted && f.shipAddress.errors" class="invalid-feedback">
+                <div *ngIf="f.shipAddress.errors.required">không hợp lệ</div>
+              </div>
+            </div>
+            <div class="col-lg-6  form-group">
+              <label for="inputPhone">Số điện thoại <span class="text-danger">*</span></label>
+              <input type="text" formControlName="shipPhone" id="inputPhone" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.shipPhone.errors }">
+              <div *ngIf="submitted && f.shipPhone.errors" class="invalid-feedback">
+                <div *ngIf="f.shipPhone.errors.required">không hợp lệ</div>
+              </div>
+            </div>
+            <div class="col-lg-12 form-group ">
+              <button [disabled]="loading" class="btn btn-success float-right">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" routerLink="/checkout"  ></span>
+              </button>
+              <!--              <button type="button" class="btn btn-danger m-l-10">Hủy bỏ</button>-->
+            </div>
+          </form>
+
         </div>
           <div class="col-lg-6 p-r-10 ">
             <div class="table-responsive">
@@ -55,57 +79,11 @@
               </table>
             </div>
 
-            <button routerLink="/checkout" class="btn btn-success" *ngIf="checkOrder" (click)="saveOrder()">
-              Thanh toán
-            </button>
           </div>
         </div>
       </div>
     </div>
 </section>
-<hr>
 
 
-<div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true"
-     style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-label">Thông tin giao hàng</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12">
-            <form class="row" [formGroup]="orderForm" (ngSubmit)="saveOrder()">
-              <div class="col-lg-6 form-group">
-                <label for="inputAddress">Địa chỉ <span class="text-danger">*</span></label>
-                <input type="text" formControlName="shipAddress" id="inputAddress" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.shipAddress.errors }">
-                <div *ngIf="submitted && f.shipAddress.errors" class="invalid-feedback">
-                  <div *ngIf="f.shipAddress.errors.required">không hợp lệ</div>
-                </div>
-              </div>
-              <div class="col-lg-6  form-group">
-                <label for="inputPhone">Địa chỉ <span class="text-danger">*</span></label>
-                <input type="text" formControlName="shipAddress" id="inputPhone" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.shipPhone.errors }">
-                <div *ngIf="submitted && f.shipPhone.errors" class="invalid-feedback">
-                  <div *ngIf="f.shipPhone.errors.required">không hợp lệ</div>
-                </div>
-                <input type="text" class="form-control" placeholder="Số điện thoại">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-b" data-dismiss="modal">Close</button>
-        <button [disabled]="loading" class="btn btn-primary" style="width: 100%;">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Lưu
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+

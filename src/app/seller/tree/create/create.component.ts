@@ -46,24 +46,24 @@ export class CreateComponent implements OnInit {
     if (this.createForm.invalid) {
       return; }
     this.loading = true;
-    let categories = [];
+    let categoryList = [];
     let categoriesId = this.f.categories.value;
     for (let categoryId of categoriesId){
       this.service.getCategory(categoryId).subscribe(data => {
         let category = data['data'];
-        categories.push(category);
+        categoryList.push(category);
       })
       console.log(categoryId);
       for (let i = 0; i < this.listCategory.length ; i++) {
         if ( this.listCategory[i].id == categoryId){
-          categories.push(this.listCategory[i]);
+          categoryList.push(this.listCategory[i]);
           break;
         }
       }
     }
-    console.log(categories);
+    console.log(categoryList);
     let data = {
-      'user_id':this.id,
+      'userId':this.id,
       'name': this.f.name.value,
       'price': this.f.price.value,
       'quantity': this.f.quantity.value,
@@ -72,7 +72,7 @@ export class CreateComponent implements OnInit {
       'description': this.f.description.value,
       'detail': this.f.detail.value,
       'status': this.f.status.value,
-      'categoryList': categories,
+      'categoryList': categoryList,
     };
     console.log(data);
     this.service.addTree(data).subscribe(

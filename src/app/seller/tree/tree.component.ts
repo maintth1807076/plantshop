@@ -9,7 +9,7 @@ import {takeWhile} from 'rxjs/operators';
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent implements OnInit {
-
+userId:any;
   id: any;
   p: any;
   listTree: any[];
@@ -20,12 +20,14 @@ export class TreeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.id = user['id'];
     this.loadData();
   }
 
   loadData(): void {
 
-    this.service.getAllTree()
+    this.service.getAllTreeByUserId(this.id)
       .pipe(takeWhile(() => this.alive)).subscribe(data => {
         // @ts-ignore
         this.listTree = data.datas;
