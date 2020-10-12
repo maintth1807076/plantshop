@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seller.component.css']
 })
 export class SellerComponent implements OnInit {
-
+id: any;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.id);
   }
 
   async ngAfterViewInit() {

@@ -26,6 +26,16 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-12 form-group">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputshopName">Tên shop <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="shopName" id="inputshopName" class="form-control col-lg-7"
+                     [(ngModel)]="user.shopName" [ngClass]="{ 'is-invalid': submitted && f.shopName.errors }">
+              <div *ngIf="submitted && f.shopName.errors" class="invalid-feedback">
+                <div *ngIf="f.shopName.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-12  form-group ">
             <label for="gender" class="sr-only">Giới tính</label>
             <select class="form-control" formControlName="gender" name="gender" required>

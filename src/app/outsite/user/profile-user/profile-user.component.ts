@@ -38,6 +38,7 @@ export class ProfileUserComponent implements OnInit {
       email: ['', Validators.required],
       avatar: ['', Validators.required],
       gender: ['', Validators.required],
+      shopName: ['', Validators.required],
     });
   }
   get f(){
@@ -51,9 +52,12 @@ export class ProfileUserComponent implements OnInit {
     this.loading = true;
     let data = {
       'fullName': this.f.fullName.value,
+      'password': this.user['password'],
       'email': this.user['email'],
+      'status': '1',
       'avatar': this.url,
-      'gender':this.f.gender.value ,
+      'gender':this.f.gender.value,
+      'shopName':this.f.shopName.value,
 
     }
     console.log(this.updateForm.value);

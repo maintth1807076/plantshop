@@ -36,6 +36,9 @@ export class TreeService {
 
     return this.http.get(this.apiServer + '/trees', this.options);
   }
+  getAllTreeByUserId(userId) {
+    return this.http.get(this.apiServer + '/trees/findTreeByUser/' + userId, this.options);
+  }
 
   getTreeService(id) {
     return this.http.get(this.apiServer + '/trees/' + id, this.options);
