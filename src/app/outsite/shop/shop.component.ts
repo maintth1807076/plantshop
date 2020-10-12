@@ -13,6 +13,8 @@ export class ShopComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
+  listTreeFix: any[];
+  listCategory: any[];
   items: any[];
   totalPrice: number;
 
@@ -25,11 +27,15 @@ export class ShopComponent implements OnInit {
   }
 
   loadData():void{
-
+    this.service.getAllCategory().subscribe(data => {
+        this.listCategory = data['datas'];
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
     this.service.getAllTree().subscribe(data => {
-        //@ts-ignore
-        this.listTree = data.datas ;
-        console.log(this.listTree);
+        this.listTree = data['datas'];
+        this.listTreeFix = data['datas'];
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -65,6 +71,7 @@ export class ShopComponent implements OnInit {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
+    alert("Them cay thanh cong!");
   }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {
@@ -72,5 +79,18 @@ export class ShopComponent implements OnInit {
         return this.listTree[i];
       }
     }
+  }
+  findTreeByCategoryId(id) {
+    var arr = [];
+    for (var i = 0; i < this.listTreeFix.length; i++) {
+      let listCategory = this.listTreeFix[i].categoryList;
+      for (let j = 0; j < listCategory.length; j++) {
+        if (listCategory[j].id == id) {
+          arr.push(this.listTreeFix[i]);
+        }
+      }
+    }
+    this.listTree = arr;
+    console.log(arr)
   }
 }

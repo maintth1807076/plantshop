@@ -68,6 +68,7 @@ this.loadData();
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
+    alert("Them cay thanh cong!");
   }
 
 }
