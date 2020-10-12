@@ -30,7 +30,7 @@
                 <div class="shop">
                     <div class="grid-layout grid-4-columns" data-item="grid-item">
                         <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 10, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
-                            <div class="product"  >
+                            <div class="product mr-3"  >
                                 <div class="product-image">
                                     <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                                     </a>
@@ -49,7 +49,7 @@
                               <div class="product-description">
                                 <div class="product-category pl-2">{{item.category}}</div>
                                 <div class="product-title pl-2">
-                                  <h3><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
+                                  <h3 class="name"><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
                                 </div>
 
                                 <div class="product-rate pl-2">
