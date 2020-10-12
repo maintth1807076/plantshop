@@ -15,11 +15,12 @@ export class ShopComponent implements OnInit {
   listTree: any[];
   items: any[];
   totalPrice: number;
-
+  listDataCategories: any = [];
+  permanentListDataCategories: any = [];
+  permanentListDataCategories1: any = [];
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
 
   }
-
   ngOnInit(): void {
     this.loadData();
   }
@@ -34,6 +35,37 @@ export class ShopComponent implements OnInit {
       (error) => console.log(error),
       () => console.log("Complete")
     )
+  }
+  filterByCategory(val) {
+    if(val == 'all'){
+      this.listDataCategories = this.permanentListDataCategories1;
+      return;
+    }
+    var arr = [];
+    var data = this.permanentListDataCategories1;
+    for (let index = 0; index < data.length; index++) {
+      if (data[index].categoryId == val) {
+        arr.push(data[index]);
+      }
+    }
+    this.listDataCategories = arr;
+    this.permanentListDataCategories = arr;
+
+    let categoryList = [];
+    let categoriesId = this.f.categories.value;
+    for (let categoryId of categoriesId){
+      this.service.getCategory(categoryId).subscribe(data => {
+        let category = data['data'];
+        categoryList.push(category);
+      })
+      console.log(categoryId);
+      for (let i = 0; i < this.listCategory.length ; i++) {
+        if ( this.listCategory[i].id == categoryId){
+          categoryList.push(this.listCategory[i]);
+          break;
+        }
+      }
+    }
   }
   addToCart(id)
   {
