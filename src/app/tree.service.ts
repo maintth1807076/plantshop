@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-const user = JSON.parse(localStorage.getItem('user'));
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +10,9 @@ export class TreeService {
   private options;
 
   constructor( private http: HttpClient) {
-    if (user != null){
+    let userLocal = localStorage.getItem('user');
+    if (userLocal != null){
+      let user = JSON.parse(userLocal);
       this.options = {headers: new HttpHeaders().set('Authorization', user['token'])};
     }
   }

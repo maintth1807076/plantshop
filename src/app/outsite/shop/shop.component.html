@@ -98,55 +98,55 @@
                     <h4 class="widget-title">Loại Cây</h4>
                     <div class="widget-desc">
                         <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
+                        <div *ngFor="let item of listCategory" class="custom-control custom-checkbox d-flex align-items-center mb-3">
                             <input type="checkbox" class="custom-control-input" id="categoryCheck1">
-                            <label class="custom-control-label" for="categoryCheck1">Tất Cả Các Cây <span class="text-muted">(72)</span></label>
+                            <a class="custom-control-label" for="categoryCheck1" (click)="findTreeByCategoryId(item.id)">{{item.name}}<span class="text-muted">(72)</span></a>
                         </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input " id="categoryCheck2">
-                            <label class="custom-control-label " for="categoryCheck2">Cây Ban Công<span class="text-muted">(20)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck3">
-                            <label class="custom-control-label" for="categoryCheck3">Cây Dây Leo<span class="text-muted">(15)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck4">
-                            <label class="custom-control-label" for="categoryCheck4">Cây Văn Phòng<span class="text-muted">(20)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck5">
-                            <label class="custom-control-label" for="categoryCheck5">Cây Để Bàn<span class="text-muted">(2)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck6">
-                            <label class="custom-control-label" for="categoryCheck6">Cây Thủy Sinh<span class="text-muted">(15)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck7">
-                            <label class="custom-control-label" for="categoryCheck7">Cây Nội Thất<span class="text-muted">(2)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck8">
-                            <label class="custom-control-label" for="categoryCheck8">Cây Ngoại Thất<span class="text-muted">(2)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck9">
-                            <label class="custom-control-label" for="categoryCheck9">Sen Đá<span class="text-muted">(2)</span></label>
-                        </div>
-                        <!-- Single Checkbox -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">
-                            <input type="checkbox" class="custom-control-input" id="categoryCheck10">
-                            <label class="custom-control-label" for="categoryCheck10">Xương Rồng<span class="text-muted">(2)</span></label>
-                        </div>
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input " id="categoryCheck2">-->
+<!--                            <label class="custom-control-label " for="categoryCheck2">Cây Ban Công<span class="text-muted">(20)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck3">-->
+<!--                            <label class="custom-control-label" for="categoryCheck3">Cây Dây Leo<span class="text-muted">(15)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck4">-->
+<!--                            <label class="custom-control-label" for="categoryCheck4">Cây Văn Phòng<span class="text-muted">(20)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck5">-->
+<!--                            <label class="custom-control-label" for="categoryCheck5">Cây Để Bàn<span class="text-muted">(2)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck6">-->
+<!--                            <label class="custom-control-label" for="categoryCheck6">Cây Thủy Sinh<span class="text-muted">(15)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck7">-->
+<!--                            <label class="custom-control-label" for="categoryCheck7">Cây Nội Thất<span class="text-muted">(2)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck8">-->
+<!--                            <label class="custom-control-label" for="categoryCheck8">Cây Ngoại Thất<span class="text-muted">(2)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck9">-->
+<!--                            <label class="custom-control-label" for="categoryCheck9">Sen Đá<span class="text-muted">(2)</span></label>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
+<!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+<!--                            <input type="checkbox" class="custom-control-input" id="categoryCheck10">-->
+<!--                            <label class="custom-control-label" for="categoryCheck10">Xương Rồng<span class="text-muted">(2)</span></label>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="widget widget-shop">
