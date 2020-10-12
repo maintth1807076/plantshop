@@ -12,15 +12,20 @@ import {Observable} from "rxjs";
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  id: any;
   listCategory: any[];
   downloadURL: Observable<string>;
   createForm: FormGroup;
   loading = false;
   submitted = false;
   url: string;
+  user: any = {};
   constructor(private storage: AngularFireStorage, private fb: FormBuilder, private service: TreeService,  private router: Router,   private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.id = user['id'];
+    console.log(this.id);
     this.loadData();
     this.createForm = this.fb.group({
       name: ['', Validators.required],
@@ -44,11 +49,11 @@ export class CreateComponent implements OnInit {
     let categories = [];
     let categoriesId = this.f.categories.value;
     for (let categoryId of categoriesId){
-      // this.service.getCategory(categoryId).subscribe(data => {
-      //   let category = data['data'];
-      //   categories.push(category);
-      // })
-      // console.log(categoryId);
+      this.service.getCategory(categoryId).subscribe(data => {
+        let category = data['data'];
+        categories.push(category);
+      })
+      console.log(categoryId);
       for (let i = 0; i < this.listCategory.length ; i++) {
         if ( this.listCategory[i].id == categoryId){
           categories.push(this.listCategory[i]);
@@ -58,6 +63,7 @@ export class CreateComponent implements OnInit {
     }
     console.log(categories);
     let data = {
+      'user_id':this.id,
       'name': this.f.name.value,
       'price': this.f.price.value,
       'quantity': this.f.quantity.value,
@@ -66,7 +72,7 @@ export class CreateComponent implements OnInit {
       'description': this.f.description.value,
       'detail': this.f.detail.value,
       'status': this.f.status.value,
-      // 'categories': categories,
+      'categoryList': categories,
     };
     console.log(data);
     this.service.addTree(data).subscribe(
