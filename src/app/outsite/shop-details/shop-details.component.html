@@ -5,7 +5,7 @@
                 <div class="product">
                     <div class="row m-b-40">
                         <div class="col-lg-5">
-                            <div class="product-image">
+                            <div class="product-image col-lg-10 ml-4" style="height: 80%;">
                                 <!-- Carousel slider -->
                                 <div class="carousel dots-inside dots-dark arrows-visible" data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut" data-autoplay="2500" data-lightbox="gallery">
                                     <a href="{{tree.image}}" data-lightbox="image" ><img alt="Shop product image!" src="{{tree.image}}">
@@ -54,7 +54,104 @@
                             </div>
                         </div>
                     </div>
-
+                  <div class="tabs tabs-folder">
+                    <ul class="nav nav-tabs" id="myTab3" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="false"><i class="fa fa-align-justify"></i>MÔ TẢ SẢN PHẨM</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="true"><i class="fa fa-info"></i> CHI TIẾT SẢN PHẨM</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-star"></i>ĐÁNH GIÁ</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent3">
+                      <div class="tab-pane fade active show" id="home3" role="tabpanel" aria-labelledby="home-tab">
+                        <p>{{tree.description}}</p>
+                      </div>
+                      <div class="tab-pane fade " id="profile3" role="tabpanel" aria-labelledby="profile-tab">
+                        <p>{{tree.details}}</p>
+                      </div>
+                      <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="comments" id="comments">
+                          <div class="comment_number">
+                            Đánh giá <span>(3)</span>
+                          </div>
+                          <div class="comment-list">
+                            <!-- Comment -->
+                            <div class="comment" id="comment-1">
+                              <div class="image"><img alt="" src="../../../assets/img/15.jpg" class="avatar">
+                              </div>
+                              <div class="text">
+                                <div class="product-rate">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <h5 class="name">John Doe</h5>
+                                <span class="comment_date">Posted at 15:32h, 06 December</span>
+                                <a class="comment-reply-link" href="#">Reply</a>
+                                <div class="text_holder">
+                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    industry. Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end: Comment -->
+                            <!-- Comment -->
+                            <div class="comment" id="comment-1-1">
+                              <div class="image"><img alt="" src="../../../assets/img/14.jpg" class="avatar">
+                              </div>
+                              <div class="text">
+                                <div class="product-rate">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <h5 class="name">John Doe</h5>
+                                <span class="comment_date">Posted at 15:32h, 06 December</span>
+                                <a class="comment-reply-link" href="#">Reply</a>
+                                <div class="text_holder">
+                                  <p>It is a long established fact that a reader will be distracted by
+                                    the readable content.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end: Comment -->
+                            <!-- Comment -->
+                            <div class="comment" id="comment-1-2">
+                              <div class="image"><img alt="" src="../../../assets/img/13.jpg" class="avatar">
+                              </div>
+                              <div class="text">
+                                <div class="product-rate">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <h5 class="name">John Doe</h5>
+                                <span class="comment_date">Posted at 15:32h, 06 December</span>
+                                <a class="comment-reply-link" href="#">Reply</a>
+                                <div class="text_holder">
+                                  <p>There are many variations of passages of Lorem Ipsum available,
+                                    but the majority have suffered alteration in some form, by
+                                    injected humour.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end: Comment -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                     <div class=" mb-3 ml-2 background-grey pt-4">
                         <div class="row">
                             <div class=" container-fluid col-lg-4">
@@ -131,104 +228,7 @@
                     </div>
                     <!-- Product additional tabs -->
 
-                    <div class="tabs tabs-folder">
-                        <ul class="nav nav-tabs" id="myTab3" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="false"><i class="fa fa-align-justify"></i>MÔ TẢ SẢN PHẨM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="true"><i class="fa fa-info"></i> CHI TIẾT SẢN PHẨM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact" aria-selected="false"><i class="fa fa-star"></i>ĐÁNH GIÁ</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent3">
-                            <div class="tab-pane fade active show" id="home3" role="tabpanel" aria-labelledby="home-tab">
-                               <p>{{tree.description}}</p>
-                            </div>
-                            <div class="tab-pane fade " id="profile3" role="tabpanel" aria-labelledby="profile-tab">
-                               <p>{{tree.details}}</p>
-                            </div>
-                            <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="comments" id="comments">
-                                    <div class="comment_number">
-                                       Đánh giá <span>(3)</span>
-                                    </div>
-                                    <div class="comment-list">
-                                        <!-- Comment -->
-                                        <div class="comment" id="comment-1">
-                                            <div class="image"><img alt="" src="../../../assets/img/15.jpg" class="avatar">
-                                            </div>
-                                            <div class="text">
-                                                <div class="product-rate">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </div>
-                                                <h5 class="name">John Doe</h5>
-                                                <span class="comment_date">Posted at 15:32h, 06 December</span>
-                                                <a class="comment-reply-link" href="#">Reply</a>
-                                                <div class="text_holder">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                        text ever since the 1500s.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end: Comment -->
-                                        <!-- Comment -->
-                                        <div class="comment" id="comment-1-1">
-                                            <div class="image"><img alt="" src="../../../assets/img/14.jpg" class="avatar">
-                                            </div>
-                                            <div class="text">
-                                                <div class="product-rate">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </div>
-                                                <h5 class="name">John Doe</h5>
-                                                <span class="comment_date">Posted at 15:32h, 06 December</span>
-                                                <a class="comment-reply-link" href="#">Reply</a>
-                                                <div class="text_holder">
-                                                    <p>It is a long established fact that a reader will be distracted by
-                                                        the readable content.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end: Comment -->
-                                        <!-- Comment -->
-                                        <div class="comment" id="comment-1-2">
-                                            <div class="image"><img alt="" src="../../../assets/img/13.jpg" class="avatar">
-                                            </div>
-                                            <div class="text">
-                                                <div class="product-rate">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </div>
-                                                <h5 class="name">John Doe</h5>
-                                                <span class="comment_date">Posted at 15:32h, 06 December</span>
-                                                <a class="comment-reply-link" href="#">Reply</a>
-                                                <div class="text_holder">
-                                                    <p>There are many variations of passages of Lorem Ipsum available,
-                                                        but the majority have suffered alteration in some form, by
-                                                        injected humour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end: Comment -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <!-- end: Product additional tabs -->
                 </div>
             </div>

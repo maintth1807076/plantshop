@@ -3,7 +3,7 @@
 <!-- end: Page title -->
 <!-- Shop products -->
 <section id="page-content" class="sidebar-left background-grey p-t-60">
-    <div class="container-wide">
+    <div class="container-wide m-b-50">
         <div class="row">
             <!-- Content-->
             <div class="content col-lg-9">
@@ -27,10 +27,10 @@
                     </div>
                 </div>
                 <!--Product list-->
-                <div class="shop">
-                    <div class="grid-layout grid-4-columns" data-item="grid-item">
-                        <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 10, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
-                            <div class="product mr-3"  >
+                <div class="shop ">
+                    <div class="grid-layout grid-4-columns " data-item="grid-item">
+                        <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 12, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
+                            <div class="product mr-3 m-b-80" >
                                 <div class="product-image">
                                     <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                                     </a>
@@ -65,13 +65,13 @@
                               </div>
                             </div>
                         </div>
-
                     </div>
-                    <hr>
+                  <hr class="m-t-40">
+                  <pagination-controls maxSize="5"  *ngIf="listTree.length > 6"
+                                       style="text-align: right;" [id]="id" (pageChange)="p = $event">
+                  </pagination-controls>
                     <!-- Pagination -->
-                    <pagination-controls maxSize="5"  *ngIf="listTree.length > 6"
-                        style="text-align: right" [id]="id" (pageChange)="p = $event">
-                    </pagination-controls>
+
                     <!-- <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -100,7 +100,7 @@
                         <!-- Single Checkbox -->
                         <div *ngFor="let item of listCategory" class="custom-control custom-checkbox d-flex align-items-center mb-3">
                             <input type="checkbox" class="custom-control-input" id="categoryCheck1">
-                            <a class="custom-control-label" for="categoryCheck1" (click)="findTreeByCategoryId(item.id)">{{item.name}}<span class="text-muted">(72)</span></a>
+                            <a class="custom-control-label" for="categoryCheck1" (click)="findTreeByCategoryId(item.id)">{{item.name}}<span class="text-muted"></span></a>
                         </div>
 <!--                        &lt;!&ndash; Single Checkbox &ndash;&gt;-->
 <!--                        <div class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
