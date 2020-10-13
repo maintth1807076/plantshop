@@ -30,7 +30,7 @@
                   <td><span>{{item.description}}</span></td>
                   <td><span>{{item.status}}</span></td>
                   <td>
-                    <span href="/seller/category/detail/{{item.id}}"><i class="fa fa-eye "
+                    <span [routerLink]="['/seller/category/detail', item.id]" ><i class="fa fa-eye "
                                                                                 style="color: #7fa15a;"></i></span> |
                     <span [routerLink]="['/seller/category/edit', item.id]" [queryParams]="{id: item.id}"><i
                       class="fa fa-pen" style="color: #d8a610"></i></span> | <span><i class="fa fa-trash"

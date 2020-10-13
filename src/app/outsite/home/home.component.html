@@ -13,7 +13,7 @@
         <h4>Cửa hàng chuyên về các loại cây cảnh</h4>
         <p>Cactus giúp bạn khám phá những loại cây tốt nhất cho không gian của bạn</p>
         <!--                         <button type="button" class="btn">Get started</button>-->
-        <button type="button" class="btn btn-light btn-outline" href="/shop">Bắt đầu</button>
+        <button type="button" class="btn btn-light-hover btn-success" ><a href="/shop">Bắt đầu</a> </button>
         <!-- end: Captions -->
       </div>
     </div>
@@ -30,7 +30,7 @@
                          </span>
         <h4>Đam mê của bạn là sự hài lòng của chúng tôi</h4>
         <p>Cùng với Cactus thêm màu xanh cho cuộc sống</p>
-        <button type="button" class="btn btn-light btn-outline" href="/shop">Bắt đầu</button>
+        <button type="button" class="btn btn-light-hover btn-success" ><a href="/shop">Bắt đầu</a> </button>
         <!-- end: Captions -->
       </div>
     </div>
@@ -39,49 +39,6 @@
 
 </div>
 <!--end: Inspiro Slider -->
-
-<!--delivery info-->
-<section class=" p-t-40 p-b-0 m-t-40 ">
-  <div class="container  " style="width: 85%;">
-    <div class="row ">
-      <div class="col-lg-4">
-        <div class="icon-box effect small clean">
-          <div class="icon mt-4">
-            <a href="#"><img src="../../../assets/img/free_shipping.png" alt=""></a>
-          </div>
-          <h5>Giao hàng miễn phí</h5>
-          <p>Miễn phí vận chuyển trên toàn thế giới<br>
-            cho tất cả đơn đặt hàng trên 150.000<br>
-            nghìn đồng</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="icon-box effect small clean">
-          <div class="icon mt-4">
-            <a href="#"><img src="../../../assets/img/payment_secure.png" alt=""></a>
-          </div>
-          <h5>Thanh toán an toàn</h5>
-          <p>Với cổng thanh toán của chúng tôi, đừng <br>
-            lo lắng về thông tin của bạn</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="icon-box effect small clean">
-          <div class="icon mt-4">
-            <a href="#"><img src="../../../assets/img/returns.png" alt=""></a>
-          </div>
-          <h5>Dịch vụ thân thiện</h5>
-          <p>Đảm bảo bạn có thể trả lại hàng trong 30<br>
-            ngày cho mọi đơn hàng.</p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--         end delivery info-->
 
 <!--         Banner-->
 <div>
@@ -93,7 +50,7 @@
             <div class="banner-content">
               <h4 class="teamo-subtitle">Sản phẩm mới</h4>
               <h3 class="title">Cây nội thất</h3>
-              <button type="button" class="btn btn-outline " href="/shop">Mua ngay</button>
+              <button type="button" class="btn btn-success " ><a href="/shop" style="color: white;">Mua ngay</a> </button>
             </div>
           </div>
         </div>
@@ -105,7 +62,7 @@
             <div class="banner-content">
               <h4 class="teamo-subtitle">Sản phẩm nổi bật</h4>
               <h3 class="title">Cây tốt cho sức khỏe</h3>
-              <button type="button" class="btn btn-outline" href="/shop">Mua ngay</button>
+              <button type="button" class="btn btn-success"><a href="/shop" style="color: white;">Mua ngay</a></button>
             </div>
           </div>
         </div>
@@ -154,7 +111,7 @@
     </div>
   </div>
 
-  <div class="grid-articles carousel post-carousel" data-items="4" data-dots="false">
+  <div class="grid-articles carousel post-carousel" data-items="5" data-dots="false">
     <article class="post-entry" *ngFor="let item of listTree" [routerLink]="['/shop-details']"
              [queryParams]="{id:item.id}">
       <a href="/shop-details/{{item.id}}" class="post-image"><img alt="" src="{{item.image}}"></a>
@@ -201,12 +158,10 @@
     <!--Product list-->
     <div class="shop">
       <div class="grid-layout grid-4-columns" data-item="grid-item">
-        <div class="grid-item" *ngFor="let item of listTree| paginate: { itemsPerPage: 8, currentPage: p, id: id  }"
+        <div class="grid-item" *ngFor="let item of listTree| paginate: { itemsPerPage: 12, currentPage: p, id: id  }"
              [routerLink]="['/shop-details']" [queryParams]="{id:item.id}">
-          <div class="product col-10 ml-2">
+          <div class="product col-11 ml-2">
             <div class="product-image">
-              <a href="/shop-details/{{item.id}}"><img alt="Shop product image!" src="{{item.image}}">
-              </a>
               <a href="/shop-details/{{item.id}}"><img alt="Shop product image!" src="{{item.image}}">
               </a>
               <span class="product-wishlist">
@@ -222,7 +177,7 @@
             <div class="product-description">
               <div class="product-category pl-2">{{item.category}}</div>
               <div class="product-title pl-2">
-                <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
+                <h3 class="name"><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
               </div>
 
               <div class="product-rate pl-2">
@@ -246,73 +201,115 @@
 </section>
 <!-- end: Shop products -->
 <!-- service  -->
-<section class="  section-padding-100-0">
-  <div class="container background-grey">
-    <div class="row">
-      <div class="col-12">
-        <!-- Section Heading -->
-        <div class="section-heading heading-text text-center mt-3 ">
-          <h4>Dịch Vụ Của Chúng Tôi</h4>
-          <p>Chúng tôi cung cấp dịch vụ hoàn hảo cho bạn.</p>
+<!--<section class="  section-padding-100-0">-->
+<!--  <div class="container background-grey">-->
+<!--    <div class="row">-->
+<!--      <div class="col-12">-->
+<!--        &lt;!&ndash; Section Heading &ndash;&gt;-->
+<!--        <div class="section-heading heading-text text-center mt-3 ">-->
+<!--          <h4>Dịch Vụ Của Chúng Tôi</h4>-->
+<!--          <p>Chúng tôi cung cấp dịch vụ hoàn hảo cho bạn.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="row justify-content-between">-->
+<!--      <div class="col-12 col-lg-5">-->
+<!--        <div class="offset-1 m-t-40 mb-100">-->
+
+<!--          &lt;!&ndash; Single Service  &ndash;&gt;-->
+<!--          <div class="mb-5 d-flex align-items-center ">-->
+<!--            &lt;!&ndash; Icon &ndash;&gt;-->
+<!--            <div class=" mr-30 ">-->
+<!--              <img src="../../../assets/img/s1.png" alt="">-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Content &ndash;&gt;-->
+<!--            <div class="ml-4">-->
+<!--              <h5>Chăm sóc cây trồng</h5>-->
+<!--              <p>Cắt cỏ, làm sạch cỏ, tưới nước, bón phân, phun thuốc trừ sâu cho cây được tươi tốt. </p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Single Service &ndash;&gt;-->
+<!--          <div class=" mb-5 d-flex align-items-center ">-->
+<!--            &lt;!&ndash; Icon &ndash;&gt;-->
+<!--            <div class=" mr-30">-->
+<!--              <img src="../../../assets/img/s2.png" alt="">-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Content &ndash;&gt;-->
+<!--            <div class="ml-4">-->
+<!--              <h5>Phun rửa áp lực cao</h5>-->
+<!--              <p> Với máy phun rửa áp lực cao sẽ giúp làm sạch các vết bẩn trên đồ đạc ngoài sân vườn do hậu quả ô nhiễm-->
+<!--                không khí...</p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          &lt;!&ndash; Single Service &ndash;&gt;-->
+<!--          <div class=" mb-5 d-flex align-items-center">-->
+<!--            <div class=" mr-30">-->
+<!--              <img src="../../../assets/img/s3.png" alt="">-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Content &ndash;&gt;-->
+<!--            <div class="ml-4">-->
+<!--              <h5>Dịch vụ cắt tỉa cây</h5>-->
+<!--              <p> Cắt tỉa cây xanh, uốn sửa, tạo dáng cây cảnh.</p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="col-12 col-lg-6 m-t-40">-->
+<!--        <iframe width="560" height="315" src="https://www.youtube.com/embed/saaFoK-osDU" frameborder="0"-->
+<!--                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+<!--                allowfullscreen></iframe>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<!-- end: service -->
+<!--delivery info-->
+<section class=" p-t-40 p-b-0 m-t-40 ">
+  <div class="container  " style="width: 85%;">
+    <div class="row ">
+      <div class="col-lg-4">
+        <div class="icon-box effect small clean">
+          <div class="icon mt-4">
+            <a href="#"><img src="../../../assets/img/free_shipping.png" alt=""></a>
+          </div>
+          <h5>Giao hàng miễn phí</h5>
+          <p>Miễn phí vận chuyển trên toàn thế giới<br>
+            cho tất cả đơn đặt hàng trên 150.000<br>
+            nghìn đồng</p>
         </div>
       </div>
-    </div>
 
-    <div class="row justify-content-between">
-      <div class="col-12 col-lg-5">
-        <div class="offset-1 m-t-40 mb-100">
-
-          <!-- Single Service  -->
-          <div class="mb-5 d-flex align-items-center ">
-            <!-- Icon -->
-            <div class=" mr-30 ">
-              <img src="../../../assets/img/s1.png" alt="">
-            </div>
-            <!-- Content -->
-            <div class="ml-4">
-              <h5>Chăm sóc cây trồng</h5>
-              <p>Cắt cỏ, làm sạch cỏ, tưới nước, bón phân, phun thuốc trừ sâu cho cây được tươi tốt. </p>
-            </div>
+      <div class="col-lg-4">
+        <div class="icon-box effect small clean">
+          <div class="icon mt-4">
+            <a href="#"><img src="../../../assets/img/payment_secure.png" alt=""></a>
           </div>
-
-          <!-- Single Service -->
-          <div class=" mb-5 d-flex align-items-center ">
-            <!-- Icon -->
-            <div class=" mr-30">
-              <img src="../../../assets/img/s2.png" alt="">
-            </div>
-            <!-- Content -->
-            <div class="ml-4">
-              <h5>Phun rửa áp lực cao</h5>
-              <p> Với máy phun rửa áp lực cao sẽ giúp làm sạch các vết bẩn trên đồ đạc ngoài sân vườn do hậu quả ô nhiễm
-                không khí...</p>
-            </div>
-          </div>
-
-          <!-- Single Service -->
-          <div class=" mb-5 d-flex align-items-center">
-            <div class=" mr-30">
-              <img src="../../../assets/img/s3.png" alt="">
-            </div>
-            <!-- Content -->
-            <div class="ml-4">
-              <h5>Dịch vụ cắt tỉa cây</h5>
-              <p> Cắt tỉa cây xanh, uốn sửa, tạo dáng cây cảnh.</p>
-            </div>
-          </div>
-
+          <h5>Thanh toán an toàn</h5>
+          <p>Với cổng thanh toán của chúng tôi, đừng <br>
+            lo lắng về thông tin của bạn</p>
         </div>
       </div>
 
-      <div class="col-12 col-lg-6 m-t-40">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/saaFoK-osDU" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+      <div class="col-lg-4">
+        <div class="icon-box effect small clean">
+          <div class="icon mt-4">
+            <a href="#"><img src="../../../assets/img/returns.png" alt=""></a>
+          </div>
+          <h5>Dịch vụ thân thiện</h5>
+          <p>Đảm bảo bạn có thể trả lại hàng trong 30<br>
+            ngày cho mọi đơn hàng.</p>
+
+        </div>
       </div>
     </div>
   </div>
 </section>
-<!-- end: service -->
+<!--         end delivery info-->
 <section id="section4" class="">
   <div class="container">
     <div class="heading-text heading-section text-center m-b-40">

@@ -50,7 +50,7 @@
                   <td><span>{{item.status}}</span></td>
                   <td>
                     <div class="row text-center">
-                      <div href="/seller/tree/detail/{{item.id}}" class="col-4 border-right" ><i class="fa fa-eye " style="color: #7fa15a;"></i></div>
+                      <div [routerLink]="['/seller/tree/detail', item.id]" class="col-4 border-right" ><i class="fa fa-eye " style="color: #7fa15a;"></i></div>
                       <div [routerLink]="['/seller/tree/edit', item.id]" [queryParams]="{id: item.id}" class="col-4 border-right"><i class="fa fa-pen" style="color: #d8a610"></i></div>
                       <div  class="col-4"><i class="fa fa-trash" style="color: #f70522"></i></div>
                     </div>
