@@ -30,7 +30,6 @@ export class PayComponent implements OnInit {
     this.id = user['id'];
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
-      console.log(data);
     });
     this.orderForm = this.fb.group({
       shipAddress: ['', Validators.required],
@@ -54,41 +53,82 @@ export class PayComponent implements OnInit {
       this.total += item.product.price * item.quantity;
       this.totalPrice += item.price * item.quantity;
     }
-    console.log(this.items)
   }
   get f() { return this.orderForm.controls; }
-  saveOrder() {
+  async saveOrder() {
     let cart = JSON.parse(localStorage.getItem('cart'));
-    let orderDetails = [];
+    let map = new Map<string, any[]>();
     for (var i = 0; i < cart.length; i++) {
       let item = JSON.parse(cart[i]);
       let orderDetail = {
         "treeId": item['product']['id'],
         "unitPrice": item['product']['price'],
         "quantity": item['quantity'],
-        "order_id": "",
       }
-      orderDetails.push(orderDetail);
+      let arr = [];
+      let sellerId = item.product.userId;
+      if(map.has(sellerId)){
+        let arrOld = map.get(sellerId);
+        arrOld.push(orderDetail);
+        map.set(sellerId, arrOld);
+      } else {
+        arr.push(orderDetail)
+        map.set(sellerId, arr);
+      }
     }
     this.submitted = true;
     if (this.orderForm.invalid) {
       return; }
-    this.loading = true;
-    console.log(orderDetails);
-    let data = {
-      "shipAddress": this.f.shipAddress.value,
-      "shipPhone": this.f.shipPhone.value,
-      "orderDetails": orderDetails,
-      "user_id": this.id,
+    let orderDetails = Array.from(map.values())
+    for (let i = 0; i < orderDetails.length; i++) {
+      let data = {
+        "shipAddress": this.f.shipAddress.value,
+        "shipPhone": this.f.shipPhone.value,
+        "orderDetails": orderDetails[i],
+        "user_id": this.id,
+      }
+      this.service.addOrder(data).subscribe((data) => {
+          console.log(data);
+          this.order = data;
+        },
+        (error) => console.log(error),
+        () => {
+          this.loading = true;
+          console.log('Complete')}
+      );
     }
-    console.log(data);
-    this.service.addOrder(data).subscribe((data) => {
-        console.log(data);
-        this.order = data;
-      },
-      (error) => console.log(error),
-      () => console.log('Complete')
-    );
   }
-
+  // saveOrder() {
+  //   let cart = JSON.parse(localStorage.getItem('cart'));
+  //   let orderDetails = [];
+  //   for (var i = 0; i < cart.length; i++) {
+  //     let item = JSON.parse(cart[i]);
+  //     let orderDetail = {
+  //       "treeId": item['product']['id'],
+  //       "unitPrice": item['product']['price'],
+  //       "quantity": item['quantity'],
+  //       "order_id": "",
+  //     }
+  //     orderDetails.push(orderDetail);
+  //   }
+  //   this.submitted = true;
+  //   if (this.orderForm.invalid) {
+  //     return; }
+  //   this.loading = true;
+  //   console.log(orderDetails);
+  //   let data = {
+  //     "shipAddress": this.f.shipAddress.value,
+  //     "shipPhone": this.f.shipPhone.value,
+  //     "orderDetails": orderDetails,
+  //     "user_id": this.id,
+  //   }
+  //   console.log(data);
+  //   this.service.addOrder(data).subscribe((data) => {
+  //       console.log(data);
+  //       this.order = data;
+  //     },
+  //     (error) => console.log(error),
+  //     () => console.log('Complete')
+  //   );
+  // }
 }
