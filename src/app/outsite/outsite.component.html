@@ -23,16 +23,16 @@
                 <div class="row">
                     <div class="col-md-6 pt-1">
                         <ul class="top-menu">
-                            <li class="border-right pr-2"><a routerLink="/seller/tree">Kênh người bán</a></li>
-                            <li class="ml-3"><a routerLink="/contact">hotline: 09546477</a></li>
+                            <li class="border-right pr-2"><a href="/seller/tree">Kênh người bán</a></li>
+                            <li class="ml-3"><a href="/contact">hotline: 09546477</a></li>
 
                         </ul>
                     </div>
                     <div class="col-md-3"></div>
                     <div class="col-md-2 pt-1" >
                         <ul class="top-menu p-l-40 " *ngIf="!checkLogin">
-                            <li ><a routerLink="/login">Đăng nhập</a></li>
-                            <li><a routerLink="/register">Đăng kí</a></li>
+                            <li ><a href="/login">Đăng nhập</a></li>
+                            <li><a href="/register">Đăng kí</a></li>
                         </ul>
                       <ul class="top-menu p-l-70 " *ngIf="checkLogin">
                         <li class="pr-3" >
@@ -41,9 +41,9 @@
                             <div class="p-dropdown-content">
                               <div class="widget-myaccount">
                                 <ul class="text-center">
-                                  <li><a routerLink="/user/profile"><i class="icon-user"></i>Tài khoản của tôi</a>
+                                  <li><a href="/user/profile"><i class="icon-user"></i>Tài khoản của tôi</a>
                                   </li>
-                                  <li><a (click)="logout()" routerLink=""><i class="icon-log-out"></i>Đăng xuất</a>
+                                  <li><a (click)="logout()" ><i class="icon-log-out"></i>Đăng xuất</a>
                                   </li>
                                 </ul>
                               </div>
@@ -78,7 +78,7 @@
                 <div class="container">
                     <!--Logo-->
                     <div id="logo">
-                        <a routerLink="/home">
+                        <a href="/home">
 
                             <span class="logo-default"> <img src="../../assets/img/logo.png" alt="" style="width: 70%;"></span>
                             <!-- <span class="logo-dark">CACTI</span> -->
@@ -124,7 +124,7 @@
                                                 </div>
                                             </div>
                                             <div class="cart-buttons text-right">
-                                                <button class="btn btn-xs" routerLink="/shop-cart">Xem giỏ hàng</button>
+                                                <button class="btn btn-xs" href="/shop-cart">Xem giỏ hàng</button>
                                             </div>
                                         </div>
                                     </div>

@@ -136,13 +136,13 @@
     <div class="row col-lg-12 ">
         <h4 class=" col-lg-9">Sản Phẩm Nổi Bật</h4>
         <div class="breadcrumb  col-lg-3 " >
-          <a routerLink="/shop" class="active  "><p style="font-size: 18px; margin-left: 70%;">Tất cả >></p></a>
+          <a href="/shop" class="active  "><p style="font-size: 18px; margin-left: 70%;">Tất cả >></p></a>
         </div>
     </div>
     <div class="carousel" data-items="5">
         <div class="product"  *ngFor="let item of listTree">
           <div class="product-image">
-            <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
+            <a  href="/shop-details/{{item.id}}" ><img alt="ảnh sản phẩm" src="{{item.image}}">
             </a>
             <!--                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">-->
             <!--                                    </a>-->
@@ -150,7 +150,7 @@
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
             <div class="product-overlay row ml-0">
-              <a [routerLink]="['/shop-details',item.id]" class="col-6 border-right"><i
+              <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
                 class="fa fa-eye btn-white"></i></a>
               <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
                                                                style="color: white;"></i></a>
@@ -190,7 +190,7 @@
                       <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 10, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
                         <div class="product mr-3"  >
                           <div class="product-image">
-                            <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
+                            <a  href="/shop-details/{{item.id}}" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                             </a>
                             <!--                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">-->
                             <!--                                    </a>-->
@@ -198,7 +198,7 @@
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
                             <div class="product-overlay row ml-0">
-                              <a [routerLink]="['/shop-details',item.id]" class="col-6 border-right"><i
+                              <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
                                 class="fa fa-eye btn-white"></i></a>
                               <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
                                                                                style="color: white;"></i></a>
@@ -207,7 +207,7 @@
                           <div class="product-description">
                             <div class="product-category pl-2">{{item.category}}</div>
                             <div class="product-title pl-2">
-                              <h3 class="name"><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
+                              <h3 class="name"><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
                             </div>
 
                             <div class="product-rate pl-2">
