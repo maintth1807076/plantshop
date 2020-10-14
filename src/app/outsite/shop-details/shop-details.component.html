@@ -71,7 +71,7 @@
                         <p>{{tree.description}}</p>
                       </div>
                       <div class="tab-pane fade " id="profile3" role="tabpanel" aria-labelledby="profile-tab">
-                        <p>{{tree.details}}</p>
+                        <p>{{tree.detail}}</p>
                       </div>
                       <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="comments" id="comments">
@@ -171,7 +171,7 @@
                                                     class="btn btn-light btn-shadow w-100 " target="_blank">Chat ngay</a>
                                             </div>
                                             <div class="col-5"><a
-                                                    routerLink="/shop-seller"
+                                                    href="/shop-seller"
                                                     class="btn btn-light btn-shadow " target="_blank"
                                                     style="width: 100px;">Xem shop</a>
                                             </div>
@@ -243,13 +243,13 @@
               <div class="grid-articles carousel post-carousel" data-items="3" data-dots="false">
                 <article class="post-entry" *ngFor="let item of listTree" [routerLink]="['/shop-details']"
                          [queryParams]="{id:item.id}">
-                  <a [routerLink]="['/shop-details',item.id]" class="post-image"><img alt="" src="{{item.image}}"></a>
+                  <a href="/shop-details/{{item.id}}" class="post-image"><img alt="" src="{{item.image}}"></a>
                   <div class="post-entry-overlay">
                     <div class="post-entry-meta">
                       <div class="product-description">
                         <div class="product-category">{{item.category}}</div>
                         <div class="product-title">
-                          <h3><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
+                          <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
                         </div>
                         <div class="product-price">
                           <ins>{{item.price}}</ins>

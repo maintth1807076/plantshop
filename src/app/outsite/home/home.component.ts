@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
       (error) => console.log(error),
       () => console.log("Complete")
     )
+    this.service.getAllCategory()
   }
   addToCart(id)
   {

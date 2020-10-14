@@ -32,7 +32,7 @@
                         <div class="grid-item" *ngFor="let item of listTree | paginate: { itemsPerPage: 12, currentPage: p, id: id  }"   [routerLink]="['/shop-details']"  [queryParams]="{id:item.id}">
                             <div class="product mr-3 m-b-80" >
                                 <div class="product-image">
-                                    <a  [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">
+                                    <a href="/shop-details/{{item.id}}" ><img alt="ảnh sản phẩm" src="{{item.image}}">
                                     </a>
 <!--                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">-->
 <!--                                    </a>-->
@@ -40,7 +40,7 @@
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
                                   <div class="product-overlay row ml-0">
-                                    <a [routerLink]="['/shop-details',item.id]" class="col-6 border-right"><i
+                                    <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
                                       class="fa fa-eye btn-white"></i></a>
                                     <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
                                                                                      style="color: white;"></i></a>
@@ -49,7 +49,7 @@
                               <div class="product-description">
                                 <div class="product-category pl-2">{{item.category}}</div>
                                 <div class="product-title pl-2">
-                                  <h3 class="name"><a [routerLink]="['/shop-details',item.id]">{{item.name}}</a></h3>
+                                  <h3 class="name"><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
                                 </div>
 
                                 <div class="product-rate pl-2">

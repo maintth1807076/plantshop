@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row  ">
       <div class="menu-course">
-        <a routerLink="/seller/category" class="btn btn-success">Quay lại</a>
+        <a href="/seller/category" class="btn btn-success">Quay lại</a>
 
       </div>
       <div class="card " style="width: 90%; margin-left: 5%;">
@@ -31,7 +31,7 @@
               <p class="product-description"><b>Mô tả : </b>{{category.description}}</p>
               <p class="product-description"><b> Ngày tạo :</b> {{category.createdAt|date:'yyyy-MM-dd HH:mm:ss':'VI'}}</p>
               <div class="menu-course">
-                <a [routerLink]="['/seller/category/create']"
+                <a [routerLink]="['/seller/category/edit-category']"
                    [queryParams]="{id: category.id}" class="btn btn-success">Chỉnh sửa</a>
               </div>
             </div>

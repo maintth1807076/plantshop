@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="menu-course">
-          <a routerLink="/seller/category/create" class="btn btn-success">Thêm mới danh mục</a>
+          <a href="/seller/category/create" class="btn btn-success">Thêm mới danh mục</a>
         </div>
         <div class="accordion table-data">
           <div class="card rounded-0">
@@ -30,7 +30,7 @@
                   <td><span>{{item.description}}</span></td>
                   <td><span>{{item.status}}</span></td>
                   <td>
-                    <span [routerLink]="['/seller/category/detail',item.id]"><i class="fa fa-eye "
+                    <span [routerLink]="['/seller/category/detail', item.id]" ><i class="fa fa-eye "
                                                                                 style="color: #7fa15a;"></i></span> |
                     <span [routerLink]="['/seller/category/edit', item.id]" [queryParams]="{id: item.id}"><i
                       class="fa fa-pen" style="color: #d8a610"></i></span> | <span><i class="fa fa-trash"

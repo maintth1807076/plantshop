@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row  ">
       <div class="menu-course">
-        <a routerLink="/seller/tree" class="btn btn-success">Quay lại</a>
+        <a href="/seller/tree" class="btn btn-success">Quay lại</a>
 
       </div>
       <div class="card " style="width: 90%; margin-left: 5%;">
@@ -34,7 +34,7 @@
               <p class="product-description"><b>Chi tiết : </b>{{tree.detail}}</p>
               <p class="product-description"><b> Ngày tạo :</b> {{tree.createdAt|date:'yyyy-MM-dd HH:mm:ss':'VI'}}</p>
               <div class="menu-course">
-                <a [routerLink]="['/seller/tree/create']"
+                <a [routerLink]="['/seller/tree/edit-tree']"
                    [queryParams]="{id: tree.id}" class="btn btn-success">Chỉnh sửa</a>
               </div>
             </div>
