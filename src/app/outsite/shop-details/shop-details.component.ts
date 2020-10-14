@@ -14,11 +14,20 @@ export class ShopDetailsComponent implements OnInit {
   listTree: any[];
   id: any;
   p: any;
+  user: any = {};
+  url: string;
   constructor(private http: HttpClient, private service: TreeService,  private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
     this.getTree(this.idTree); }
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.id = user['id'];
+    this.service.getUser(this.id).subscribe(data => {
+      this.user = data['data'];
+      this.url = this.user.avatar;
+      console.log(data);
+    });
 this.loadData();
   }
   loadData():void{
