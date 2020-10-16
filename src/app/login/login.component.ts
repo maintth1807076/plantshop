@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TreeService } from '../tree.service';
 import {stringify} from 'querystring';
+import loader from '@angular-devkit/build-angular/src/angular-cli-files/plugins/single-test-transform';
 
 @Component({
   selector: 'app-login',
