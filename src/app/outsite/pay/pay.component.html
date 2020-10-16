@@ -28,7 +28,7 @@
               </div>
             </td>
             <td class="cart-product-description">
-              <p>{{total}}
+              <p>{{item.product.price * item.quantity}}đ
               </p>
             </td>
           </tr>
@@ -83,6 +83,7 @@
         </div>
       </div>
     </div>
+  <button (click)="saveOrder()">Dat hang</button>
 </section>
 
 
