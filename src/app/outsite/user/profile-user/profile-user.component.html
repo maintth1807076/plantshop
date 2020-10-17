@@ -6,7 +6,7 @@
     <form [formGroup]="updateForm" (ngSubmit)="update()">
       <div class="row">
         <div class="col-lg-8">
-          <div class="col-lg-12 form-group">
+          <div class="col-lg-12 form-group mt-2">
             <div class="row">
               <label class="col-lg-3 mt-2" for="inputFullName">Họ và tên <span class="text-danger">*</span> :</label>
               <input type="text" formControlName="fullName" id="inputFullname" class="form-control col-lg-7"
@@ -16,7 +16,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 form-group">
+          <div class="col-lg-12 form-group mt-2">
             <div class="row">
               <label class="col-lg-3 mt-2" for="inputEmail">Email <span class="text-danger">*</span> :</label>
               <input type="text" formControlName="email" id="inputEmail" class="form-control col-lg-7"
@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 form-group">
+          <div class="col-lg-12 form-group mt-2">
             <div class="row">
               <label class="col-lg-3 mt-2" for="inputshopName">Tên shop <span class="text-danger">*</span> :</label>
               <input type="text" formControlName="shopName" id="inputshopName" class="form-control col-lg-7"
@@ -36,31 +36,48 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12  form-group ">
-            <label for="gender" class="sr-only">Giới tính</label>
-            <select class="form-control" formControlName="gender" name="gender" required>
-              <option value="">Chọn giới tính</option>
-              <option value="1">Nữ</option>
-              <option value="2">Nam</option>
-            </select>
+          <div class="col-lg-12  form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2">Giới tính : <span class="text-danger">*</span></label>
+              <br>
+              <input class="col-lg-1 mt-2" type="radio" id="male" name="gender" value="1" checked
+                     formControlName="gender">
+              <label class="" for="male">Nam</label><br>
+              <input class="col-lg-1  mt-2" type="radio" id="female" name="gender" value="0" formControlName="gender">
+              <label class="" for="female">Nữ</label><br>
+            </div>
+
           </div>
         </div>
         <div class="col-lg-4 border-left ">
           <div class="form-group col-lg-12">
-            <label for="inputAvatar" class="sr-only">Ảnh </label>
-            <img src="{{url}}" alt="" style="width:50%;">
-            <input type="file" formControlName="avatar" id="inputAvatar" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }"
-                   (change)="uploadFile($event.target.files)">
-            <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
-              <div *ngIf="f.avatar.errors.required">Không hợp lệ</div>
+            <div class="file-field">
+              <label for="inputAvatar" class="sr-only">Ảnh </label>
+              <div class="mb-4" style="margin-left: 30%;">
+                <img src="{{url}}" alt="" style="width:60%;"
+                     class="rounded-circle z-depth-1-half avatar-pic">
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="button_outer">
+                  <div class="btn_upload">
+                    Thêm ảnh
+                    <input type="file" formControlName="avatar" id="inputAvatar"
+                           [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }"
+                           (change)="uploadFile($event.target.files)">
+                    <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
+                      <div *ngIf="f.avatar.errors.required">Không hợp lệ</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
 
       <div class="col-lg-12 form-group">
-        <button [disabled]="loading" class="btn btn-primary">
+        <button [disabled]="loading" class="btn btn-primary" style="margin-left: 50%;">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Cập Nhật
         </button>

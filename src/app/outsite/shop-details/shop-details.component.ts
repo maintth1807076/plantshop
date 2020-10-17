@@ -14,20 +14,22 @@ export class ShopDetailsComponent implements OnInit {
   listTree: any[];
   id: any;
   p: any;
-  user: any = {};
+  user: any[];
   url: string;
+  shopName: string;
   constructor(private http: HttpClient, private service: TreeService,  private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
     this.getTree(this.idTree); }
 
   ngOnInit(): void {
-    let user = JSON.parse(localStorage.getItem('user'));
-    this.id = user['id'];
-    this.service.getUser(this.id).subscribe(data => {
-      this.user = data['data'];
-      this.url = this.user.avatar;
-      console.log(data);
-    });
+    this.service.getAllUser().subscribe(data => {
+        //@ts-ignore
+        this.user = data.datas ;
+        console.log(this.user);
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
 this.loadData();
   }
   loadData():void{
@@ -45,8 +47,26 @@ this.loadData();
     this.service.getTreeService(id).subscribe(data => {
       console.log(data['data']);
       this.tree = data['data'];
+      this.tree.user_id = this.id;
     });
    }
+  getUserShopName(id): string {
+    for (let i = 0; i < this.user.length; i++) {
+      if(this.user[i].id == id){
+        return this.user[i].shopName;
+      }
+    }
+    return 'lỗi';
+  }
+  getUserShopImage(id): string {
+    for (let i = 0; i < this.user.length; i++) {
+      if(this.user[i].id == id){
+        this.url = this.user[i].avatar
+        return this.url ;
+      }
+    }
+    return 'lỗi';
+  }
   addToCart(id)
   {
     let item = {

@@ -39,7 +39,7 @@
                       </p>
                     </td>
                     <td class="cart-product-price">
-                      <span class="amount">{{item.product.price}}đ</span>
+                      <span class="amount">{{item.product.price}}<sup>đ</sup></span>
                     </td>
                     <td class="cart-product-quantity">
                       <div class="quantity">
@@ -49,7 +49,7 @@
                       </div>
                     </td>
                     <td class="cart-product-subtotal">
-                      <span class="amount">{{item.product.price * item.quantity}}đ</span>
+                      <span class="amount">{{item.product.price * item.quantity}}<sup>đ</sup></span>
                     </td>
                   </tr>
                   </tbody>
@@ -72,10 +72,10 @@
                         <tbody>
                         <tr>
                           <td class="cart-product-name">
-                            <strong>Tổng tiền</strong>
+                            <strong>Tổng tiền :</strong>
                           </td>
                           <td class="cart-product-name text-right">
-                            <span class="amount color lead"><strong>{{total}}đ</strong></span>
+                            <span class="amount color lead"><h4><strong>{{total}}<sup>đ</sup></strong></h4></span>
                           </td>
                         </tr>
                         </tbody>

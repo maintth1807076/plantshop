@@ -6,7 +6,7 @@
   <div class="container-wide m-b-50">
     <div class="row">
       <!-- Content-->
-      <div class="content col-lg-9">
+      <div class="content col-lg-10">
         <div class="row m-b-20">
           <div class="col-lg-7 row">
             <h5 class="pl-2 pt-2 mr-2">Sắp xếp theo :</h5>
@@ -16,53 +16,53 @@
           </div>
           <div class="col-lg-4">
             <div class="order-select">
-              <form method="get" ngNoForm>
-                <select class="form-control">
-                  <option selected="selected" value="order">Giá</option>
-                  <option value="popularity">Giá: Thấp đến cao</option>
-                  <option value="rating">Giá: Cao đến thấp</option>
-                </select>
-              </form>
+              <select class="form-control" id="sort-by">
+                <option selected="selected" value="order">Giá</option>
+                <option value="Low">Giá: Thấp đến cao</option>
+                <option value="High">Giá: Cao đến thấp</option>
+              </select>
             </div>
           </div>
         </div>
         <!--Product list-->
         <div class="shop ">
-          <div class="grid-layout grid-4-columns " data-item="grid-item">
-            <div class="grid-item"
-                 *ngFor="let item of listTree | paginate: { itemsPerPage: 12, currentPage: p, id: id  }"
+          <div class="grid-layout grid-4-columns " data-item="grid-item" >
+            <div class="grid-item mb-5"  *ngFor="let item of listTree | paginate: { itemsPerPage: 12, currentPage: p, id: id  }"
                  [routerLink]="['/shop-details']" [queryParams]="{id:item.id}">
-              <div class="product mr-3 m-b-80">
-                <div class="product-image">
-                  <a href="/shop-details/{{item.id}}"><img alt="ảnh sản phẩm" src="{{item.image}}">
-                  </a>
-                  <!--                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">-->
-                  <!--                                    </a>-->
-                  <span class="product-wishlist">
+              <div class="border p-2 m-b-40 m-l-15">
+                <div class="product">
+                  <div class="product-image">
+                    <a href="/shop-details/{{item.id}}"><img alt="ảnh sản phẩm" src="{{item.image}}">
+                    </a>
+                    <!--                                    <a [routerLink]="['/shop-details',item.id]" ><img alt="ảnh sản phẩm" src="{{item.image}}">-->
+                    <!--                                    </a>-->
+                    <span class="product-wishlist">
                                         <a href="#"><i class="fa fa-heart"></i></a>
                                     </span>
-                  <div class="product-overlay row ml-0">
-                    <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
-                      class="fa fa-eye btn-white"></i></a>
-                    <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
-                                                                     style="color: white;"></i></a>
+                    <div class="product-overlay row ml-0">
+                      <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
+                        class="fa fa-eye btn-white"></i></a>
+                      <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
+                                                                       style="color: white;"></i></a>
+                    </div>
                   </div>
-                </div>
-                <div class="product-description">
-                  <div class="product-category pl-2">{{item.category}}</div>
-                  <div class="product-title pl-2">
-                    <h3 class="name"><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
-                  </div>
+                  <div class="product-description">
+                    <div class="product-category pl-2">{{item.category}}</div>
+                    <div class="product-title pl-2">
+                      <h3 class="name"><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
+                    </div>
 
-                  <div class="product-rate pl-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                  </div>
-                  <div class="product-reviews pr-2" style="font-size: 20px; color: red">
-                    <ins>{{item.price}}đ</ins>
+                    <div class="product-rate pl-2">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <br>
+                    <div class="product-reviews pr-2" style="font-size: 20px; color: red">
+                      <ins>{{item.price}}<sup>đ</sup></ins>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -74,10 +74,11 @@
           </pagination-controls>
         </div>
         <!--End: Product list-->
+
       </div>
       <!-- end: Content-->
       <!-- Sidebar-->
-      <div class="sidebar col-lg-3 background-white">
+      <div class="sidebar col-2 background-white" style="height: 850px;">
         <!--widget newsletter-->
         <div class="widget clearfix widget-archive">
           <div class="border-bottom border-success mb-5">
@@ -87,13 +88,20 @@
           </div>
           <h4 class="widget-title">Loại Cây</h4>
           <div class="widget-desc">
-            <!-- Single Checkbox -->
-            <div *ngFor="let item of listCategory"
-                 class="custom-control custom-checkbox d-flex align-items-center mb-3">
-              <input type="checkbox" class="custom-control-input " id="categoryCheck1" style="color: #237335">
-              <a class="custom-control-label" for="categoryCheck1" (click)="findTreeByCategoryId(item.id)">{{item.name}}
-                <span class="text-muted"></span></a>
+            <div *ngFor="let item of listCategory">
+              <input type="checkbox" id="terms" kendoCheckBox (click)="findTreeByCategoryId(item.id)"/>
+              <label class="k-checkbox-label" for="terms"> {{item.name}}</label>
             </div>
+
+            <!-- Single Checkbox -->
+            <!--            <div *ngFor="let item of listCategory"-->
+            <!--                 class="custom-control custom-checkbox d-flex align-items-center mb-3">-->
+            <!--              <input type="checkbox" class="custom-control-input " id="categoryCheck1" style="color: #237335"-->
+            <!--                     (click)="findTreeByCategoryId(item.id)">-->
+            <!--              <a class="custom-control-label" for="categoryCheck1">-->
+            <!--                {{item.name}}-->
+            <!--                <span class="text-muted"></span></a>-->
+            <!--            </div>-->
           </div>
         </div>
         <div class="widget widget-shop m-b-40">
@@ -130,7 +138,7 @@
                 <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
               </div>
               <div class="product-price">
-                <ins>{{item.price}}</ins>
+                <ins>{{item.price}}<sup>đ</sup></ins>
               </div>
 
               <div class="product-rate">

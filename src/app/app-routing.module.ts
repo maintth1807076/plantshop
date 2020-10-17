@@ -12,10 +12,6 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./outsite/outsite.module').then(m => m.OutsiteModule),
   },
-  {
-    path: '',
-    loadChildren: () => import('./seller/seller.module').then(m => m.SellerModule),
-  },
 ];
 
 @NgModule({

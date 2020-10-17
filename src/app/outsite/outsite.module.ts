@@ -22,10 +22,14 @@ import { NotificationUserComponent } from './user/notification-user/notification
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PayComponent } from './pay/pay.component';
+import { SellerComponent } from './seller/seller.component';
+import { TreeComponent } from './seller/tree/tree.component';
+import { CategoryComponent } from './seller/category/category.component';
+import { ProfileSellerComponent } from './seller/profile-seller/profile-seller.component';
 
 
 @NgModule({
-  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent, PayComponent],
+  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent, PayComponent, SellerComponent, TreeComponent, CategoryComponent, ProfileSellerComponent],
     imports: [
         CommonModule,
         OutsiteRoutingModule,

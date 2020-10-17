@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   get f() { return this.loginForm.controls; }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.service.doLogin(data).subscribe(
     data => {
       localStorage.setItem('user', JSON.stringify(data['data']));
-      this.router.navigate([this.returnUrl]);
+      location.href = '/home';
     },
     error => {
         this.loading = false;

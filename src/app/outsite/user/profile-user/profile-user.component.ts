@@ -64,6 +64,7 @@ export class ProfileUserComponent implements OnInit {
     console.log(this.url);
     this.service.updateUser(this.id, data).subscribe(data=> {
         console.log('Post updated successfully!');
+        alert('cập nhật thông tin thành công!')
       },
       (error) => console.log(error),
       () => {
