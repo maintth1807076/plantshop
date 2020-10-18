@@ -19,8 +19,15 @@ import {ProfileUserComponent} from './user/profile-user/profile-user.component';
 import {NotificationUserComponent} from './user/notification-user/notification-user.component';
 import {WishlistComponent} from './user/wishlist/wishlist.component';
 import {PayComponent} from './pay/pay.component';
+import {SellerComponent} from './seller/seller.component';
 import {TreeComponent} from './seller/tree/tree.component';
+import { CreateComponent } from './seller/tree/create/create.component';
+import {DetailComponent} from './seller/tree/detail/detail.component';
+import {EditComponent} from './seller/tree/edit/edit.component';
 import {CategoryComponent} from './seller/category/category.component';
+import {CreateCategoryComponent} from './seller/category/create-category/create-category.component';
+import {DetailCategoryComponent} from './seller/category/detail-category/detail-category.component';
+import {EditCategoryComponent} from './seller/category/edit-category/edit-category.component';
 
 const routes: Routes = [
   {
@@ -86,19 +93,44 @@ const routes: Routes = [
       },
       {
         path: 'seller',
-        component:UserComponent,
+        component: SellerComponent,
+
         children: [
-          {
-            path: 'profile',
-            component:ProfileUserComponent
-          },
+          // {
+          //   path: 'manage',
+          //   component: ManageComponent,
+          // },
           {
             path: 'tree',
-            component:TreeComponent,
+            component: TreeComponent,
+          },
+          {
+            path: 'tree/create',
+            component: CreateComponent,
+          },
+          {
+            path: 'tree/detail/:id',
+            component: DetailComponent,
+          },
+          {
+            path: 'tree/edit/:id',
+            component: EditComponent,
           },
           {
             path: 'category',
-            component:CategoryComponent,
+            component: CategoryComponent,
+          },
+          {
+            path: 'category/create',
+            component: CreateCategoryComponent,
+          },
+          {
+            path: 'category/detail/:id',
+            component: DetailCategoryComponent,
+          },
+          {
+            path: 'category/edit/:id',
+            component: EditCategoryComponent,
           },
         ],
       },

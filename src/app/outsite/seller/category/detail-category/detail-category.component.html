@@ -1,0 +1,43 @@
+<div class="tables-section">
+  <div class="container-fluid">
+    <div class="row  ">
+      <div class="menu-course mt-3">
+        <a href="/seller/category" class="btn btn-success">Quay lại</a>
+
+      </div>
+      <div class="card " style="width: 90%; margin-left: 5%; height: 600px;">
+        <div class="col-lg-12 ">
+          <div class="wrapper row">
+            <div class="preview col-md-6 p-50">
+              <img src="{{category.image}}" alt="" style="width: 80%;">
+              <!--              <div class="preview-pic tab-content">-->
+              <!--                <div class="tab-pane active" id="pic-1"><img/></div>-->
+              <!--                <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>-->
+              <!--                <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>-->
+              <!--                <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>-->
+              <!--                <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>-->
+              <!--              </div>-->
+              <!--              <ul class="preview-thumbnail nav nav-tabs">-->
+              <!--                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>-->
+              <!--                <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>-->
+              <!--                <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>-->
+              <!--                <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>-->
+              <!--                <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>-->
+              <!--              </ul>-->
+
+            </div>
+            <div class="details col-md-6 mt-5">
+              <p class="product-description"><b>Tên cây : </b> <strong style="font-size: 18px;">{{category.name}}</strong></p>
+              <p class="product-description"><b>Mô tả : </b>{{category.description}}</p>
+              <p class="product-description"><b> Ngày tạo :</b> {{category.createdAt|date:'yyyy-MM-dd HH:mm:ss':'VI'}}</p>
+              <div class="menu-course">
+                <a [routerLink]="['/seller/category/edit', category.id]" [queryParams]="{id: category.id}" class="btn btn-success">Chỉnh sửa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

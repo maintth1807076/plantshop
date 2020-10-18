@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {TreeService} from '../../../tree.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  id: any;
+  p: any;
+  listCategory: any[];
+
+
+  constructor(private http: HttpClient, private service: TreeService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+  async ngAfterViewInit() {
+    await this.loadScript('/assets/js/jquery.js');
+    await this.loadScript('/assets/js/datatables.min.js');
+    await this.loadScript('/assets/js/style.js');
+
+  }
+
+  loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    });
+  }
+
+  loadData(): void {
+
+    this.service.getAllCategory().subscribe(data => {
+        this.listCategory = data['datas'];
+        console.log(this.listCategory);
+      },
+      (error) => console.log(error),
+      () => console.log('Complete')
+    );
   }
 
 }

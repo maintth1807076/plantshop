@@ -1,35 +1,52 @@
-<section class="sidebar-left background-grey">
-  <div class="container-wide">
-    <div class="row">
-      <!-- Content-->
-      <div class="content col-lg-9 background-white">
-        <router-outlet></router-outlet>
-      </div>
-      <!-- end: Content-->
-      <!-- Sidebar-->
-      <div class="sidebar col-lg-3" style="height: 700px;">
-        <!--widget newsletter-->
-        <div class="widget clearfix widget-archive">
-          <h4 class="widget-title">Tài Khoản</h4>
-          <div class="widget-desc"  >
-            <!-- Single Checkbox -->
-            <div class="custom-control d-flex align-items-center mb-3" >
-              <i class="icon-user mr-2 mb-1 fa-2x"></i> <a href=""> Thông Tin Tài Khoản</a>
+<section >
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
+               aria-expanded="false" aria-controls="collapse3">
+              <div class="sb-nav-link-icon"><i class="fa fa-shopping-bag"></i></div>
+              Quản Lí Cây Cảnh
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse3" aria-labelledby="headingOne"
+                 data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="/seller/tree">Tất Cả Sản Phẩm</a>
+                <a class="nav-link" href="/seller/tree/create">Thêm Sản Phẩm</a>
+              </nav>
             </div>
-            <!-- Single Checkbox -->
-            <div class="custom-control d-flex align-items-center mb-3">
-              <i class="icon-bell mr-2 mb-1 fa-2x"></i> <a href=""> Thông Báo</a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4"
+               aria-expanded="false" aria-controls="collapse4">
+              <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
+              Quản Lí Danh Mục
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapse4" aria-labelledby="headingOne"
+                 data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="/seller/category">Tất Cả Danh Mục</a>
+                <a class="nav-link" href="/seller/category/create">Thêm Danh Mục</a>
+              </nav>
             </div>
-            <div class="custom-control d-flex align-items-center mb-3">
-              <i class="icon-clipboard mr-2 mb-1 fa-2x"></i> <a href="/seller/tree"> Quản lí Sản Phẩm</a>
-            </div>
-            <div class="custom-control d-flex align-items-center mb-3">
-              <i class="icon-heart mr-2 mb-1 fa-2x"></i> <a href="/seller/category"> Quản lí danh mục</a>
-            </div>
+
           </div>
         </div>
-      </div>
-      <!-- end: Sidebar-->
+      </nav>
+    </div>
+    <div id="layoutSidenav_content" class="background-grey">
+      <main>
+        <div class="container-fluid">
+
+          <router-outlet></router-outlet>
+
+        </div>
+
+      </main>
+
     </div>
   </div>
 </section>
+
+
