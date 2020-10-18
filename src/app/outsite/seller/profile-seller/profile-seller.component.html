@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-lg-12 center p-30 background-white b-r-6">
+    <div class="col-lg-12 m-t-20 m-b-10">
+      <h3>Thông Tin Tài Khoản</h3>
+    </div>
+    <form [formGroup]="updateForm" (ngSubmit)="update()">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputFullName">Họ và tên <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="fullName" id="inputFullname" class="form-control col-lg-7"
+                     [(ngModel)]="user.fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+              <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                <div *ngIf="f.fullName.errors.required">Họ và tên không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputEmail">Email <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="email" id="inputEmail" class="form-control col-lg-7"
+                     [(ngModel)]="user.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputshopName">Tên shop <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="shopName" id="inputshopName" class="form-control col-lg-7"
+                     [(ngModel)]="user.shopName" [ngClass]="{ 'is-invalid': submitted && f.shopName.errors }">
+              <div *ngIf="submitted && f.shopName.errors" class="invalid-feedback">
+                <div *ngIf="f.shopName.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputPhone">Số điện thoại <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="phone" id="inputPhone" class="form-control col-lg-7"
+                     [(ngModel)]="user.phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" pattern="^\d{4}-\d{3}-\d{3}$">
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputIdentityCardNumber">Số thẻ căn cước<span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="identityCardNumber" id="inputIdentityCardNumber" class="form-control col-lg-7"
+                     [(ngModel)]="user.identityCardNumber"  [ngClass]="{ 'is-invalid': submitted && f.identityCardNumber.errors }">
+              <div *ngIf="submitted && f.identityCardNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.identityCardNumber.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputBankName">Tên ngân hàng <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="bankName" id="inputBankName" class="form-control col-lg-7"
+                     [(ngModel)]="user.bankName"  [ngClass]="{ 'is-invalid': submitted && f.bankName.errors }">
+              <div *ngIf="submitted && f.bankName.errors" class="invalid-feedback">
+                <div *ngIf="f.bankName.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-4 mt-2" for="inputBankAccountNumber">Số tài khoản ngân hàng<span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="bankAccountNumber" id="inputBankAccountNumber" class="form-control col-lg-6"
+                     [(ngModel)]="user.bankAccountNumber"  [ngClass]="{ 'is-invalid': submitted && f.bankAccountNumber.errors }">
+              <div *ngIf="submitted && f.bankAccountNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.bankAccountNumber.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12  form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2">Giới tính : <span class="text-danger">*</span></label>
+              <br>
+              <input class="col-lg-1 mt-2" type="radio" id="male" name="gender" value="1" checked
+                     formControlName="gender">
+              <label class="" for="male">Nam</label><br>
+              <input class="col-lg-1  mt-2" type="radio" id="female" name="gender" value="0" formControlName="gender">
+              <label class="" for="female">Nữ</label><br>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 border-left ">
+          <div class="form-group col-lg-12">
+            <div class="file-field">
+              <label for="inputAvatar" class="sr-only">Ảnh </label>
+              <div class="mb-4" style="margin-left: 30%;">
+                <img src="{{url}}" alt="" style="width:60%;"
+                     class="rounded-circle z-depth-1-half avatar-pic">
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="button_outer">
+                  <div class="btn_upload">
+                    Thêm ảnh
+                    <input type="file" formControlName="avatar" id="inputAvatar"
+                           [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }"
+                           (change)="uploadFile($event.target.files)">
+                    <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
+                      <div *ngIf="f.avatar.errors.required">Không hợp lệ</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 form-group">
+        <button [disabled]="loading" class="btn btn-primary" style="margin-left: 50%;">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Cập Nhật
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

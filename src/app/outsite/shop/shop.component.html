@@ -87,11 +87,8 @@
             <!--widget newsletter-->
           </div>
           <h4 class="widget-title">Loại Cây</h4>
-          <div class="widget-desc">
-            <div *ngFor="let item of listCategory">
-              <input type="checkbox" id="terms" kendoCheckBox (click)="findTreeByCategoryId(item.id)"/>
-              <label class="k-checkbox-label" for="terms"> {{item.name}}</label>
-            </div>
+          <div class="widget-desc" *ngFor="let item of listCategory">
+            <h5 (click)="findTreeByCategoryId(item.id)">{{item.name}} </h5>
 
             <!-- Single Checkbox -->
             <!--            <div *ngFor="let item of listCategory"-->

@@ -31,10 +31,11 @@ import { EditComponent } from './seller/tree/edit/edit.component';
 import { CreateCategoryComponent } from './seller/category/create-category/create-category.component';
 import { DetailCategoryComponent } from './seller/category/detail-category/detail-category.component';
 import { EditCategoryComponent } from './seller/category/edit-category/edit-category.component';
+import { ProfileSellerComponent } from './seller/profile-seller/profile-seller.component';
 
 
 @NgModule({
-  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent, PayComponent, SellerComponent, TreeComponent, CategoryComponent, CreateComponent, DetailComponent, EditComponent, CreateCategoryComponent, DetailCategoryComponent, EditCategoryComponent,],
+  declarations: [OutsiteComponent, HomeComponent, AboutComponent, ContactComponent, BlogComponent, BlogDetailsComponent, ShopComponent, ShopDetailsComponent, PortfolioComponent, ShopCartComponent, CheckoutComponent, ShopSellerComponent, ProductModalComponent, UserComponent, ManageOrderComponent, ProfileUserComponent, NotificationUserComponent, WishlistComponent, PayComponent, SellerComponent, TreeComponent, CategoryComponent, CreateComponent, DetailComponent, EditComponent, CreateCategoryComponent, DetailCategoryComponent, EditCategoryComponent, ProfileSellerComponent,],
     imports: [
         CommonModule,
         OutsiteRoutingModule,
