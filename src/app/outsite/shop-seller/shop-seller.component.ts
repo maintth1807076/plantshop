@@ -5,7 +5,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {TreeService} from '../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {takeWhile} from 'rxjs/operators';
-
+declare let alertify : any;
 @Component({
   selector: 'app-shop-seller',
   templateUrl: './shop-seller.component.html',
@@ -32,12 +32,10 @@ export class ShopSellerComponent implements OnInit {
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
       this.url = this.user.avatar;
-      console.log(data);
     });
     this.service.getAllUser().subscribe(data => {
         //@ts-ignore
         this.users = data.datas ;
-        console.log(this.users);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -57,7 +55,6 @@ export class ShopSellerComponent implements OnInit {
 
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
-        console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log('Complete')
@@ -65,7 +62,6 @@ export class ShopSellerComponent implements OnInit {
   }
   getTree(id) {
     this.service.getTreeService(id).subscribe(data => {
-      console.log(data['data']);
       this.tree = data['data'];
       this.tree.user_id = this.id;
     });
@@ -76,7 +72,6 @@ export class ShopSellerComponent implements OnInit {
       .pipe(takeWhile(() => this.alive)).subscribe(data => {
         // @ts-ignore
         this.listTree = data.datas;
-        console.log(this.listTree);
       },
       (error) => console.log(error),
       () => console.log('Complete')
@@ -112,6 +107,8 @@ export class ShopSellerComponent implements OnInit {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('Thêm thành công!');
   }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {

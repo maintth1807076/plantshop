@@ -113,7 +113,7 @@
                       <div class="cart-image"><a href="#"><img src="{{item.product.image}}"></a></div>
                       <div class="cart-product-meta">
                         <a href="#">{{item.product.name}}</a>
-                        <span>{{item.quantity}} x {{item.product.price}}</span>
+                        <span>{{item.quantity}} x {{item.product.price | currency:' ':'symbol':'1.0-0'}}</span>
                       </div>
                       <div class="cart-item-remove">
                         <a (click)="remove(item.product.id)"><i class="icon-x"></i></a></div>
@@ -124,7 +124,7 @@
                         <span><strong>Tổng tiền </strong></span>
                       </div>
                       <div class="cart-total-prices">
-                        <span><strong>{{total}}<sup>đ</sup></strong></span>
+                        <span><strong>{{total | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></strong></span>
                       </div>
                     </div>
                     <div class="cart-buttons text-right">

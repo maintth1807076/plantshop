@@ -44,7 +44,6 @@ export class TreeComponent implements OnInit {
   loadData(): void {
     this.service.getAllTreeByUserId(this.id).subscribe(data => {
         this.listTree = data['datas'];
-        console.log(this.listTree);
       },
       (error) => console.log(error),
       () => console.log('Complete')

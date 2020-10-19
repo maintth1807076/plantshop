@@ -123,7 +123,7 @@
               <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
             </div>
             <div class="product-price">
-              <ins>{{item.price}}<sup>đ</sup></ins>
+              <ins>{{item.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></ins>
             </div>
 
             <div class="product-rate">
@@ -168,7 +168,7 @@
               <div class="product-overlay row ml-0">
                 <a href="/shop-details/{{item.id}}" class="col-6 border-right"><i
                   class="fa fa-eye btn-white"></i></a>
-                <a (click)="addToCart(item.id)" class="col-6"><i class="fa fa-shopping-bag"
+                <a (click)="addToCart(item.id)" id="cart" class="col-6"><i class="fa fa-shopping-bag"
                                                                  style="color: white;"></i></a>
               </div>
             </div>
@@ -186,7 +186,7 @@
                 <i class="fa fa-star-half-o"></i>
               </div>
               <div class="product-reviews pr-2" style="font-size: 20px; color: red">
-                <ins>{{item.price}}<sup>đ</sup></ins>
+                <ins>{{item.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></ins>
               </div>
             </div>
           </div>

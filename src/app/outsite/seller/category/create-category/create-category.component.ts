@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { TreeService } from 'src/app/tree.service';
 import {finalize} from 'rxjs/operators';
-
+declare let alertify : any;
 @Component({
   selector: 'app-create-category',
   templateUrl: './create-category.component.html',
@@ -43,15 +43,15 @@ export class CreateCategoryComponent implements OnInit {
 
     this.service.addCategory(data).subscribe(
       data => {
-        console.log(data);
         this.router.navigateByUrl('/seller/category');
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Thêm thành công!');
       },
       error => {
         this.loading = false;
       });
   }
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 

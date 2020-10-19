@@ -61,7 +61,7 @@
                     </div>
                     <br>
                     <div class="product-reviews pr-2" style="font-size: 20px; color: red">
-                      <ins>{{item.price}}<sup>đ</sup></ins>
+                      <ins>{{item.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></ins>
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@
                 <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
               </div>
               <div class="product-price">
-                <ins>{{item.price}}<sup>đ</sup></ins>
+                <ins>{{item.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></ins>
               </div>
 
               <div class="product-rate">

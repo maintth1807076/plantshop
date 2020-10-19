@@ -5,7 +5,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {TreeService} from '../../../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
-
+declare let alertify : any;
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -37,7 +37,6 @@ export class EditComponent implements OnInit {
       this.tree = data['data'];
       this.url = this.tree.image;
       this.urlDetail = this.tree.imageDetail;
-      console.log(data);
     });
 
     this.editForm = this.fb.group({
@@ -67,7 +66,6 @@ export class EditComponent implements OnInit {
         let category = data['data'];
         categoryList.push(category);
       })
-      console.log(categoryId);
       for (let i = 0; i < this.listCategory.length ; i++) {
         if ( this.listCategory[i].id == categoryId){
           categoryList.push(this.listCategory[i]);
@@ -87,14 +85,13 @@ export class EditComponent implements OnInit {
       'status': 1,
       'categoryList': categoryList,
     };
-    console.log(this.editForm.value);
     this.service.updateTree(this.id, data).subscribe(data => {
-      console.log('Post updated successfully!');
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('Thay đổi thành công!');
       this.router.navigateByUrl('/seller/tree');
     });
   }
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 
@@ -125,7 +122,6 @@ export class EditComponent implements OnInit {
       });
   }
   uploadFile1(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 
@@ -159,7 +155,6 @@ export class EditComponent implements OnInit {
 
     this.service.getAllCategory().subscribe((data) => {
         this.listCategory = data['datas'];
-        console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log('Complete')

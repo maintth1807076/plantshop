@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
 
     this.service.doRegister(data).subscribe(
     data => {
-      console.log(data);
       this.router.navigate([this.returnUrl]);
     },
     error => {
@@ -59,7 +58,6 @@ export class RegisterComponent implements OnInit {
   }
 
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 

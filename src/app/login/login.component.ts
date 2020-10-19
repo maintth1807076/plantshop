@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TreeService } from '../tree.service';
 import {stringify} from 'querystring';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -44,4 +43,5 @@ export class LoginComponent implements OnInit {
         this.loading = false;
     });
   }
+
 }
