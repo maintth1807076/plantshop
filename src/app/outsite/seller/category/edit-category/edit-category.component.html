@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-lg-7 center p-30 background-white b-r-6 mt-5 mb-5">
+    <div class="col-lg-12 m-t-10 mb-4 text-center">
+      <h3>Chỉnh sửa danh mục</h3>
+    </div>
+    <form [formGroup]="editCategoryForm" (ngSubmit)="editCategory()">
+      <div class="col-lg-12 form-group ">
+        <label for="inputName">Tên Danh mục <span class="text-danger">*</span></label>
+        <input type="text" formControlName="name" id="inputName" class="form-control"
+               [(ngModel)]="category.name"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">không hợp lệ</div>
+        </div>
+      </div>
+      <div class="col-lg-12 form-group ">
+        <label for="inputDescription">Mô tả <span class="text-danger">*</span></label>
+        <textarea name="textarea" formControlName="description" id="inputDescription" class="form-control"
+                  [(ngModel)]="category.description"  [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">Không hợp lệ</div>
+        </div>
+      </div>
+      <div class="col-lg-12 form-group ">
+        <div class="file-field">
+          <label for="inputImage" class="sr-only">Ảnh </label>
+          <div class="mb-4" style="margin-left: 30%;">
+            <img src="{{url}}" alt="" style="width:60%;">
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="button_outer">
+              <div class="btn_upload">
+                Thêm ảnh
+                <input type="file" formControlName="image" id="inputImage"
+                       [ngClass]="{ 'is-invalid': submitted && f.image.errors }"
+                       (change)="uploadFile($event.target.files)">
+                <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                  <div *ngIf="f.image.errors.required">Không hợp lệ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 form-group mt-5">
+        <div class="row">
+          <div class="col-6">
+            <button [disabled]="loading" class="btn btn-primary" style="width: 100%;">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Tạo mới
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-danger " style="width: 100%;" routerLink="/seller/category">Quay lại
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

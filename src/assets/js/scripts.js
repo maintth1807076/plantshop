@@ -47,3 +47,4 @@ $.fn.select2.amd.require([
     return $state;
   };
 });
+

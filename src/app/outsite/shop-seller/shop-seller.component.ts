@@ -17,9 +17,11 @@ export class ShopSellerComponent implements OnInit {
   submitted = false;
   user: any = {};
   url: string;
+  tree: any = {};
   p: any;
   listCategory: any[];
   listTree: any[];
+  users: any[];
   alive: boolean = true;
   constructor(private storage: AngularFireStorage, private fb: FormBuilder, private service: TreeService, private router: Router, private route: ActivatedRoute) {
   }
@@ -32,8 +34,24 @@ export class ShopSellerComponent implements OnInit {
       this.url = this.user.avatar;
       console.log(data);
     });
+    this.service.getAllUser().subscribe(data => {
+        //@ts-ignore
+        this.users = data.datas ;
+        console.log(this.users);
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
     this.getCategory();
     this.loadData();
+  }
+  getUserShopName(id): string {
+    for (let i = 0; i < this.users.length; i++) {
+      if(this.users[i].id == id){
+        return this.users[i].shopName;
+      }
+    }
+    return 'lỗi';
   }
   getCategory(): void {
 
@@ -44,6 +62,13 @@ export class ShopSellerComponent implements OnInit {
       (error) => console.log(error),
       () => console.log('Complete')
     );
+  }
+  getTree(id) {
+    this.service.getTreeService(id).subscribe(data => {
+      console.log(data['data']);
+      this.tree = data['data'];
+      this.tree.user_id = this.id;
+    });
   }
   loadData(): void {
 

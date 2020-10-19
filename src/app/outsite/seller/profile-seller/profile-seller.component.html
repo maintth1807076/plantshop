@@ -36,6 +36,46 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputPhone">Số điện thoại <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="phone" id="inputPhone" class="form-control col-lg-7"
+                     [(ngModel)]="user.phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" pattern="^\d{4}-\d{3}-\d{3}$">
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputIdentityCardNumber">Số thẻ căn cước<span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="identityCardNumber" id="inputIdentityCardNumber" class="form-control col-lg-7"
+                     [(ngModel)]="user.identityCardNumber"  [ngClass]="{ 'is-invalid': submitted && f.identityCardNumber.errors }">
+              <div *ngIf="submitted && f.identityCardNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.identityCardNumber.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-3 mt-2" for="inputBankName">Tên ngân hàng <span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="bankName" id="inputBankName" class="form-control col-lg-7"
+                     [(ngModel)]="user.bankName"  [ngClass]="{ 'is-invalid': submitted && f.bankName.errors }">
+              <div *ngIf="submitted && f.bankName.errors" class="invalid-feedback">
+                <div *ngIf="f.bankName.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 form-group mt-2">
+            <div class="row">
+              <label class="col-lg-4 mt-2" for="inputBankAccountNumber">Số tài khoản ngân hàng<span class="text-danger">*</span> :</label>
+              <input type="text" formControlName="bankAccountNumber" id="inputBankAccountNumber" class="form-control col-lg-6"
+                     [(ngModel)]="user.bankAccountNumber"  [ngClass]="{ 'is-invalid': submitted && f.bankAccountNumber.errors }">
+              <div *ngIf="submitted && f.bankAccountNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.bankAccountNumber.errors.required">Không hợp lệ</div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-12  form-group mt-2">
             <div class="row">
               <label class="col-lg-3 mt-2">Giới tính : <span class="text-danger">*</span></label>
@@ -85,3 +125,4 @@
     </form>
   </div>
 </div>
+

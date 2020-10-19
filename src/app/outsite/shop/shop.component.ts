@@ -17,7 +17,6 @@ export class ShopComponent implements OnInit {
   listCategory: any[];
   items: any[];
   totalPrice: number;
-
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
 
   }
@@ -93,4 +92,5 @@ export class ShopComponent implements OnInit {
     this.listTree = arr;
     console.log(arr)
   }
+
 }

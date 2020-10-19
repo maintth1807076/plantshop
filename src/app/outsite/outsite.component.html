@@ -2,267 +2,276 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="author" content="INSPIRO"/>
-    <meta name="description" content="Plants shop">
-    <link rel="icon" type="image/png" href="../../assets/img/banner-2.jpg">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Document title -->
-    <title>Plants shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="author" content="INSPIRO"/>
+  <meta name="description" content="Plants shop">
+  <link rel="icon" type="image/png" href="../../assets/img/banner-2.jpg">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Document title -->
+  <title>Plants shop</title>
 
 </head>
 <body class="modern">
 
-    <!-- Body Inner -->
-    <div class="body-inner">
+<!-- Body Inner -->
+<div class="body-inner">
 
 
-        <div id="topbar" class="d-none d-xl-block d-lg-block topbar-fullwidth">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 pt-1">
-                        <ul class="top-menu">
-                            <li class="border-right pr-2"><a href="/seller/tree">Kênh người bán</a></li>
-                            <li class="ml-3"><a href="/contact">hotline: 09546477</a></li>
+  <div id="topbar" class="d-none d-xl-block d-lg-block topbar-fullwidth">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 pt-1">
+          <ul class="top-menu">
+            <li class="border-right pr-2"><a href="/seller/tree">Kênh người bán</a></li>
+            <li class="ml-3"><a href="/contact">hotline: 09546477</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-2 pt-1" >
-                        <ul class="top-menu p-l-40 " *ngIf="!checkLogin">
-                            <li ><a href="/login">Đăng nhập</a></li>
-                            <li><a href="/register">Đăng kí</a></li>
-                        </ul>
-                      <ul class="top-menu p-l-70 " *ngIf="checkLogin">
-                        <li class="pr-3" >
-                          <div class="p-dropdown" >
-                            <img class="rounded-circle mr-1" src="{{url}}" style="width:28%;"> <span>{{user.fullName}}</span>
-                            <div class="p-dropdown-content">
-                              <div class="widget-myaccount">
-                                <ul class="text-center">
-                                  <li><a href="/user/profile"><i class="icon-user"></i>Tài khoản của tôi</a>
-                                  </li>
-                                  <li><a (click)="logout()" ><i class="icon-log-out"></i>Đăng xuất</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-1 pt-1">
-                        <ul class="top-menu ">
-
-                            <li>
-                                <div class="p-dropdown">
-                                    <a href="#"><i class="icon-globe"></i><span>EN</span></a>
-                                    <ul class="p-dropdown-content">
-                                        <li><a href="#">French</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">English</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
+          </ul>
         </div>
-        <!-- Header -->
-        <header id="header" data-fullwidth="true">
-            <div class="header-inner">
-                <div class="container">
-                    <!--Logo-->
-                    <div id="logo">
-                        <a href="/home">
-
-                            <span class="logo-default"> <img src="../../assets/img/logo.png" alt="" style="width: 70%;"></span>
-                            <!-- <span class="logo-dark">CACTI</span> -->
-                        </a>
+        <div class="col-md-3"></div>
+        <div class="col-md-2 pt-1" >
+          <ul class="top-menu p-l-40 " *ngIf="!checkLogin">
+            <li><a href="/login">Đăng nhập</a></li>
+            <li><a href="/register">Đăng kí</a></li>
+          </ul>
+          <ul class="top-menu float-right" *ngIf="checkLogin">
+            <li class="">
+              <div class="p-dropdown">
+                <img class="avatar " src="{{url}}">
+                <div class="p-dropdown-content">
+                  <div class="widget-myaccount">
+                    <div class="d-block">
+                      <img class="avatar avatar-lg" src="{{url}}">
                     </div>
-                    <!--End: Logo-->
-                    <!-- Search -->
-                    <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
-                            class="icon-x"></i></a>
-                        <form class="search-form" action="search-results-page.html" method="get" ngNoForm>
-                            <input class="form-control" name="q" type="text" placeholder="Tìm kiếm..."/>
-                            <!-- <span class="text-muted"> </span> -->
-                        </form>
-                    </div>
-                    <!-- end: search -->
-                    <div class="header-extras m-l-15">
-                        <ul>
-                            <li class="ml-1">
-                                <a id="btn-search" href="#"> <i class="icon-search"></i></a>
-                            </li>
-                            <li class="ml-2 mr-3">
-                                <div class="p-dropdown">
-                                    <a><i class="icon-shopping-cart"></i></a>
-                                    <div class="p-dropdown-content">
-                                        <div class="widget-mycart">
-                                            <h4>My Cart</h4>
-                                            <div class="cart-item" *ngFor="let item of items">
-                                                <div class="cart-image"> <a href="#"><img src="{{item.product.image}}"></a></div>
-                                                <div class="cart-product-meta">
-                                                    <a href="#">{{item.product.name}}</a>
-                                                    <span>{{item.quantity}} x {{item.product.price}}</span>
-                                                </div>
-                                                <div class="cart-item-remove">
-                                                    <a (click)="remove(item.product.id)"><i class="icon-x"></i></a></div>
-                                            </div>
-                                            <hr>
-                                            <div class="cart-total">
-                                                <div class="cart-total-labels">
-                                                    <span><strong>Tổng tiền </strong></span>
-                                                </div>
-                                                <div class="cart-total-prices">
-                                                    <span><strong >{{total}}đ.</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="cart-buttons text-right">
-                                                <button class="btn btn-xs" ><a href="/shop-cart" style="color: white">Xem giỏ hàng</a></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!--Navigation Resposnive Trigger-->
-                    <div id="mainMenu-trigger">
-                        <a class="lines-button x"><span class="lines"></span></a>
-                    </div>
-                    <!--end: Navigation Resposnive Trigger-->
-                    <!--Navigation-->
-                    <div id="mainMenu">
-                        <div class="container">
-                            <nav>
-                                <ul>
-                                    <li class="dropdown"><a href="/shop">Cây cảnh</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="">Cây nội thất</a></li>
-                                            <li><a href="#">Cây ngoại thất</a></li>
-                                            <li><a href="#">Sen đá</a></li>
-                                            <li><a href="#">Xương rồng</a></li>
-                                            <li><a href="#">Cây ban công</a></li>
-                                            <li><a href="#">Cây văn phòng</a></li>
-                                            <li><a href="#">Cây để bàn</a></li>
-                                            <li><a href="#">Cây thủy sinh</a></li>
-                                            <li><a href="#">Cây dây leo</a></li>
-                                        </ul>
-                                    </li>
-                                    <li ><a href="/blog">Blog</a></li>
-                                    <li ><a href="/about">Giới thiệu</a></li>
-                                    <li ><a href="/contact">Liên hệ</a></li>
-
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <!--END: NAVIGATION-->
+                    <span>{{user.fullName}}</span>
+                    <ul class="text-center">
+                      <li><a href="/user/profile"><i class="icon-user"></i>Tài khoản của tôi</a>
+                      </li>
+                      <li><a (click)="logout()"><i class="icon-log-out"></i>Đăng xuất</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-            </div>
-        </header>
-        <!-- end: Header -->
-
-         <router-outlet></router-outlet>
-
-     <!-- Footer -->
-     <footer id="footer">
-        <div class="footer-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4  col-lg-2 col-md-4">
-                        <!-- Footer widget area 1 -->
-                        <div class="widget  widget-contact-us" style="background-image: url('../../assets/img/world-map-dark.png'); background-position: 50% 20px; background-repeat: no-repeat">
-                            <h4>Liên hệ</h4>
-                            <ul class="list-icon">
-                                <li><i class="fa fa-map-marker-alt"></i> Số 8 Tôn Thất Thuyết<br>
-                                   Mỹ Đình, Hà Nội</li>
-                                <li><i class="fa fa-phone"></i> (123) 456-7890 </li>
-                                <li><i class="far fa-envelope"></i> <a href="mailto:first.last@example.com">plants@gmail.com</a> </li>
-                            </ul>
-                        </div>
-                        <!-- end: Footer widget area 1 -->
-                    </div>
-
-                    <div class="col-xl-2 col-lg-2 col-md-4">
-                        <!-- Footer widget area 1 -->
-                        <div class="widget">
-                            <h4>Về chúng tôi</h4>
-                            <p>Chúng tôi chuyên cung cấp các loại cây văn phòng, cây để bàn, cây phong thủy, cây nội thất,...</p>
-                        </div>
-                        <!-- end: Footer widget area 1 -->
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-4">
-                        <!-- Footer widget area 2 -->
-
-                        <!-- end: Footer widget area 2 -->
-                    </div>
-
-
-
-                    <div class="col-lg-4">
-                        <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post" ngNoForm>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                                </div>
-                                <input type="text" aria-required="true" name="widget-contact-form-name" class="form-control required name" placeholder="Tên">
-                            </div>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon"><i class="fa fa-envelope"></i></span>
-                                </div>
-                                <input type="email" aria-required="true" required name="widget-contact-form-email" class="form-control required email" placeholder="Email">
-                            </div>
-                            <div class="form-group mb-2">
-                                <textarea type="text" name="widget-contact-form-message" rows="5" class="form-control required" ></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Gửi</button>
-                            </div>
-                        </form>
-
-                    </div>
-
-
-                </div>
-            </div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="copyright-content">
-            <div class="container">
+        <div class="col-md-1 pt-1">
+          <ul class="top-menu ">
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Social icons -->
-                        <div class="social-icons social-icons-colored float-left">
-                            <ul>
-                                <li class="social-rss"><a href="#"><i class="fa fa-rss"></i></a></li>
-                                <li class="social-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="social-twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="social-vimeo"><a href="#"><i class="fab fa-vimeo"></i></a></li>
-                                <li class="social-youtube"><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li class="social-pinterest"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                <li class="social-gplus"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- end: Social icons -->
-                    </div>
-
-                    <div class="col-lg-6">
-                  <p>© 2020 Cactus shop. Tất cả các quyền được bảo lưu.</p>
-                    </div>
-                </div>
-            </div>
+            <li>
+              <div class="p-dropdown">
+                <a href="#"><i class="icon-globe"></i><span>EN</span></a>
+                <ul class="p-dropdown-content">
+                  <li><a href="#">French</a></li>
+                  <li><a href="#">Spanish</a></li>
+                  <li><a href="#">English</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
-    </footer>
-    <!-- end: Footer -->
+
+
+      </div>
+    </div>
+  </div>
+  <!-- Header -->
+  <header id="header" data-fullwidth="true">
+    <div class="header-inner">
+      <div class="container">
+        <!--Logo-->
+        <div id="logo">
+          <a href="/home">
+
+            <span class="logo-default"> <img src="../../assets/img/logo.png" alt="" style="width: 70%;"></span>
+            <!-- <span class="logo-dark">CACTI</span> -->
+          </a>
+        </div>
+        <!--End: Logo-->
+        <!-- Search -->
+        <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i
+          class="icon-x"></i></a>
+          <form class="search-form" action="search-results-page.html" method="get" ngNoForm>
+            <input class="form-control" name="q" type="text" placeholder="Tìm kiếm..."/>
+            <!-- <span class="text-muted"> </span> -->
+          </form>
+        </div>
+        <!-- end: search -->
+        <div class="header-extras m-l-15">
+          <ul>
+            <li class="ml-1">
+              <a id="btn-search" href="#"> <i class="icon-search"></i></a>
+            </li>
+            <li class="ml-2 mr-3">
+              <div class="p-dropdown">
+                <a><i class="icon-shopping-cart"></i></a>
+                <div class="p-dropdown-content">
+                  <div class="widget-mycart">
+                    <h4>My Cart</h4>
+                    <div class="cart-item" *ngFor="let item of items">
+                      <div class="cart-image"><a href="#"><img src="{{item.product.image}}"></a></div>
+                      <div class="cart-product-meta">
+                        <a href="#">{{item.product.name}}</a>
+                        <span>{{item.quantity}} x {{item.product.price}}</span>
+                      </div>
+                      <div class="cart-item-remove">
+                        <a (click)="remove(item.product.id)"><i class="icon-x"></i></a></div>
+                    </div>
+                    <hr>
+                    <div class="cart-total">
+                      <div class="cart-total-labels">
+                        <span><strong>Tổng tiền </strong></span>
+                      </div>
+                      <div class="cart-total-prices">
+                        <span><strong>{{total}}<sup>đ</sup></strong></span>
+                      </div>
+                    </div>
+                    <div class="cart-buttons text-right">
+                      <button class="btn btn-xs"><a href="/shop-cart" style="color: white">Xem giỏ hàng</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        <!--Navigation Resposnive Trigger-->
+        <div id="mainMenu-trigger">
+          <a class="lines-button x"><span class="lines"></span></a>
+        </div>
+        <!--end: Navigation Resposnive Trigger-->
+        <!--Navigation-->
+        <div id="mainMenu">
+          <div class="container">
+            <nav>
+              <ul>
+                <li class="dropdown"><a href="/shop">Cây cảnh</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">Cây nội thất</a></li>
+                    <li><a href="#">Cây ngoại thất</a></li>
+                    <li><a href="#">Sen đá</a></li>
+                    <li><a href="#">Xương rồng</a></li>
+                    <li><a href="#">Cây ban công</a></li>
+                    <li><a href="#">Cây văn phòng</a></li>
+                    <li><a href="#">Cây để bàn</a></li>
+                    <li><a href="#">Cây thủy sinh</a></li>
+                    <li><a href="#">Cây dây leo</a></li>
+                  </ul>
+                </li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">Giới thiệu</a></li>
+                <li><a href="/contact">Liên hệ</a></li>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!--END: NAVIGATION-->
+      </div>
+    </div>
+  </header>
+  <!-- end: Header -->
+
+  <router-outlet></router-outlet>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4  col-lg-2 col-md-4">
+            <!-- Footer widget area 1 -->
+            <div class="widget  widget-contact-us"
+                 style="background-image: url('../../assets/img/world-map-dark.png'); background-position: 50% 20px; background-repeat: no-repeat">
+              <h4>Liên hệ</h4>
+              <ul class="list-icon">
+                <li><i class="fa fa-map-marker-alt"></i> Số 8 Tôn Thất Thuyết<br>
+                  Mỹ Đình, Hà Nội
+                </li>
+                <li><i class="fa fa-phone"></i> (123) 456-7890</li>
+                <li><i class="far fa-envelope"></i> <a href="mailto:first.last@example.com">plants@gmail.com</a></li>
+              </ul>
+            </div>
+            <!-- end: Footer widget area 1 -->
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-4">
+            <!-- Footer widget area 1 -->
+            <div class="widget">
+              <h4>Về chúng tôi</h4>
+              <p>Chúng tôi chuyên cung cấp các loại cây văn phòng, cây để bàn, cây phong thủy, cây nội thất,...</p>
+            </div>
+            <!-- end: Footer widget area 1 -->
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-4">
+            <!-- Footer widget area 2 -->
+
+            <!-- end: Footer widget area 2 -->
+          </div>
+
+
+          <div class="col-lg-4">
+            <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post"
+                  ngNoForm>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" aria-required="true" name="widget-contact-form-name"
+                       class="form-control required name" placeholder="Tên">
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" aria-required="true" required name="widget-contact-form-email"
+                       class="form-control required email" placeholder="Email">
+              </div>
+              <div class="form-group mb-2">
+                <textarea type="text" name="widget-contact-form-message" rows="5"
+                          class="form-control required"></textarea>
+              </div>
+              <div class="form-group">
+                <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Gửi</button>
+              </div>
+            </form>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright-content">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Social icons -->
+            <div class="social-icons social-icons-colored float-left">
+              <ul>
+                <li class="social-rss"><a href="#"><i class="fa fa-rss"></i></a></li>
+                <li class="social-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="social-twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="social-vimeo"><a href="#"><i class="fab fa-vimeo"></i></a></li>
+                <li class="social-youtube"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                <li class="social-pinterest"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                <li class="social-gplus"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+              </ul>
+            </div>
+            <!-- end: Social icons -->
+          </div>
+
+          <div class="col-lg-6">
+            <p>© 2020 Cactus shop. Tất cả các quyền được bảo lưu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end: Footer -->
 </div>
 <!-- end: Body Inner -->
 

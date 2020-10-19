@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFireStorage} from '@angular/fire/storage';
@@ -7,11 +7,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-profile-user',
-  templateUrl: './profile-user.component.html',
-  styleUrls: ['./profile-user.component.css']
+  selector: 'app-profile-seller',
+  templateUrl: './profile-seller.component.html',
+  styleUrls: ['./profile-seller.component.css']
 })
-export class ProfileUserComponent implements OnInit {
+export class ProfileSellerComponent implements OnInit {
 
   downloadURL: Observable<string>;
   id: any;
@@ -39,6 +39,10 @@ export class ProfileUserComponent implements OnInit {
       avatar: ['', Validators.required],
       gender: ['', Validators.required],
       shopName: ['', Validators.required],
+      phone: ['', Validators.required],
+      bankAccountNumber: ['', Validators.required],
+      identityCardNumber: ['', Validators.required],
+      bankName: ['', Validators.required],
     });
   }
   get f(){
@@ -58,11 +62,10 @@ export class ProfileUserComponent implements OnInit {
       'avatar': this.url,
       'gender':this.f.gender.value,
       'shopName':this.f.shopName.value,
-      'phone': this.user['phone'],
-      'identityCardNumber': this.user['identityCardNumber'],
-      'bankAccountNumber': this.user['bankAccountNumber'],
-      'bankName': this.user['bankName'],
-      'paymentMethod': this.user['paymentMethod'],
+      'phone':this.f.phone.value,
+      'bankAccountNumber':this.f.bankAccountNumber.value,
+      'identityCardNumber':this.f.identityCardNumber.value,
+      'bankName':this.f.bankName.value,
 
     }
     console.log(this.updateForm.value);
@@ -73,7 +76,7 @@ export class ProfileUserComponent implements OnInit {
       },
       (error) => console.log(error),
       () => {
-       this.loading = false;
+        this.loading = false;
         console.log('Complete')}
     );
   }

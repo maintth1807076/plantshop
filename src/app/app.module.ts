@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { SellerComponent } from './seller/seller.component';
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
@@ -18,7 +17,6 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SellerComponent,
 
   ],
   imports: [
