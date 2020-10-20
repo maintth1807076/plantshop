@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TreeService } from 'src/app/tree.service';
-
+declare let alertify : any;
 @Component({
   selector: 'app-shop-details',
   templateUrl: './shop-details.component.html',
@@ -25,7 +25,6 @@ export class ShopDetailsComponent implements OnInit {
     this.service.getAllUser().subscribe(data => {
         //@ts-ignore
         this.user = data.datas ;
-        console.log(this.user);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -37,7 +36,6 @@ this.loadData();
     this.service.getAllTree().subscribe(data => {
         //@ts-ignore
         this.listTree = data.datas ;
-        console.log(this.listTree);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -45,7 +43,6 @@ this.loadData();
   }
   getTree(id) {
     this.service.getTreeService(id).subscribe(data => {
-      console.log(data['data']);
       this.tree = data['data'];
       this.tree.user_id = this.id;
     });
@@ -97,7 +94,8 @@ this.loadData();
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
-    alert("Them cay thanh cong!");
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('Thêm thành công!');
   }
 
 }

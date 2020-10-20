@@ -5,7 +5,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {TreeService} from '../../../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-
+declare let alertify : any;
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -27,7 +27,6 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
     this.id = user['id'];
-    console.log(this.id);
     this.loadData();
     this.createForm = this.fb.group({
       name: ['', Validators.required],
@@ -62,7 +61,6 @@ export class CreateComponent implements OnInit {
         }
       }
     }
-    console.log(categoryList);
     let data = {
       'userId':this.id,
       'name': this.f.name.value,
@@ -75,18 +73,18 @@ export class CreateComponent implements OnInit {
       'status': 1,
       'categoryList': categoryList,
     };
-    console.log(data);
     this.service.addTree(data).subscribe(
       data => {
-        console.log(data);
-        this.router.navigateByUrl('/seller/tree');
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Thêm thành công!');
+        this.router.navigateByUrl('/seller/tree')
+
       },
       error => {
         this.loading = false;
       });
   }
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 
@@ -117,7 +115,6 @@ export class CreateComponent implements OnInit {
       });
   }
   uploadFile1(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 
@@ -151,7 +148,6 @@ export class CreateComponent implements OnInit {
 
     this.service.getAllCategory().subscribe((data) => {
         this.listCategory = data['datas'];
-        console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log('Complete')

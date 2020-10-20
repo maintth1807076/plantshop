@@ -20,7 +20,7 @@
               <div class="cart-product-thumbnail-name">{{item.product.name}}</div>
             </td>
             <td class="cart-product-price">
-              <span class="amount">{{item.product.price}}đ</span>
+              <span class="amount">{{item.product.price | currency:' ':'symbol':'1.0-0'}}đ</span>
             </td>
             <td class="cart-product-quantity">
               <div class="quantity">
@@ -28,7 +28,7 @@
               </div>
             </td>
             <td class="cart-product-description">
-              <p>{{item.product.price * item.quantity}}đ
+              <p>{{item.product.price * item.quantity | currency:' ':'symbol':'1.0-0'}}đ
               </p>
             </td>
           </tr>
@@ -73,7 +73,7 @@
                     <strong>Tổng tiền :</strong>
                   </td>
                   <td class="cart-product-name text-right">
-                    <span class="amount color lead"><h4><strong>{{total}}<sup>đ</sup></strong></h4></span>
+                    <span class="amount color lead"><h4><strong>{{total | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></strong></h4></span>
                   </td>
                 </tr>
                 </tbody>

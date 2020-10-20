@@ -31,7 +31,6 @@ export class OutsiteComponent implements OnInit {
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
       this.url = this.user.avatar;
-      console.log(data);
     });
     this.loadCart();
   }
@@ -39,6 +38,7 @@ export class OutsiteComponent implements OnInit {
   async ngAfterViewInit() {
     await this.loadScript('/assets/js/jquery.js');
     await this.loadScript('/assets/js/plugins.js');
+    await this.loadScript('/assets/js/alertify.min.js');
     await this.loadScript('/assets/js/functions.js');
     await this.loadScript('/assets/plugins/range-slider/rangeslider.js');
     await this.loadScript('/assets/js/custom.js');
@@ -69,7 +69,6 @@ export class OutsiteComponent implements OnInit {
         this.total += item.product.price * item.quantity;
       }
     }
-    console.log(this.items);
   }
 
   remove(id: string): void {
@@ -84,12 +83,10 @@ export class OutsiteComponent implements OnInit {
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     this.loadCart();
-    console.log(this.items);
   }
 
   logout() {
     this.service.doLogout().subscribe(data => {
-        console.log(data['data']);
       },
       (error) => console.log(error),
       () => {

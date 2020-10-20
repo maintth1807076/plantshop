@@ -5,7 +5,7 @@ import {TreeService} from '../../../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-
+declare let alertify : any;
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -30,7 +30,6 @@ export class EditCategoryComponent implements OnInit {
     this.service.getCategory(this.id).subscribe(data => {
       this.category = data['data'];
       this.url = this.category.image;
-      console.log(data);
     });
 
     this.editCategoryForm = this.fb.group({
@@ -56,14 +55,13 @@ export class EditCategoryComponent implements OnInit {
       'description':this.f.description.value,
 
     }
-    console.log(this.editCategoryForm.value);
     this.service.updateCategory(this.id, data).subscribe(data => {
-      console.log('Post updated successfully!');
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('Thay đổi thành công!');
       this.router.navigateByUrl('/seller/category');
     });
   }
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 

@@ -42,7 +42,6 @@ export class CategoryComponent implements OnInit {
 
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
-        console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log('Complete')

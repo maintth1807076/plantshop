@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient,  HttpHeaders} from '@angular/common/http';
-import {TreeService} from '../../tree.service'
-import { ProductModalComponent } from '../product-modal/product-modal.component';
+import {TreeService} from '../../tree.service';
 import { from } from 'rxjs';
 import {Router} from '@angular/router';
+declare let alertify : any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
     this.service.getAllCategory().subscribe(data => {
         //@ts-ignore
         this.listCategory = data.datas ;
-        console.log(this.listCategory);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -41,7 +40,6 @@ export class HomeComponent implements OnInit {
     this.service.getAllTree().subscribe(data => {
         //@ts-ignore
         this.listTree = data.datas ;
-        console.log(this.listTree);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -78,6 +76,8 @@ export class HomeComponent implements OnInit {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('Thêm thành công!');
   }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {

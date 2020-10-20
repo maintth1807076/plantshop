@@ -5,7 +5,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {TreeService} from '../../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {finalize} from 'rxjs/operators';
-
+declare let alertify : any;
 @Component({
   selector: 'app-profile-user',
   templateUrl: './profile-user.component.html',
@@ -30,7 +30,6 @@ export class ProfileUserComponent implements OnInit {
     this.service.getUser(this.id).subscribe(data => {
       this.user = data['data'];
       this.url = this.user.avatar;
-      console.log(data);
     });
 
     this.updateForm = this.fb.group({
@@ -65,11 +64,9 @@ export class ProfileUserComponent implements OnInit {
       'paymentMethod': this.user['paymentMethod'],
 
     }
-    console.log(this.updateForm.value);
-    console.log(this.url);
     this.service.updateUser(this.id, data).subscribe(data=> {
-        console.log('Post updated successfully!');
-        alert('cập nhật thông tin thành công!')
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Cập nhật thành công!');
       },
       (error) => console.log(error),
       () => {
@@ -78,7 +75,6 @@ export class ProfileUserComponent implements OnInit {
     );
   }
   uploadFile(event : FileList) {
-    console.log(event);
     // The File object
     const file = event.item(0)
 

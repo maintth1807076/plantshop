@@ -39,7 +39,7 @@
             </div>
             <div class="seperator m-t-10 m-b-5"></div>
             <div><h2 class="text-red"><b style="font-size: 16px; color: #484848; margin-right: 5%;">Giá
-              :</b>{{tree.price}}<sup>đ</sup></h2>
+              :</b>{{tree.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></h2>
             </div>
             <div class="seperator mb-3"></div>
             <p class="overflow-auto" style="height: 160px;">{{tree.description}}</p>
@@ -247,7 +247,7 @@
                 <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
               </div>
               <div class="product-price">
-                <ins>{{item.price}}</ins>
+                <ins>{{item.price | currency:' ':'symbol':'1.0-0'}} <sup>đ</sup></ins>
               </div>
 
               <div class="product-rate">

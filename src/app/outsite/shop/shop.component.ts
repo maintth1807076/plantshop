@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import $ from 'jquery'
+import $ from 'jquery';
 import {HttpClient,  HttpHeaders} from '@angular/common/http';
 import {TreeService} from '../../tree.service'
 import { Router } from '@angular/router';
+declare let alertify : any;
 
 @Component({
   selector: 'app-shop',
@@ -50,6 +51,7 @@ export class ShopComponent implements OnInit {
       let cart: any = [];
       cart.push(JSON.stringify(item));
       localStorage.setItem('cart', JSON.stringify(cart));
+
     } else {
       let cart: any = JSON.parse(localStorage.getItem('cart'));
       let index: number = -1;
@@ -70,7 +72,8 @@ export class ShopComponent implements OnInit {
         localStorage.setItem("cart", JSON.stringify(cart));
       }
     }
-    alert("Them cay thanh cong!");
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('Thêm thành công!');
   }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {
