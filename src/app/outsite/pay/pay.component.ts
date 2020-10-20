@@ -3,7 +3,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TreeService} from '../../tree.service';
 import {ActivatedRoute, Router} from '@angular/router';
-
+declare let alertify : any;
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
@@ -79,24 +79,28 @@ export class PayComponent implements OnInit {
     this.submitted = true;
     if (this.orderForm.invalid) {
       return; }
-    let orderDetails = Array.from(map.values())
-    for (let i = 0; i < orderDetails.length; i++) {
+    for (let entry of Array.from(map.entries())) {
+      let key = entry[0];
+      let value = entry[1];
       let data = {
         "shipAddress": this.f.shipAddress.value,
         "shipPhone": this.f.shipPhone.value,
-        "orderDetails": orderDetails[i],
-        "user_id": this.id,
+        "orderDetails": value,
+        "userId": this.id,
+        "sellerId": key
       }
       this.service.addOrder(data).subscribe((data) => {
-          console.log(data);
           this.order = data;
         },
         (error) => console.log(error),
         () => {
           this.loading = true;
-          console.log('Complete')}
+         }
       );
     }
+    localStorage.removeItem('cart');
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('Đặt hàng thành công!');
   }
   // saveOrder() {
   //   let cart = JSON.parse(localStorage.getItem('cart'));
