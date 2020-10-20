@@ -29,6 +29,7 @@ import {CreateCategoryComponent} from './seller/category/create-category/create-
 import {DetailCategoryComponent} from './seller/category/detail-category/detail-category.component';
 import {EditCategoryComponent} from './seller/category/edit-category/edit-category.component';
 import {ProfileSellerComponent} from './seller/profile-seller/profile-seller.component';
+import {OrderComponent} from './seller/order/order.component';
 
 const routes: Routes = [
   {
@@ -100,6 +101,10 @@ const routes: Routes = [
           {
             path: 'profile',
             component: ProfileSellerComponent,
+          },
+          {
+            path: 'order',
+            component: OrderComponent,
           },
           {
             path: 'tree',

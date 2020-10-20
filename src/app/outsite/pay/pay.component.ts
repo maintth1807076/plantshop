@@ -91,6 +91,7 @@ export class PayComponent implements OnInit {
       }
       this.service.addOrder(data).subscribe((data) => {
           this.order = data;
+          console.log(data);
         },
         (error) => console.log(error),
         () => {
@@ -99,6 +100,7 @@ export class PayComponent implements OnInit {
       );
     }
     localStorage.removeItem('cart');
+    location.href = '/checkout';
     alertify.set('notifier','position', 'top-right');
     alertify.success('Đặt hàng thành công!');
   }
