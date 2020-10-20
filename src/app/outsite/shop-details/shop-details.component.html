@@ -53,15 +53,15 @@
       </div>
     </div>
   </div>
-    <div class="container-wide  ">
+  <div class="container-wide  ">
     <div class="mb-3 background-grey">
       <div class="row container-wide">
         <div class="col-lg-4 mt-4">
           <div class="widget row "
                style="background-image: url('../../../assets/img/banner-2.jpg'); height: 150px; border-radius: 10px; ">
             <div class="bg-overlay" style="border-radius: 10px;"></div>
-            <div >
-              <img  class="avatar avatar-lg mt-2" src="{{url}}" alt=""
+            <div>
+              <img class="avatar avatar-lg mt-2" src="{{url}}" alt=""
                    style=" margin-left: 40px;" *ngIf="getUserShopImage(tree.userId)">
             </div>
             <div class="col-8">
@@ -244,7 +244,7 @@
             <div class="product-description">
               <div class="product-category">{{item.category}}</div>
               <div class="product-title">
-                <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
+                <h3><a href="/shop-details/{{item.id}}" class="name">{{item.name}}</a></h3>
               </div>
               <div class="product-price">
                 <ins>{{item.price | currency:' ':'symbol':'1.0-0'}} <sup>đ</sup></ins>
