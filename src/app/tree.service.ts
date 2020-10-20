@@ -40,7 +40,10 @@ export class TreeService {
   getAllTreeByUserId(userId) {
     return this.http.get(this.apiServer + '/trees/findTreeByUser/' + userId, this.options);
   }
+  getTreeByCategoryId(categoryId) {
 
+    return this.http.get(this.apiServer + '/trees/findTreeByCategory/' + categoryId, this.options);
+  }
   getTreeService(id) {
     return this.http.get(this.apiServer + '/trees/' + id, this.options);
   }
@@ -76,6 +79,9 @@ export class TreeService {
   addOrder(data) {
     return this.http.post(this.apiServer + '/api/orders', data, this.options);
   }
+  getOrderBySellerId(sellerId) {
 
+    return this.http.get(this.apiServer + '/api/orders/findOrderBySeller/' + sellerId, this.options);
+  }
 }
 

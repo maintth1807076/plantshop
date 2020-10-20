@@ -1,73 +1,143 @@
 <section id="content" style=" height: 240px;">
-    <div class="container-fluid mb-3 ml-5">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="widget row " style="background-image: url('../../../assets/img/banner-2.jpg'); height: 150px; border-radius: 10px; ">
-                    <div class="bg-overlay" style="border-radius: 10px;"></div>
-                    <div class="col-4 pl-4 pt-2">
-                        <img src="{{url}}" alt=""
-                             style="border-radius:50%; width:75%; border: #737272 solid 3px; margin-left: 40px;">
-                    </div>
-                    <div class="col-8">
-                        <div class="widget-title text-white pt-4">{{getUserShopName(tree.userId)}}<br>
-                        </div>
+<!--    <div class="container-fluid mb-3 ml-5">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-4">-->
+<!--                <div class="widget row " style="background-image: url('../../../assets/img/banner-2.jpg'); height: 150px; border-radius: 10px; ">-->
+<!--                    <div class="bg-overlay" style="border-radius: 10px;"></div>-->
+<!--                    <div class="col-4 pl-4 pt-2">-->
+<!--                        <img src="{{url}}" alt=""-->
+<!--                             style="border-radius:50%; width:75%; border: #737272 solid 3px; margin-left: 40px;">-->
+<!--                    </div>-->
+<!--                    <div class="col-8">-->
+<!--                        <div class="widget-title text-white pt-4">{{getUserShopName(tree.userId)}}<br>-->
+<!--                        </div>-->
 
-                    </div>
-                    <div class=" col-12 row ">
-                        <div class="col-6"><a
-                                href="#"
-                                class="btn btn-white btn-light-hover w-100" target="_blank">Theo dõi</a></div>
-                        <div class="col-6"><a
-                                href="#"
-                                class="btn btn-white btn-light-hover w-100" target="_blank">Chat</a></div>
-                    </div>
+<!--                    </div>-->
+<!--                    <div class=" col-12 row ">-->
+<!--                        <div class="col-6"><a-->
+<!--                                href="#"-->
+<!--                                class="btn btn-white btn-light-hover w-100" target="_blank">Theo dõi</a></div>-->
+<!--                        <div class="col-6"><a-->
+<!--                                href="#"-->
+<!--                                class="btn btn-white btn-light-hover w-100" target="_blank">Chat</a></div>-->
+<!--                    </div>-->
 
-                </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class=" col-lg-8 row">-->
+<!--            <div class="col-lg-4">-->
+<!--              <div class="ml-5 pt-4" style="font-size: 18px;">-->
+<!--                  <div class="row mb-2">-->
+<!--                      <i class="icon-home  pr-2"></i>-->
+<!--                      <p>Sản phẩm : <span class="text-red">12</span ></p>-->
+<!--                  </div>-->
+<!--                  <div class="row mb-2">-->
+<!--                      <i class="icon-user-plus  pr-2"></i>-->
+<!--                      <p >Đang theo dõi : <span  class="text-red">12</span ></p>-->
+<!--                  </div>-->
+<!--                  <div class="row mb-2">-->
+<!--                      <i class="icon-message-circle  pr-2"></i>-->
+<!--                      <p>Tỉ lệ phản hồi chat :<span  class="text-red">100%</span ></p>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-4">-->
+<!--                <div class=" ml-4 pt-4" style="font-size: 18px;">-->
+<!--                    <div class="row mb-2">-->
+<!--                        <i class="icon-file-minus  pr-2"></i>-->
+<!--                        <p>Tỉ lệ Shop hủy đơn : <span  class="text-red">0%</span ></p>-->
+<!--                    </div>-->
+<!--                    <div class="row mb-2">-->
+<!--                        <i class="icon-user  pr-2"></i>-->
+<!--                        <p >Người theo dõi :<span  class="text-red">12</span ></p>-->
+<!--                    </div>-->
+<!--                    <div class="row mb-2">-->
+<!--                        <i class="icon-star  pr-2"></i>-->
+<!--                        <p>Đánh giá : <span  class="text-red">12</span ></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-4">-->
+<!--                <div class=" pt-4" style="font-size: 18px;">-->
+<!--                    <div class="row mb-2">-->
+<!--                        <i class="icon-user-check  pr-2"></i>-->
+<!--                        <p>Tham gia : <span  class="text-red">{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss':'VI'}}</span ></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+  <div class="mb-3 background-grey">
+    <div class="row container-wide">
+      <div class="col-lg-4 mt-4">
+        <div class="widget row "
+             style="background-image: url('../../../assets/img/banner-2.jpg'); height: 150px; border-radius: 10px; ">
+          <div class="bg-overlay" style="border-radius: 10px;"></div>
+          <div>
+            <img class="avatar avatar-lg mt-2" src="{{url}}" alt=""
+                 style=" margin-left: 40px;">
+          </div>
+          <div class="col-8">
+            <div class="widget-title text-white pt-4">{{user.shopName}}<br>
             </div>
-            <div class=" col-lg-8 row">
-            <div class="col-lg-4">
-              <div class="ml-5 pt-4" style="font-size: 18px;">
-                  <div class="row mb-2">
-                      <i class="icon-home  pr-2"></i>
-                      <p>Sản phẩm : <span class="text-red">12</span ></p>
-                  </div>
-                  <div class="row mb-2">
-                      <i class="icon-user-plus  pr-2"></i>
-                      <p >Đang theo dõi : <span  class="text-red">12</span ></p>
-                  </div>
-                  <div class="row mb-2">
-                      <i class="icon-message-circle  pr-2"></i>
-                      <p>Tỉ lệ phản hồi chat :<span  class="text-red">100%</span ></p>
-                  </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-                <div class=" ml-4 pt-4" style="font-size: 18px;">
-                    <div class="row mb-2">
-                        <i class="icon-file-minus  pr-2"></i>
-                        <p>Tỉ lệ Shop hủy đơn : <span  class="text-red">0%</span ></p>
-                    </div>
-                    <div class="row mb-2">
-                        <i class="icon-user  pr-2"></i>
-                        <p >Người theo dõi :<span  class="text-red">12</span ></p>
-                    </div>
-                    <div class="row mb-2">
-                        <i class="icon-star  pr-2"></i>
-                        <p>Đánh giá : <span  class="text-red">12</span ></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class=" pt-4" style="font-size: 18px;">
-                    <div class="row mb-2">
-                        <i class="icon-user-check  pr-2"></i>
-                        <p>Tham gia : <span  class="text-red">{{user.createdAt | date:'yyyy-MM-dd HH:mm:ss':'VI'}}</span ></p>
-                    </div>
-                </div>
-            </div>
-            </div>
+
+          </div>
+          <div class=" col-12 row ">
+            <div class="col-6"><a
+              href="#"
+              class="btn btn-white btn-light-hover w-100" target="_blank">Chat</a></div>
+            <div class="col-6"><a
+              href="/shop-seller"
+              class="btn btn-white btn-light-hover w-100" target="_blank">Xem shop</a></div>
+          </div>
+
         </div>
+      </div>
+      <div class=" col-lg-8 row mt-2">
+        <div class="col-lg-4">
+          <div class="ml-5 pt-4" style="font-size: 18px;">
+            <div class="row mb-2">
+              <i class="icon-home  pr-2"></i>
+              <p>Sản phẩm : <span class="text-red">12</span></p>
+            </div>
+            <div class="row mb-2">
+              <i class="icon-user-plus  pr-2"></i>
+              <p>Đang theo dõi : <span class="text-red">12</span></p>
+            </div>
+            <div class="row mb-2">
+              <i class="icon-message-circle  pr-2"></i>
+              <p>Tỉ lệ phản hồi chat :<span class="text-red">100%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class=" ml-4 pt-4" style="font-size: 18px;">
+            <div class="row mb-2">
+              <i class="icon-file-minus  pr-2"></i>
+              <p>Tỉ lệ Shop hủy đơn : <span class="text-red">0%</span></p>
+            </div>
+            <div class="row mb-2">
+              <i class="icon-user  pr-2"></i>
+              <p>Người theo dõi :<span class="text-red">12</span></p>
+            </div>
+            <div class="row mb-2">
+              <i class="icon-star  pr-2"></i>
+              <p>Đánh giá : <span class="text-red">12</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class=" pt-4" style="font-size: 18px;">
+            <div class="row mb-2">
+              <i class="icon-user-check  pr-2"></i>
+              <p>Tham gia : <span class="text-red"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
     <div class="container-wide mt-5" style="height: 420px; padding-top: 20px;">

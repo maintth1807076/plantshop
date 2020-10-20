@@ -29,13 +29,13 @@ export class ShopComponent implements OnInit {
   loadData():void{
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
+        console.log(data);
       },
       (error) => console.log(error),
       () => console.log("Complete")
     )
     this.service.getAllTree().subscribe(data => {
         this.listTree = data['datas'];
-        this.listTreeFix = data['datas'];
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -82,12 +82,29 @@ export class ShopComponent implements OnInit {
       }
     }
   }
-  findTreeByCategoryId(id) {
+  // findTreeByCategoryId(id) {
+  //   var arr = [];
+  //   for (var i = 0; i < this.listTreeFix.length; i++) {
+  //     let listCategory = this.listTreeFix[i].categoryList;
+  //     for (let j = 0; j < listCategory.length; j++) {
+  //       if (listCategory[j].id == id) {
+  //         arr.push(this.listTreeFix[i]);
+  //       }
+  //     }
+  //   }
+  //   this.listTree = arr;
+  //   console.log(arr)
+  // }
+  getTreeByCategory(categoryId) {
+    this.service.getTreeByCategoryId(categoryId).subscribe(data => {
+      this.listTreeFix = data['datas'];
+      console.log(data);
+    });
     var arr = [];
     for (var i = 0; i < this.listTreeFix.length; i++) {
       let listCategory = this.listTreeFix[i].categoryList;
       for (let j = 0; j < listCategory.length; j++) {
-        if (listCategory[j].id == id) {
+        if (listCategory[j].id == categoryId) {
           arr.push(this.listTreeFix[i]);
         }
       }
@@ -95,5 +112,4 @@ export class ShopComponent implements OnInit {
     this.listTree = arr;
     console.log(arr)
   }
-
 }
