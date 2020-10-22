@@ -149,15 +149,7 @@
               <ul>
                 <li class="dropdown"><a href="/shop">Cây cảnh</a>
                   <ul class="dropdown-menu">
-                    <li><a href="">Cây nội thất</a></li>
-                    <li><a href="#">Cây ngoại thất</a></li>
-                    <li><a href="#">Sen đá</a></li>
-                    <li><a href="#">Xương rồng</a></li>
-                    <li><a href="#">Cây ban công</a></li>
-                    <li><a href="#">Cây văn phòng</a></li>
-                    <li><a href="#">Cây để bàn</a></li>
-                    <li><a href="#">Cây thủy sinh</a></li>
-                    <li><a href="#">Cây dây leo</a></li>
+                    <li *ngFor="let item of listCategory"><a href="/shop?categoryId={{item.id}}">{{item.name}}</a></li>
                   </ul>
                 </li>
                 <li><a href="/blog">Blog</a></li>

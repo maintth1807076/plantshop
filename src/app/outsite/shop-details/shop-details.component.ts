@@ -22,6 +22,9 @@ export class ShopDetailsComponent implements OnInit {
   url: string;
   shopName: string;
   images = [];
+  imageUser: string;
+  comment: string;
+  commentList = [];
   constructor(private http: HttpClient, private service: TreeService, private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
     this.getTree(this.idTree);
@@ -30,6 +33,7 @@ export class ShopDetailsComponent implements OnInit {
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
     this.id = user['id'];
+    this.imageUser = user['avatar'];
     this.service.getUser(this.id).subscribe(data => {
       this.user1 = data['data'];
       this.url1 = this.user1.avatar;
@@ -53,6 +57,9 @@ export class ShopDetailsComponent implements OnInit {
       (error) => console.log(error),
       () => console.log('Complete')
     );
+    this.service.getComment(this.idTree).subscribe(data => {
+      this.commentList = data['datas'];
+    })
   }
 
   getTree(id) {
@@ -122,4 +129,13 @@ export class ShopDetailsComponent implements OnInit {
     alertify.success('Thêm thành công!');
   }
 
+  sendComment() {
+    let data = {
+      "content": this.comment,
+      "userId": this.id,
+      "treeId": this.idTree
+    }
+    this.service.sendComment(data).subscribe(data => {
+    })
+  }
 }

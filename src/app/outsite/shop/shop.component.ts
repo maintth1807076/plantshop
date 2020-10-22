@@ -24,10 +24,16 @@ export class ShopComponent implements OnInit {
     var url = window.location.href;
     this.keyWord = this.getParameterByName('keyWord', url);
     this.categoryId = this.getParameterByName('categoryId', url);
+    this.loadCategory();
+    if(this.categoryId != null && this.categoryId.length > 0) {
+      this.findTreeByCategoryId(this.categoryId);
+    } else {
+      this.loadData();
+    }
   }
 
   ngOnInit(): void {
-    this.loadData();
+
   }
   getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -38,7 +44,7 @@ export class ShopComponent implements OnInit {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
-  loadData():void{
+  loadCategory() {
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
         console.log(data);
@@ -46,6 +52,8 @@ export class ShopComponent implements OnInit {
       (error) => console.log(error),
       () => console.log("Complete")
     )
+  }
+  loadData():void{
     this.service.getAllTree().subscribe(data => {
         this.listTree = data['datas'];
         this.listTreeFix = data['datas'];
