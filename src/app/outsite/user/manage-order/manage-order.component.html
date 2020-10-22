@@ -17,9 +17,12 @@
                 <tbody>
                 <tr *ngFor="let item of listOrder ">
                   <td><span>{{item.createdAt | date:'dd-MM-yyyy':'VI'}}</span></td>
-                  <td *ngFor="let od of item.orderDetails"><ul>
-                    <li>{{od.treeName}} - {{od.quantity}}</li>
-                  </ul></td>
+                  <td >
+                    <div *ngFor="let od of item.orderDetails" >
+                       <span>{{od.treeName}} - {{od.quantity}}</span>
+                      <br>
+                    </div>
+                  </td>
                   <td><span>{{item.totalPrice}}</span></td>
                   <td><span>{{item.status}}</span></td>
                 </tr>
