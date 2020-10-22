@@ -17,10 +17,10 @@
                 <tbody>
                 <tr *ngFor="let item of listOrder ">
                   <td><span>{{item.createdAt | date:'dd-MM-yyyy':'VI'}}</span></td>
-                  <td *ngFor="let od of item.orderDetails"><ul>
+                  <td><span *ngFor="let od of item.orderDetails">
                     <li>{{od.treeName}} - {{od.quantity}}</li>
-                  </ul></td>
-                  <td><span>{{item.totalPrice}}</span></td>
+                  </span></td>
+                  <td><span>{{item.totalPrice}}đ</span></td>
                   <td><span>{{item.status}}</span></td>
                 </tr>
                 </tbody>
