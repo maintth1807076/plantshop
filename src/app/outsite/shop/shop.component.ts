@@ -18,14 +18,26 @@ export class ShopComponent implements OnInit {
   listCategory: any[];
   items: any[];
   total: number;
+  keyWord: string;
+  categoryId: string;
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
-
+    var url = window.location.href;
+    this.keyWord = this.getParameterByName('keyWord', url);
+    this.categoryId = this.getParameterByName('categoryId', url);
   }
 
   ngOnInit(): void {
     this.loadData();
   }
-
+  getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
   loadData():void{
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
@@ -119,4 +131,7 @@ export class ShopComponent implements OnInit {
     console.log(this.listTree)
   }
 
+  sortByPrice(value) {
+    console.log(value)
+  }
 }
