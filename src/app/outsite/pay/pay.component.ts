@@ -155,7 +155,7 @@ export class PayComponent implements OnInit {
     // fetch('https://us-central1-appvnpay-e324e.cloudfunctions.net/app/create_payment_url', {
     //   method: 'POST',
     //   body: JSON.stringify({
-    //     amount: this.totalPrice,
+    //     amount: this.total,
     //     info: 'String',
     //     bill: 'billpayment',
     //     lang: 'vn',
