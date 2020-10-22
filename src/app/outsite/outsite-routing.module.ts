@@ -68,11 +68,11 @@ const routes: Routes = [
       },
       {
         path: 'shop-cart',
-        component: ShopCartComponent
+        component: ShopCartComponent,
       },
       {
         path: 'checkout',
-        component: CheckoutComponent
+        component: CheckoutComponent,
       },
       {
         path: 'pay',
@@ -80,19 +80,19 @@ const routes: Routes = [
       },
       {
         path: 'portfolio',
-        component: PortfolioComponent
+        component: PortfolioComponent,
       },
       {
         path: 'blog',
-        component: BlogComponent
+        component: BlogComponent,
       },
       {
-        path: 'blog-details',
-        component: BlogDetailsComponent
+        path: 'blog/detail/:id',
+        component: BlogDetailsComponent,
       },
       {
         path: 'shop-seller',
-        component: ShopSellerComponent
+        component: ShopSellerComponent,
       },
       {
         path: 'seller',

@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
+  listBlog: any[];
   items: any[];
   totalPrice: number;
   listCategory: any[];
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategory();
     this.loadData();
+    this.loadDataBlog();
   }
   loadCategory():void{
 
@@ -86,5 +88,15 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+  loadDataBlog():void{
 
+    this.service.getAllBlog().subscribe(data => {
+        //@ts-ignore
+        this.listBlog = data.datas ;
+        console.log(data);
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
+  }
 }
