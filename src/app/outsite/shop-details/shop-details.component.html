@@ -11,7 +11,7 @@
                  data-lightbox="gallery">
               <a href="{{tree.image}}" data-lightbox="image"><img alt="Shop product image!" src="{{tree.image}}">
               </a>
-              <a href="{{tree.image}}" data-lightbox="image"><img alt="Shop product image!" src="{{tree.image}}">
+              <a *ngFor="let image of images" href="{{image}}" data-lightbox="image"><img alt="Shop product image!" src="{{image}}">
               </a>
             </div>
             <!-- Carousel slider -->
@@ -148,75 +148,49 @@
           <p>{{tree.detail}}</p>
         </div>
         <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
+<!--          <form class="col-lg-6" novalidate action="" role="form" method="post"-->
+<!--                ngNoForm>-->
+<!--            <div class="row ">-->
+<!--              <div class="col-2 image">-->
+<!--                <img class="avatar float-right " src="{{imageUser}}" alt="">-->
+<!--              </div>-->
+<!--              <div></div>-->
+<!--              <div class="form-group mb-2 col-6">-->
+<!--                <input type="text" name=""-->
+<!--                       class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value">-->
+<!--            </div>-->
+<!--              <div class="form-group col-3">-->
+<!--                <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>-->
+<!--              </div></div>-->
+
+<!--          </form>-->
+          <div class="row ">
+            <div class="col-2 image">
+              <img class="avatar float-right " src="{{imageUser}}" alt="">
+            </div>
+            <div></div>
+            <div class="form-group mb-2 col-6">
+              <input type="text" name=""
+                     class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value">
+            </div>
+            <div class="form-group col-3">
+              <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>
+            </div></div>
+
           <div class="comments" id="comments">
             <div class="comment_number">
-              Đánh giá <span>(3)</span>
+              Đánh giá <span>({{commentList.length}})</span>
             </div>
             <div class="comment-list">
               <!-- Comment -->
-              <div class="comment" id="comment-1">
+              <div class="comment" *ngFor="let item of commentList">
                 <div class="image"><img alt="" src="../../../assets/img/15.jpg" class="avatar">
                 </div>
                 <div class="text">
-                  <div class="product-rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                  </div>
                   <h5 class="name">John Doe</h5>
-                  <span class="comment_date">Posted at 15:32h, 06 December</span>
-                  <a class="comment-reply-link" href="#">Reply</a>
+                  <span class="comment_date">Posted at {{item.createdAt | date:'hh:mm dd-MM-yyyy':'VI'}}</span>
                   <div class="text_holder">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                      industry. Lorem Ipsum has been the industry's standard dummy
-                      text ever since the 1500s.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- end: Comment -->
-              <!-- Comment -->
-              <div class="comment" id="comment-1-1">
-                <div class="image"><img alt="" src="../../../assets/img/14.jpg" class="avatar">
-                </div>
-                <div class="text">
-                  <div class="product-rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                  </div>
-                  <h5 class="name">John Doe</h5>
-                  <span class="comment_date">Posted at 15:32h, 06 December</span>
-                  <a class="comment-reply-link" href="#">Reply</a>
-                  <div class="text_holder">
-                    <p>It is a long established fact that a reader will be distracted by
-                      the readable content.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- end: Comment -->
-              <!-- Comment -->
-              <div class="comment" id="comment-1-2">
-                <div class="image"><img alt="" src="../../../assets/img/13.jpg" class="avatar">
-                </div>
-                <div class="text">
-                  <div class="product-rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                  </div>
-                  <h5 class="name">John Doe</h5>
-                  <span class="comment_date">Posted at 15:32h, 06 December</span>
-                  <a class="comment-reply-link" href="#">Reply</a>
-                  <div class="text_holder">
-                    <p>There are many variations of passages of Lorem Ipsum available,
-                      but the majority have suffered alteration in some form, by
-                      injected humour.</p>
+                    <p>{{item.content}}</p>
                   </div>
                 </div>
               </div>

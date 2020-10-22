@@ -41,6 +41,11 @@ export class TreeService {
   }
   getBlog(id) {
     return this.http.get(this.apiServer + '/blogs/' + id, this.options);
+  getAllTreePriceDesc() {
+    return this.http.get(this.apiServer + '/trees/pricedesc');
+  }
+  getAllTreePriceAsc() {
+    return this.http.get(this.apiServer + '/trees/priceasc');
   }
   getAllTreeByUserId(userId) {
     return this.http.get(this.apiServer + '/trees/findTreeByUser/' + userId, this.options);
@@ -97,6 +102,12 @@ export class TreeService {
   }
   getOrderDetailByOrderId(id) {
     return this.http.get(this.apiServer + '/api/orderDetail/getOrderDetailByOrderId/' + id, this.options);
+  }
+  sendComment(data) {
+    return this.http.post(this.apiServer + '/api/comments', data, this.options);
+  }
+  getComment(id) {
+    return this.http.get(this.apiServer + '/api/comments/getAllCommentByTreeId/' + id, this.options);
   }
 }
 

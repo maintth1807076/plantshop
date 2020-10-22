@@ -16,10 +16,10 @@
           </div>
           <div class="col-lg-4">
             <div class="order-select">
-              <select class="form-control" id="sort-by">
-                <option selected="selected" value="order">Giá</option>
-                <option value="Low">Giá: Thấp đến cao</option>
-                <option value="High">Giá: Cao đến thấp</option>
+              <select class="form-control" id="sort-by" (change)="sortByPrice($event.target.value)">
+<!--                <option selected="selected" value="order">Giá</option>-->
+                <option value="1">Giá: Thấp đến cao</option>
+                <option value="2">Giá: Cao đến thấp</option>
               </select>
             </div>
           </div>
@@ -124,7 +124,7 @@
       </div>
     </div>
     <div class="grid-articles carousel post-carousel" data-items="5" data-dots="false">
-      <article class="post-entry" *ngFor="let item of listTree" [routerLink]="['/shop-details']"
+      <article class="post-entry" *ngFor="let item of listTreeFix" [routerLink]="['/shop-details']"
                [queryParams]="{id:item.id}">
         <a href="/shop-details/{{item.id}}" class="post-image"><img alt="" src="{{item.image}}"></a>
         <div class="post-entry-overlay">

@@ -43,9 +43,9 @@
                     </td>
                     <td class="cart-product-quantity">
                       <div class="quantity">
-                        <input onclick="minus()" type="button" class="minus" value="-">
-                        <input id="quantity" type="text" class="qty" value="{{item.quantity}}" name="quantity">
-                        <input onclick="plus()" type="button" class="plus " value="+">
+                        <input (click)="minusQuantity(item.product.id, item.quantity)" type="button" class="minus" value="-">
+                        <input name="quantity" (change)="changeQuantity($event.target.value, item.product.id)" type="text" class="qty" value="{{item.quantity}}" name="quantity">
+                        <input (click)="plusQuantity(item.product.id, item.quantity)" type="button" class="plus " value="+">
                       </div>
                     </td>
                     <td class="cart-product-subtotal">
@@ -81,6 +81,7 @@
                         </tbody>
                       </table>
                     </div>
+<!--                    <a (click)="loadCart()" class="btn icon-left float-right"><span>Update cart</span></a>-->
                     <a href="/pay" class="btn icon-left float-right"><span>Mua Hàng</span></a>
                 </div>
             </div>
