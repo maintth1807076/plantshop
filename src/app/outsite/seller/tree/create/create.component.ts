@@ -49,15 +49,14 @@ export class CreateComponent implements OnInit {
     let categoryList = [];
     let categoriesId = this.f.categories.value;
     for (let categoryId of categoriesId){
-      this.service.getCategory(categoryId).subscribe(data => {
-        let category = data['data'];
-        categoryList.push(category);
-      })
-      console.log(categoryId);
+      // this.service.getCategory(categoryId).subscribe(data => {
+      //   let category = data['data'];
+      //   categoryList.push(category);
+      // })
+      // // console.log(categoryId);
       for (let i = 0; i < this.listCategory.length ; i++) {
         if ( this.listCategory[i].id == categoryId){
           categoryList.push(this.listCategory[i]);
-          break;
         }
       }
     }

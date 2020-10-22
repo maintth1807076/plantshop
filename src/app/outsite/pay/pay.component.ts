@@ -24,6 +24,7 @@ export class PayComponent implements OnInit {
   orderForm: FormGroup;
   loading = false;
   submitted = false;
+  orderId: any;
   ngOnInit(): void {
 
     let user = JSON.parse(localStorage.getItem('user'));
@@ -55,13 +56,14 @@ export class PayComponent implements OnInit {
     }
   }
   get f() { return this.orderForm.controls; }
-  async saveOrder() {
+  saveOrder() {
     let cart = JSON.parse(localStorage.getItem('cart'));
     let map = new Map<string, any[]>();
     for (var i = 0; i < cart.length; i++) {
       let item = JSON.parse(cart[i]);
       let orderDetail = {
         "treeId": item['product']['id'],
+        "treeName": item['product']['name'],
         "unitPrice": item['product']['price'],
         "quantity": item['quantity'],
       }
@@ -87,11 +89,10 @@ export class PayComponent implements OnInit {
         "shipPhone": this.f.shipPhone.value,
         "orderDetails": value,
         "userId": this.id,
-        "sellerId": key
+        "sellerId": key,
+        "status": 1
       }
       this.service.addOrder(data).subscribe((data) => {
-          this.order = data;
-          console.log(data);
         },
         (error) => console.log(error),
         () => {
@@ -100,41 +101,70 @@ export class PayComponent implements OnInit {
       );
     }
     localStorage.removeItem('cart');
-    location.href = '/checkout';
     alertify.set('notifier','position', 'top-right');
     alertify.success('Đặt hàng thành công!');
+    location.href = '/user/order';
   }
-  // saveOrder() {
-  //   let cart = JSON.parse(localStorage.getItem('cart'));
-  //   let orderDetails = [];
-  //   for (var i = 0; i < cart.length; i++) {
-  //     let item = JSON.parse(cart[i]);
-  //     let orderDetail = {
-  //       "treeId": item['product']['id'],
-  //       "unitPrice": item['product']['price'],
-  //       "quantity": item['quantity'],
-  //       "order_id": "",
-  //     }
-  //     orderDetails.push(orderDetail);
-  //   }
-  //   this.submitted = true;
-  //   if (this.orderForm.invalid) {
-  //     return; }
-  //   this.loading = true;
-  //   console.log(orderDetails);
-  //   let data = {
-  //     "shipAddress": this.f.shipAddress.value,
-  //     "shipPhone": this.f.shipPhone.value,
-  //     "orderDetails": orderDetails,
-  //     "user_id": this.id,
-  //   }
-  //   console.log(data);
-  //   this.service.addOrder(data).subscribe((data) => {
-  //       console.log(data);
-  //       this.order = data;
-  //     },
-  //     (error) => console.log(error),
-  //     () => console.log('Complete')
-  //   );
-  // }
+
+ pay() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    let map = new Map<string, any[]>();
+    for (var i = 0; i < cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      let orderDetail = {
+        "treeId": item['product']['id'],
+        "unitPrice": item['product']['price'],
+        "quantity": item['quantity'],
+        "treeName": item['product']['name'],
+      }
+      let arr = [];
+      let sellerId = item.product.userId;
+      if(map.has(sellerId)){
+        let arrOld = map.get(sellerId);
+        arrOld.push(orderDetail);
+        map.set(sellerId, arrOld);
+      } else {
+        arr.push(orderDetail)
+        map.set(sellerId, arr);
+      }
+    }
+    this.submitted = true;
+    if (this.orderForm.invalid) {
+      return; }
+    for (let entry of Array.from(map.entries())) {
+      let key = entry[0];
+      let value = entry[1];
+      let data = {
+        "shipAddress": this.f.shipAddress.value,
+        "shipPhone": this.f.shipPhone.value,
+        "orderDetails": value,
+        "userId": this.id,
+        "sellerId": key,
+        "status": 3
+      }
+      this.service.addOrder(data).subscribe((data) => {
+          console.log(data)
+        },
+        (error) => console.log(error),
+        () => {
+          this.loading = true;
+        }
+      );
+    }
+    localStorage.removeItem('cart');
+    // fetch('https://us-central1-appvnpay-e324e.cloudfunctions.net/app/create_payment_url', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     amount: this.totalPrice,
+    //     info: 'String',
+    //     bill: 'billpayment',
+    //     lang: 'vn',
+    //   })
+    // }).then(res => res.json()).then(data => {
+    //     alertify.set('notifier','position', 'top-right');
+    //     alertify.success('Thanh toán thành công!');
+    //     console.log(data);
+    //   // location.href = '/checkout';
+    // });
+  }
 }

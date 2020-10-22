@@ -8,7 +8,6 @@
               <table class="table table-hover mb-4">
                 <thead>
                 <tr>
-                  <th scope="col">Mã đơn hàng</th>
                   <th scope="col">Ngày mua</th>
                   <th scope="col">Sản phẩm</th>
                   <th scope="col">Tổng tiền</th>
@@ -16,17 +15,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td><span>sfdf</span></td>
-                  <td><span>fdgdf</span></td>
-                  <td><span>fdg</span></td>
-                  <td><span>fg</span></td>
-                  <td><span>fgds</span></td>
-                  <td>
-                    <div class="row text-center">
-                      <div><i class="fa fa-eye " style="color: #7fa15a;"></i></div>
-                    </div>
-                  </td>
+                <tr *ngFor="let item of listOrder ">
+                  <td><span>{{item.createdAt | date:'dd-MM-yyyy':'VI'}}</span></td>
+                  <td *ngFor="let od of item.orderDetails"><ul>
+                    <li>{{od.treeName}} - {{od.quantity}}</li>
+                  </ul></td>
+                  <td><span>{{item.totalPrice}}</span></td>
+                  <td><span>{{item.status}}</span></td>
                 </tr>
                 </tbody>
               </table>

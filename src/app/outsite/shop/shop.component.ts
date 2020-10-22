@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
   listTreeFix: any[];
   listCategory: any[];
   items: any[];
-  totalPrice: number;
+  total: number;
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
 
   }
@@ -75,6 +75,23 @@ export class ShopComponent implements OnInit {
     alertify.set('notifier','position', 'top-right');
     alertify.success('Thêm thành công!');
   }
+  loadCart(): void {
+    this.total = 0;
+    this.items = [];
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart != null && cart.length > 0) {
+      for (var i = 0; i < cart.length; i++) {
+        let item = JSON.parse(cart[i]);
+        this.items.push({
+          'image': item.product['image'],
+          'product': item.product,
+          'quantity': item.quantity
+        });
+        this.total += item.product.price * item.quantity;
+      }
+    }
+    console.log(this.items);
+  }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {
       if (this.listTree[i].id == id) {
@@ -83,17 +100,23 @@ export class ShopComponent implements OnInit {
     }
   }
   findTreeByCategoryId(id) {
-    var arr = [];
-    for (var i = 0; i < this.listTreeFix.length; i++) {
-      let listCategory = this.listTreeFix[i].categoryList;
-      for (let j = 0; j < listCategory.length; j++) {
-        if (listCategory[j].id == id) {
-          arr.push(this.listTreeFix[i]);
-        }
-      }
-    }
-    this.listTree = arr;
-    console.log(arr)
+    this.service.getAllTreeByCategoryId(id).subscribe(data => {
+        this.listTree = data['datas'];
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
+    // var arr = [];
+    // for (var i = 0; i < this.listTreeFix.length; i++) {
+    //   let listCategory = this.listTreeFix[i].categoryList;
+    //   for (let j = 0; j < listCategory.length; j++) {
+    //     if (listCategory[j].id == id) {
+    //       arr.push(this.listTreeFix[i]);
+    //     }
+    //   }
+    // }
+    // this.listTree = arr;
+    console.log(this.listTree)
   }
 
 }
