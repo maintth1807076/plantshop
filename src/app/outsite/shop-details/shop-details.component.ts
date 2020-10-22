@@ -17,6 +17,8 @@ export class ShopDetailsComponent implements OnInit {
   id: any;
   p: any;
   user: any[];
+  user1: any = {};
+  url1: string;
   url: string;
   shopName: string;
   images = [];
@@ -26,6 +28,12 @@ export class ShopDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.id = user['id'];
+    this.service.getUser(this.id).subscribe(data => {
+      this.user1 = data['data'];
+      this.url1 = this.user1.avatar;
+    });
     this.service.getAllUser().subscribe(data => {
         //@ts-ignore
         this.user = data.datas;
