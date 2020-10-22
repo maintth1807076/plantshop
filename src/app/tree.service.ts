@@ -41,6 +41,7 @@ export class TreeService {
   }
   getBlog(id) {
     return this.http.get(this.apiServer + '/blogs/' + id, this.options);
+  }
   getAllTreePriceDesc() {
     return this.http.get(this.apiServer + '/trees/pricedesc');
   }
@@ -107,7 +108,7 @@ export class TreeService {
     return this.http.post(this.apiServer + '/api/comments', data, this.options);
   }
   getComment(id) {
-    return this.http.get(this.apiServer + '/api/comments/getAllCommentByTreeId/' + id, this.options);
+    return this.http.get(this.apiServer + '/comments/getAllCommentByTreeId/' + id);
   }
 }
 

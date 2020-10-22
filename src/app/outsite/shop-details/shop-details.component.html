@@ -171,7 +171,7 @@
             <div></div>
             <div class="form-group mb-2 col-6">
               <input type="text" name=""
-                     class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value">
+                     class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value" [value]="comment">
             </div>
             <div class="form-group col-3">
               <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>
@@ -184,10 +184,10 @@
             <div class="comment-list">
               <!-- Comment -->
               <div class="comment" *ngFor="let item of commentList">
-                <div class="image"><img alt="" src="../../../assets/img/15.jpg" class="avatar">
+                <div class="image"><img alt="" src="{{item.avatar}}" class="avatar">
                 </div>
                 <div class="text">
-                  <h5 class="name">John Doe</h5>
+                  <h5 class="name">{{item.fullName}}</h5>
                   <span class="comment_date">Posted at {{item.createdAt | date:'hh:mm dd-MM-yyyy':'VI'}}</span>
                   <div class="text_holder">
                     <p>{{item.content}}</p>

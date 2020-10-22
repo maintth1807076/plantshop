@@ -23,7 +23,7 @@ export class ShopDetailsComponent implements OnInit {
   shopName: string;
   images = [];
   imageUser: string;
-  comment: string;
+  comment = "";
   commentList = [];
   constructor(private http: HttpClient, private service: TreeService, private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
@@ -136,6 +136,12 @@ export class ShopDetailsComponent implements OnInit {
       "treeId": this.idTree
     }
     this.service.sendComment(data).subscribe(data => {
-    })
+    }, () => {},
+      () => {
+      this.comment = "";
+        this.service.getComment(this.idTree).subscribe(data => {
+          this.commentList = data['datas'];
+        })
+      })
   }
 }
