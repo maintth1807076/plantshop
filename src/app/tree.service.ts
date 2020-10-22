@@ -89,5 +89,8 @@ export class TreeService {
   confirmOrder(id) {
     return this.http.get(this.apiServer + '/api/orders/confirmOrder/' + id, this.options);
   }
+  getOrderDetailByOrderId(id) {
+    return this.http.get(this.apiServer + '/api/orderDetail/getOrderDetailByOrderId/' + id, this.options);
+  }
 }
 

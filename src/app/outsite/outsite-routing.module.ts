@@ -30,6 +30,7 @@ import {DetailCategoryComponent} from './seller/category/detail-category/detail-
 import {EditCategoryComponent} from './seller/category/edit-category/edit-category.component';
 import {ProfileSellerComponent} from './seller/profile-seller/profile-seller.component';
 import {OrderComponent} from './seller/order/order.component';
+import {OrderDetailComponent} from './seller/order/order-detail/order-detail.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
           {
             path: 'order',
             component: OrderComponent,
+          },
+          {
+            path: 'order/detail/:id',
+            component: OrderDetailComponent,
           },
           {
             path: 'tree',

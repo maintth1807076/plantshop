@@ -18,7 +18,8 @@
               </th>
               <th  class="th-sm" style="width: 150px;">Trang thái
               </th>
-              <th style="width: 150px;"></th>
+              <th style="width: 80px;"></th>
+              <th style="width: 100px;"></th>
             </tr>
             </thead>
             <tbody>
@@ -30,8 +31,13 @@
               <td><span>{{item.userId}}</span></td>
               <td><span>{{item.status}}</span></td>
               <td class="pl-2">
+                <div class="row ">
+                  <div  class="col-3"><button class="btn btn-success btn-light-hover" (click)="confirmOrder(item.id)">Xác nhận</button></div>
+                </div>
+              </td>
+              <td class="pl-2">
                 <div class="row text-center ">
-                  <div  class="col-4"><button class="btn btn-success btn-light-hover">Xác nhận</button></div>
+                  <div [routerLink]="['/seller/order/detail', item.id]" class="col-4" ><i class="fa fa-eye " style="color: #7fa15a;"></i></div>
                 </div>
               </td>
             </tr>

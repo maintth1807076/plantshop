@@ -39,6 +39,7 @@ export class OrderComponent implements OnInit {
   loadData(): void {
     this.service.getOrderBySellerId(this.id).subscribe(data => {
         this.listOrder = data['datas'];
+        console.log(data);
       },
       (error) => console.log(error),
       () => {}
@@ -46,7 +47,7 @@ export class OrderComponent implements OnInit {
   }
   confirmOrder(id) {
     this.service.confirmOrder(id).subscribe(data => {
-        console.log(data)
+        console.log(data);
       },
       (error) => console.log(error),
       () => {}
