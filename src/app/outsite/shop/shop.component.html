@@ -69,7 +69,7 @@
             </div>
           </div>
           <hr class="m-t-40">
-          <pagination-controls maxSize="5" *ngIf="listTree.length > 6"
+          <pagination-controls maxSize="5" *ngIf="listTree.length > 4"
                                style="text-align: right;" [id]="id" (pageChange)="p = $event">
           </pagination-controls>
         </div>
@@ -87,8 +87,8 @@
             <!--widget newsletter-->
           </div>
           <h4 class="widget-title">Loại Cây</h4>
-          <div class="widget-desc" *ngFor="let item of listCategory">
-            <h5 (click)="findTreeByCategoryId(item.id)">{{item.name}} </h5>
+          <div class="widget-desc hover-active" *ngFor="let item of listCategory">
+            <h5 (click)="getTreeByCategory(item.id)" class="highlight-colored" > {{item.name}} </h5>
 
             <!-- Single Checkbox -->
             <!--            <div *ngFor="let item of listCategory"-->
@@ -132,7 +132,7 @@
             <div class="product-description">
               <div class="product-category">{{item.category}}</div>
               <div class="product-title">
-                <h3><a href="/shop-details/{{item.id}}">{{item.name}}</a></h3>
+                <h3 class="name"><a href="/shop-details/{{item.id}}" >{{item.name}}</a></h3>
               </div>
               <div class="product-price">
                 <ins>{{item.price | currency:' ':'symbol':'1.0-0'}}<sup>đ</sup></ins>

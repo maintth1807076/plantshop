@@ -41,13 +41,13 @@ export class ShopComponent implements OnInit {
   loadData():void{
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
+        console.log(data);
       },
       (error) => console.log(error),
       () => console.log("Complete")
     )
     this.service.getAllTree().subscribe(data => {
         this.listTree = data['datas'];
-        this.listTreeFix = data['datas'];
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -102,7 +102,6 @@ export class ShopComponent implements OnInit {
         this.total += item.product.price * item.quantity;
       }
     }
-    console.log(this.items);
   }
   findTreeById(id): {} {
     for (var i = 0; i < this.listTree.length; i++) {
@@ -118,19 +117,7 @@ export class ShopComponent implements OnInit {
       (error) => console.log(error),
       () => console.log("Complete")
     )
-    // var arr = [];
-    // for (var i = 0; i < this.listTreeFix.length; i++) {
-    //   let listCategory = this.listTreeFix[i].categoryList;
-    //   for (let j = 0; j < listCategory.length; j++) {
-    //     if (listCategory[j].id == id) {
-    //       arr.push(this.listTreeFix[i]);
-    //     }
-    //   }
-    // }
-    // this.listTree = arr;
-    console.log(this.listTree)
   }
-
   sortByPrice(value) {
     console.log(value)
   }
