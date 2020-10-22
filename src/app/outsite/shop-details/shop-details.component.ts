@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TreeService } from 'src/app/tree.service';
-declare let alertify : any;
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {TreeService} from 'src/app/tree.service';
+
+declare let alertify: any;
+
 @Component({
   selector: 'app-shop-details',
   templateUrl: './shop-details.component.html',
@@ -10,62 +12,70 @@ declare let alertify : any;
 })
 export class ShopDetailsComponent implements OnInit {
   tree: any = {};
-  idTree:string;
+  idTree: string;
   listTree: any[];
   id: any;
   p: any;
   user: any[];
   url: string;
   shopName: string;
-  constructor(private http: HttpClient, private service: TreeService,  private route: ActivatedRoute) {
+  images = [];
+  constructor(private http: HttpClient, private service: TreeService, private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
-    this.getTree(this.idTree); }
+    this.getTree(this.idTree);
+  }
 
   ngOnInit(): void {
     this.service.getAllUser().subscribe(data => {
         //@ts-ignore
-        this.user = data.datas ;
+        this.user = data.datas;
       },
       (error) => console.log(error),
-      () => console.log("Complete")
-    )
-this.loadData();
+      () => console.log('Complete')
+    );
+    this.loadData();
   }
-  loadData():void{
+
+  loadData(): void {
 
     this.service.getAllTree().subscribe(data => {
         //@ts-ignore
-        this.listTree = data.datas ;
+        this.listTree = data.datas;
       },
       (error) => console.log(error),
-      () => console.log("Complete")
-    )
+      () => console.log('Complete')
+    );
   }
+
   getTree(id) {
     this.service.getTreeService(id).subscribe(data => {
+      let imageDetail = data['data']['imageDetail'];
+      this.images = imageDetail.split(', ');
       this.tree = data['data'];
       this.tree.user_id = this.id;
     });
-   }
+  }
+
   getUserShopName(id): string {
     for (let i = 0; i < this.user.length; i++) {
-      if(this.user[i].id == id){
+      if (this.user[i].id == id) {
         return this.user[i].shopName;
       }
     }
     return 'lỗi';
   }
+
   getUserShopImage(id): string {
     for (let i = 0; i < this.user.length; i++) {
-      if(this.user[i].id == id){
-        this.url = this.user[i].avatar
-        return this.url ;
+      if (this.user[i].id == id) {
+        this.url = this.user[i].avatar;
+        return this.url;
       }
     }
     return 'lỗi';
   }
-  addToCart(id)
-  {
+
+  addToCart(id) {
     let item = {
       product: this.getTree(id),
       quantity: 1
@@ -91,10 +101,10 @@ this.loadData();
         let item = JSON.parse(cart[index]);
         item.quantity += 1;
         cart[index] = JSON.stringify(item);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
-    alertify.set('notifier','position', 'top-right');
+    alertify.set('notifier', 'position', 'top-right');
     alertify.success('Thêm thành công!');
   }
 

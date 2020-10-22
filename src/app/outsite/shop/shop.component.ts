@@ -14,19 +14,30 @@ export class ShopComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
-  listTree1: any[];
   listTreeFix: any[];
   listCategory: any[];
   items: any[];
   total: number;
+  keyWord: string;
+  categoryId: string;
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
-
+    var url = window.location.href;
+    this.keyWord = this.getParameterByName('keyWord', url);
+    this.categoryId = this.getParameterByName('categoryId', url);
   }
 
   ngOnInit(): void {
     this.loadData();
   }
-
+  getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
   loadData():void{
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
@@ -37,7 +48,7 @@ export class ShopComponent implements OnInit {
     )
     this.service.getAllTree().subscribe(data => {
         this.listTree = data['datas'];
-        this.listTree1 = data['datas'];
+        this.listTreeFix = data['datas'];
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -107,5 +118,28 @@ export class ShopComponent implements OnInit {
       (error) => console.log(error),
       () => console.log("Complete")
     )
+  }
+  sortByPrice(value) {
+    console.log(value)
+    if(value == 1) {
+      this.service.getAllTreePriceAsc().subscribe(data => {
+          this.listTree = data['datas'];
+        },
+        (error) => console.log(error),
+        () => console.log("Complete")
+      )
+      // this.listTree = this.listTree.sort(function(a, b){ return a.price - b.price})
+      console.log(this.listTree)
+    }
+    if(value == 2) {
+      this.service.getAllTreePriceDesc().subscribe(data => {
+          this.listTree = data['datas'];
+        },
+        (error) => console.log(error),
+        () => console.log("Complete")
+      )
+      // this.listTree = this.listTree.sort(function(a, b){ return b.price - a.price})
+      console.log(this.listTree)
+    }
   }
 }
