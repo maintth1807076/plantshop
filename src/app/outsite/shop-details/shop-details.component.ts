@@ -74,10 +74,16 @@ export class ShopDetailsComponent implements OnInit {
     }
     return 'lỗi';
   }
-
+  findTreeById(id): {} {
+    for (var i = 0; i < this.listTree.length; i++) {
+      if (this.listTree[i].id == id) {
+        return this.listTree[i];
+      }
+    }
+  }
   addToCart(id) {
     let item = {
-      product: this.getTree(id),
+      product: this.findTreeById(id),
       quantity: 1
     };
     if (localStorage.getItem('cart') == null) {

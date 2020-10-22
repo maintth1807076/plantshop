@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-cart.component.css']
 })
 export class ShopCartComponent implements OnInit {
-
+  tcode: any;
   items: any[];
   total: number;
   id: any;
@@ -25,15 +25,12 @@ export class ShopCartComponent implements OnInit {
     for (var i = 0; i < cart.length; i++) {
       let item = JSON.parse(cart[i]);
       this.items.push({
-        "image": item.image,
         "product" : item.product,
         "quantity": item.quantity,
-        "description":item.description,
       });
       this.total += item.product.price * item.quantity;
       this.totalPrice += item.price * item.quantity;
     }
-    console.log(this.items)
   }
 
   remove(id: string): void {
@@ -48,7 +45,6 @@ export class ShopCartComponent implements OnInit {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     this.loadCart();
-    console.log(this.items)
   }
   addToCart(id)
   {
@@ -87,5 +83,52 @@ export class ShopCartComponent implements OnInit {
         return this.listTree[i];
       }
     }
+  }
+
+  changeQuantity(value: any, id) {
+    let cart: any = JSON.parse(localStorage.getItem('cart'));
+    for (var i = 0; i < cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      if (item.product.id == id) {
+        item.quantity = value;
+        cart[i] = JSON.stringify(item);
+        break;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    this.loadCart();
+  }
+
+  updateCart() {
+    console.log(this.tcode)
+  }
+  minusQuantity(id, quantity) {
+    if(quantity <= 1) return;
+    let cart: any = JSON.parse(localStorage.getItem('cart'));
+    for (var i = 0; i < cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      if (item.product.id == id) {
+        item.quantity -= 1;
+        cart[i] = JSON.stringify(item);
+        break;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    this.loadCart();
+  }
+
+  plusQuantity(id, quantity) {
+    if(quantity >= 10){return;}
+    let cart: any = JSON.parse(localStorage.getItem('cart'));
+    for (var i = 0; i < cart.length; i++) {
+      let item = JSON.parse(cart[i]);
+      if (item.product.id == id) {
+        item.quantity = parseInt(item.quantity) + 1;
+        cart[i] = JSON.stringify(item);
+        break;
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    this.loadCart();
   }
 }
