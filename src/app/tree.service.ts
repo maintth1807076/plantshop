@@ -36,6 +36,11 @@ export class TreeService {
   getAllTree() {
     return this.http.get(this.apiServer + '/trees', this.options);
   }
+  getAllBlog() {
+    return this.http.get(this.apiServer + '/blogs', this.options);
+  }
+  getBlog(id) {
+    return this.http.get(this.apiServer + '/blogs/' + id, this.options);
   getAllTreePriceDesc() {
     return this.http.get(this.apiServer + '/trees/pricedesc');
   }
