@@ -15,7 +15,6 @@ export class OrderComponent implements OnInit {
   listOrder: any[];
   alive: boolean = true;
   constructor(private http: HttpClient, private service: TreeService, private router: Router) {
-
   }
 
   ngOnInit(): void {
@@ -27,7 +26,6 @@ export class OrderComponent implements OnInit {
     await this.loadScript('/assets/js/jquery.js');
     await this.loadScript('/assets/js/datatables.min.js');
     await this.loadScript('/assets/js/style.js');
-
   }
 
   loadScript(scriptUrl: string) {

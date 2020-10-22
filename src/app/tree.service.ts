@@ -42,7 +42,6 @@ export class TreeService {
   getAllTreeByCategoryId(categoryId) {
     return this.http.get(this.apiServer + '/trees/findTreeByCategory/' + categoryId);
   }
-
   getTreeService(id) {
     return this.http.get(this.apiServer + '/trees/' + id, this.options);
   }
