@@ -14,6 +14,7 @@ export class ShopComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
+  listTree1: any[];
   listTreeFix: any[];
   listCategory: any[];
   items: any[];
@@ -36,6 +37,7 @@ export class ShopComponent implements OnInit {
     )
     this.service.getAllTree().subscribe(data => {
         this.listTree = data['datas'];
+        this.listTree1 = data['datas'];
       },
       (error) => console.log(error),
       () => console.log("Complete")
