@@ -16,7 +16,7 @@
           </div>
           <div class="col-lg-4">
             <div class="order-select">
-              <select class="form-control" id="sort-by" (change)="sortByPrice($event.target)">
+              <select class="form-control" id="sort-by" (change)="sortByPrice($event.target.value)">
 <!--                <option selected="selected" value="order">Giá</option>-->
                 <option value="1">Giá: Thấp đến cao</option>
                 <option value="2">Giá: Cao đến thấp</option>
@@ -88,7 +88,7 @@
           </div>
           <h4 class="widget-title">Loại Cây</h4>
           <div class="widget-desc hover-active" *ngFor="let item of listCategory">
-            <h5 (click)="getTreeByCategory(item.id)" class="highlight-colored" > {{item.name}} </h5>
+            <h5 (click)="findTreeByCategoryId(item.id)" class="highlight-colored" > {{item.name}} </h5>
 
             <!-- Single Checkbox -->
             <!--            <div *ngFor="let item of listCategory"-->

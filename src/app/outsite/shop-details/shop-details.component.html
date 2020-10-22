@@ -11,7 +11,7 @@
                  data-lightbox="gallery">
               <a href="{{tree.image}}" data-lightbox="image"><img alt="Shop product image!" src="{{tree.image}}">
               </a>
-              <a href="{{tree.image}}" data-lightbox="image"><img alt="Shop product image!" src="{{tree.image}}">
+              <a *ngFor="let image of images" href="{{image}}" data-lightbox="image"><img alt="Shop product image!" src="{{image}}">
               </a>
             </div>
             <!-- Carousel slider -->

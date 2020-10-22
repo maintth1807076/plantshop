@@ -19,7 +19,7 @@ export class ShopDetailsComponent implements OnInit {
   user: any[];
   url: string;
   shopName: string;
-
+  images = [];
   constructor(private http: HttpClient, private service: TreeService, private route: ActivatedRoute) {
     this.idTree = this.route.snapshot.paramMap.get('id');
     this.getTree(this.idTree);
@@ -49,7 +49,8 @@ export class ShopDetailsComponent implements OnInit {
 
   getTree(id) {
     this.service.getTreeService(id).subscribe(data => {
-      console.log(data['data'])
+      let imageDetail = data['data']['imageDetail'];
+      this.images = imageDetail.split(', ');
       this.tree = data['data'];
       this.tree.user_id = this.id;
     });
