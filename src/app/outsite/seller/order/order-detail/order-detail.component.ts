@@ -36,20 +36,6 @@ export class OrderDetailComponent implements OnInit {
     }
     return 'lỗi';
   }
-  async ngAfterViewInit() {
-    await this.loadScript('/assets/js/jquery.js');
-    await this.loadScript('/assets/js/datatables.min.js');
-    await this.loadScript('/assets/js/style.js');
-  }
-
-  loadScript(scriptUrl: string) {
-    return new Promise((resolve, reject) => {
-      const scriptElement = document.createElement('script');
-      scriptElement.src = scriptUrl;
-      scriptElement.onload = resolve;
-      document.body.appendChild(scriptElement);
-    });
-  }
   getAllOrderDetailByOrderId(id) {
     this.service.getOrderDetailByOrderId(id).subscribe(data => {
       console.log(data);

@@ -9,40 +9,43 @@
       <div class="row">
         <div class="col-lg-6 center p-30 background-white b-r-6">
           <div class="col-lg-12 m-t-20">
-            <h3 class="text-center">Đăng kí tài khoản</h3>
+            <h3 class="text-center mb-5">Đăng kí tài khoản</h3>
           </div>
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="col-lg-12 form-group">
-              <label class="sr-only" for="inputFullName">Họ và tên</label>
+              <label class="" for="inputFullName">Họ và tên<span class="text-danger">*</span></label>
               <input type="text" formControlName="fullName" id="inputFullName" class="form-control"
-                     placeholder="Họ và tên" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                     [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
               <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
                 <div *ngIf="f.fullName.errors.required">Họ và tên không hợp lệ</div>
               </div>
             </div>
             <div class="col-lg-12 form-group">
-              <label class="sr-only" for="inputEmail">Email</label>
+              <label class="" for="inputEmail">Email<span class="text-danger">*</span></label>
               <input type="text" formControlName="email" id="inputEmail" class="form-control"
-                     placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Email không hợp lệ</div>
               </div>
             </div>
             <div class="form-group col-lg-12 ">
-              <label class="sr-only" for="inputPassword">Mật khẩu</label>
+              <label class="" for="inputPassword">Mật khẩu<span class="text-danger">*</span></label>
               <input type="password" formControlName="password" id="inputPassword" class="form-control"
-                     placeholder="Mật khẩu" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required">Password không hợp lệ</div>
               </div>
             </div>
             <div class="col-lg-12  form-group ">
-              <label for="gender" class="sr-only">Giới tính</label>
-              <select class="form-control" formControlName="gender" name="gender" required>
-                <option value="">Chọn giới tính</option>
-                <option value="1">Nữ</option>
-                <option value="2">Nam</option>
-              </select>
+              <div class="row">
+                <label class="col-lg-3 mt-2">Giới tính <span class="text-danger">*</span> :</label>
+                <br>
+                <input class="col-lg-1 mt-2" type="radio" id="male" name="gender" value="1" checked
+                       formControlName="gender">
+                <label class="mt-1" for="male">Nam</label><br>
+                <input class="col-lg-1  mt-2" type="radio" id="female" name="gender" value="0" formControlName="gender">
+                <label class="mt-1" for="female">Nữ</label><br>
+              </div>
             </div>
             <div class="col-lg-12 form-group ">
               <div class="file-field">

@@ -11,7 +11,8 @@
                  data-lightbox="gallery">
               <a href="{{tree.image}}" data-lightbox="image"><img alt="Shop product image!" src="{{tree.image}}">
               </a>
-              <a *ngFor="let image of images" href="{{image}}" data-lightbox="image"><img alt="Shop product image!" src="{{image}}">
+              <a *ngFor="let image of images" href="{{image}}" data-lightbox="image"><img alt="Shop product image!"
+                                                                                          src="{{image}}">
               </a>
             </div>
             <!-- Carousel slider -->
@@ -148,22 +149,22 @@
           <p>{{tree.detail}}</p>
         </div>
         <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab">
-<!--          <form class="col-lg-6" novalidate action="" role="form" method="post"-->
-<!--                ngNoForm>-->
-<!--            <div class="row ">-->
-<!--              <div class="col-2 image">-->
-<!--                <img class="avatar float-right " src="{{imageUser}}" alt="">-->
-<!--              </div>-->
-<!--              <div></div>-->
-<!--              <div class="form-group mb-2 col-6">-->
-<!--                <input type="text" name=""-->
-<!--                       class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value">-->
-<!--            </div>-->
-<!--              <div class="form-group col-3">-->
-<!--                <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>-->
-<!--              </div></div>-->
+          <!--          <form class="col-lg-6" novalidate action="" role="form" method="post"-->
+          <!--                ngNoForm>-->
+          <!--            <div class="row ">-->
+          <!--              <div class="col-2 image">-->
+          <!--                <img class="avatar float-right " src="{{imageUser}}" alt="">-->
+          <!--              </div>-->
+          <!--              <div></div>-->
+          <!--              <div class="form-group mb-2 col-6">-->
+          <!--                <input type="text" name=""-->
+          <!--                       class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value">-->
+          <!--            </div>-->
+          <!--              <div class="form-group col-3">-->
+          <!--                <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>-->
+          <!--              </div></div>-->
 
-<!--          </form>-->
+          <!--          </form>-->
           <div class="row ">
             <div class="col-2 image">
               <img class="avatar float-right " src="{{imageUser}}" alt="">
@@ -171,12 +172,13 @@
             <div></div>
             <div class="form-group mb-2 col-6">
               <input type="text" name=""
-                     class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value" [value]="comment">
+                     class="form-control" style=" border-radius: 7px;" (input)="comment = $event.target.value"
+                     [value]="comment">
             </div>
             <div class="form-group col-3">
-              <button (click)="sendComment()" class="btn"  id="form-submit"><i class="fa fa-paper-plane"></i></button>
-            </div></div>
-
+              <button (click)="sendComment()" class="btn" id="form-submit"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
           <div class="comments" id="comments">
             <div class="comment_number">
               Đánh giá <span>({{commentList.length}})</span>
@@ -218,7 +220,7 @@
             <div class="product-description">
               <div class="product-category">{{item.category}}</div>
               <div class="product-title">
-                <h3><a href="/shop-details/{{item.id}}" class="name">{{item.name}}</a></h3>
+                <h3><a href="/shop-details/{{item.id}}" class="name1">{{item.name}}</a></h3>
               </div>
               <div class="product-price">
                 <ins>{{item.price | currency:' ':'symbol':'1.0-0'}} <sup>đ</sup></ins>
