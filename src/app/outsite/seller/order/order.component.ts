@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TreeService} from '../../../tree.service';
 import {Router} from '@angular/router';
-
+declare let alertify : any;
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  userId:any;
+  userId: any;
   id: any;
   p: any;
   listOrder: any[];
   alive: boolean = true;
   user: any[];
+
   constructor(private http: HttpClient, private service: TreeService, private router: Router) {
   }
 
@@ -30,6 +31,7 @@ export class OrderComponent implements OnInit {
     );
     this.loadData();
   }
+
   async ngAfterViewInit() {
     await this.loadScript('/assets/js/jquery.js');
     await this.loadScript('/assets/js/datatables.min.js');
@@ -44,6 +46,7 @@ export class OrderComponent implements OnInit {
       document.body.appendChild(scriptElement);
     });
   }
+
   loadData(): void {
     this.service.getOrderBySellerId(this.id).subscribe(data => {
         this.listOrder = data['datas'];
@@ -51,19 +54,24 @@ export class OrderComponent implements OnInit {
         console.log(data);
       },
       (error) => console.log(error),
-      () => {}
+      () => {
+      }
     );
   }
+
   confirmOrder(id) {
     this.service.confirmOrder(id).subscribe(data => {
         console.log(data);
       },
       (error) => console.log(error),
       () => {
-      this.loadData();
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success('Xác nhận thành công!');
+        this.loadData();
       }
     );
   }
+
   getUserOrderName(id): string {
     for (let i = 0; i < this.user.length; i++) {
       if (this.user[i].id == id) {
