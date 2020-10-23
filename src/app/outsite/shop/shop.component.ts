@@ -27,6 +27,9 @@ export class ShopComponent implements OnInit {
     this.loadCategory();
     if(this.categoryId != null && this.categoryId.length > 0) {
       this.findTreeByCategoryId(this.categoryId);
+      this.service.getAllTree().subscribe(data => {
+        this.listTreeFix = data['datas'];
+      })
     } else {
       this.loadData();
     }

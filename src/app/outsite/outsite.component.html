@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-md-6 pt-1">
           <ul class="top-menu">
-            <li class="border-right pr-2"><a href="/seller/tree">Kênh người bán</a></li>
+            <li class="border-right pr-2"><a href="/seller/profile">Kênh người bán</a></li>
             <li class="ml-3"><a href="/contact">hotline: 09546477</a></li>
 
           </ul>
@@ -40,10 +40,10 @@
                 <img class="avatar " src="{{url}}">
                 <div class="p-dropdown-content">
                   <div class="widget-myaccount">
-                    <div class="d-block">
+                    <div class="d-block mb-2">
                       <img class="avatar avatar-lg" src="{{url}}">
                     </div>
-                    <span>{{user.fullName}}</span>
+                   <p ><b>{{user.fullName}}</b></p>
                     <ul class="text-center">
                       <li><a href="/user/profile"><i class="icon-user"></i>Tài khoản của tôi</a>
                       </li>
@@ -105,7 +105,7 @@
             </li>
             <li class="ml-2 mr-3">
               <div class="p-dropdown">
-                <a><i class="icon-shopping-cart"></i></a>
+                <a routerLink="/shop-cart"><i class="icon-shopping-cart"></i></a>
                 <div class="p-dropdown-content">
                   <div class="widget-mycart">
                     <h4>My Cart</h4>

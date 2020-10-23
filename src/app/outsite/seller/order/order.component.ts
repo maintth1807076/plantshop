@@ -14,12 +14,20 @@ export class OrderComponent implements OnInit {
   p: any;
   listOrder: any[];
   alive: boolean = true;
+  user: any[];
   constructor(private http: HttpClient, private service: TreeService, private router: Router) {
   }
 
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
     this.id = user['id'];
+    this.service.getAllUser().subscribe(data => {
+        //@ts-ignore
+        this.user = data.datas;
+      },
+      (error) => console.log(error),
+      () => console.log('Complete')
+    );
     this.loadData();
   }
   async ngAfterViewInit() {
@@ -39,6 +47,7 @@ export class OrderComponent implements OnInit {
   loadData(): void {
     this.service.getOrderBySellerId(this.id).subscribe(data => {
         this.listOrder = data['datas'];
+
         console.log(data);
       },
       (error) => console.log(error),
@@ -52,5 +61,13 @@ export class OrderComponent implements OnInit {
       (error) => console.log(error),
       () => {}
     );
+  }
+  getUserOrderName(id): string {
+    for (let i = 0; i < this.user.length; i++) {
+      if (this.user[i].id == id) {
+        return this.user[i].fullName;
+      }
+    }
+    return 'lỗi';
   }
 }

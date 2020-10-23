@@ -21,6 +21,12 @@ export class OutsiteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.getAllCategory().subscribe(data => {
+        this.listCategory = data['datas'];
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
     let user = JSON.parse(localStorage.getItem('user'));
     this.id = user['id'];
     if (user == null) {
@@ -33,7 +39,7 @@ export class OutsiteComponent implements OnInit {
       this.url = this.user.avatar;
     });
     this.loadCart();
-    this.loadData();
+
   }
 
   async ngAfterViewInit() {
@@ -71,14 +77,14 @@ export class OutsiteComponent implements OnInit {
       }
     }
   }
-  loadData():void{
-    this.service.getAllCategory().subscribe(data => {
-        this.listCategory = data['datas'];
-      },
-      (error) => console.log(error),
-      () => console.log("Complete")
-    )
-  }
+  // loadData():void{
+  //   this.service.getAllCategory().subscribe(data => {
+  //       this.listCategory = data['datas'];
+  //     },
+  //     (error) => console.log(error),
+  //     () => console.log("Complete")
+  //   )
+  // }
   remove(id: string): void {
     let cart: any = JSON.parse(localStorage.getItem('cart'));
     let index: number = -1;

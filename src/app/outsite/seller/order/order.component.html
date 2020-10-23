@@ -14,7 +14,7 @@
               </th>
               <th class="th-sm">Số điện thoại khách hàng
               </th>
-              <th  class="th-sm" style="width: 150px;">Id khách hàng
+              <th  class="th-sm" style="width: 150px;">Tên khách hàng
               </th>
               <th  class="th-sm" style="width: 150px;">Trang thái
               </th>
@@ -28,7 +28,7 @@
               <td ><span>{{item.totalPrice | currency:' ':'symbol':'1.0-0'}}</span></td>
               <td ><span>{{item.shipAddress}}</span></td>
               <td><span>{{item.shipPhone}}</span></td>
-              <td><span>{{item.userId}}</span></td>
+              <td >{{getUserOrderName(item.userId)}}</td>
               <td><span>{{item.status}}</span></td>
               <td class="pl-2">
                 <div class="row ">
