@@ -10,13 +10,13 @@
               </th>
               <th class="th-sm">Tổng giá
               </th>
+              <th class="th-sm">Chi tiết
+              </th>
               <th class="th-sm">Địa chỉ giao hàng
               </th>
               <th class="th-sm">Số điện thoại khách hàng
               </th>
               <th  class="th-sm" style="width: 150px;">Tên khách hàng
-              </th>
-              <th  class="th-sm" style="width: 150px;">Trang thái
               </th>
               <th style="width: 80px;"></th>
               <th style="width: 100px;"></th>
@@ -25,14 +25,19 @@
             <tbody>
             <tr *ngFor="let item of listOrder ">
               <td class="last-trade pl-3"><span>{{item.createdAt | date:'dd-MM-yyyy':'VI'}}</span></td>
-              <td ><span>{{item.totalPrice | currency:' ':'symbol':'1.0-0'}}</span></td>
+              <td ><span>{{item.totalPrice | currency:' ':'symbol':'1.0-0'}}đ</span></td>
+              <td><span *ngFor="let od of item.orderDetails">
+                    <li>{{od.treeName}} - {{od.quantity}} cây</li>
+                  </span></td>
               <td ><span>{{item.shipAddress}}</span></td>
               <td><span>{{item.shipPhone}}</span></td>
               <td >{{getUserOrderName(item.userId)}}</td>
-              <td><span>{{item.status}}</span></td>
               <td class="pl-2">
                 <div *ngIf="!item.confirmOrder" class="row ">
                   <div  class="col-3"><button class="btn btn-success btn-light-hover" (click)="confirmOrder(item.id)">Xác nhận</button></div>
+                </div>
+                <div *ngIf="item.confirmOrder" class="row ">
+                  <div  class="col-3">Đã xác nhận</div>
                 </div>
               </td>
               <td class="pl-2">

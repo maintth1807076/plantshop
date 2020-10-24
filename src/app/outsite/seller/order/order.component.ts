@@ -61,7 +61,7 @@ export class OrderComponent implements OnInit {
 
   confirmOrder(id) {
     this.service.confirmOrder(id).subscribe(data => {
-        console.log(data);
+
       },
       (error) => console.log(error),
       () => {
@@ -70,6 +70,7 @@ export class OrderComponent implements OnInit {
         this.loadData();
       }
     );
+
   }
 
   getUserOrderName(id): string {

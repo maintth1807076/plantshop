@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +47,10 @@ export class TreeService {
   }
   getAllTreePriceAsc() {
     return this.http.get(this.apiServer + '/trees/priceasc');
+  }
+  getAllTreePrice(startPrice, endPrice) {
+    let param = {params: new HttpParams().set("startPrice", startPrice).set("endPrice", endPrice)}
+    return this.http.get(this.apiServer + '/trees/price', param);
   }
   getAllTreeByUserId(userId) {
     return this.http.get(this.apiServer + '/trees/findTreeByUser/' + userId, this.options);

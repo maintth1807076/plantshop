@@ -1,14 +1,39 @@
+var $range = $("#range_slider"),
+  from = 100000,
+  to = 1000000;
+var BASE_URL = 'http://' + $(location).attr('host');
+var saveResult = function (data) {
+  from = data.from;
+  to = data.to;
+};
 
-$('#range_slider').ionRangeSlider({
-    type: "double",
-    grid: true,
-    min: 10000,
-    max: 1000000,
-    from: 10000,
-    to: 500000
+$range.ionRangeSlider({
+  type: "double",
+  min: 10000,
+  max: 2000000,
+  from: from,
+  to: to,
+  onStart: function (data) {
+    saveResult(data);
+  },
+  onChange: saveResult,
+  onFinish: saveResult
 });
 
-
+$('#btn-filter-price').on("click", function () {
+  location.href = `${BASE_URL}/shop?startPrice=${from}&endPrice=${to}`;
+});
+// $('#range_slider').ionRangeSlider({
+//     type: "double",
+//     grid: true,
+//     min: 10000,
+//     max: 1000000,
+//     from: 10000,
+//     to: 500000
+// });
+// var low = $('#range_slider').data().from;
+// var high = $('#range_slider').data().to;
+// console.log(low, high)
 var countEl = document.getElementById("quantity");
     function plus(){
        if(countEl.value < 10) {
