@@ -106,6 +106,9 @@
             <h4 class="widget-title">Giá</h4>
             <input type="hidden" id="range_slider"/>
           </div>
+          <input (input)="startPrice=$event.target.value" [value]="startPrice" type="hidden" id="startPrice"/>
+          <input (input)="startPrice=$event.target.value" [value]="endPrice" type="hidden" id="endPrice"/>
+          <button class="btn" id="btn-filter-price">Submit</button>
         </div>
         <button class="btn btn-light-hover btn-success w-75 m-l-30 " (click)="loadData()"> Xóa Tất cả</button>
 

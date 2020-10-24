@@ -34,8 +34,7 @@ export class ProfileSellerComponent implements OnInit {
 
     this.updateForm = this.fb.group({
       fullName: ['', Validators.required],
-      email: ['', Validators.required],
-      avatar: ['', Validators.required],
+      avatar: [''],
       gender: ['', Validators.required],
       shopName: ['', Validators.required],
       phone: ['', Validators.required],
@@ -67,9 +66,11 @@ export class ProfileSellerComponent implements OnInit {
       'bankName':this.f.bankName.value,
 
     }
+    console.log(data);
     this.service.updateUser(this.id, data).subscribe(data=> {
         alertify.set('notifier','position', 'top-right');
         alertify.success('Cập nhật thành công!');
+        console.log(data)
       },
       (error) => console.log(error),
       () => {

@@ -11,6 +11,8 @@ declare let alertify : any;
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
+  startPrice = 0;
+  endPrice = 0;
   id: any;
   p: any;
   listTree: any[];
@@ -25,14 +27,23 @@ export class ShopComponent implements OnInit {
     this.keyWord = this.getParameterByName('keyWord', url);
     this.categoryId = this.getParameterByName('categoryId', url);
     this.loadCategory();
+    // this.loadData();
+    this.service.getAllTree().subscribe(data => {
+      this.listTreeFix = data['datas'];
+    })
     if(this.categoryId != null && this.categoryId.length > 0) {
       this.findTreeByCategoryId(this.categoryId);
-      this.service.getAllTree().subscribe(data => {
-        this.listTreeFix = data['datas'];
-      })
-    } else {
-      this.loadData();
+      return;
     }
+    if(this.getParameterByName('startPrice', url) != null && this.getParameterByName('endPrice', url) != null){
+      this.startPrice = parseInt(this.getParameterByName('startPrice', url));
+      this.endPrice = parseInt(this.getParameterByName('endPrice', url));
+      this.service.getAllTreePrice(this.startPrice, this.endPrice).subscribe(data => {
+        this.listTree = data['datas'];
+      })
+      return;
+    }
+    this.loadData();
   }
 
   ngOnInit(): void {
@@ -50,7 +61,6 @@ export class ShopComponent implements OnInit {
   loadCategory() {
     this.service.getAllCategory().subscribe(data => {
         this.listCategory = data['datas'];
-        console.log(data);
       },
       (error) => console.log(error),
       () => console.log("Complete")
@@ -67,6 +77,12 @@ export class ShopComponent implements OnInit {
   }
   addToCart(id)
   {
+    let product = this.findTreeById(id);
+    if(product['quantity'] == 0){
+      alertify.set('notifier', 'position', 'top-right');
+      alertify.success('Cây hết hàng. Quay lại sau.!');
+      return;
+    }
     let item = {
       product: this.findTreeById(id),
       quantity: 1
@@ -153,4 +169,9 @@ export class ShopComponent implements OnInit {
       console.log(this.listTree)
     }
   }
+
+  // filterByPrice() {
+  //   console.log(this.startPrice)
+  //   console.log(this.endPrice)
+  // }
 }

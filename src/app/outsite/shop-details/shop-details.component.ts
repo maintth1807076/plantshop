@@ -97,6 +97,12 @@ export class ShopDetailsComponent implements OnInit {
     }
   }
   addToCart(id) {
+    let product = this.findTreeById(id);
+    if(product['quantity'] == 0){
+      alertify.set('notifier', 'position', 'top-right');
+      alertify.success('Cây hết hàng. Quay lại sau.!');
+      return;
+    }
     let item = {
       product: this.findTreeById(id),
       quantity: 1
@@ -130,6 +136,7 @@ export class ShopDetailsComponent implements OnInit {
   }
 
   sendComment() {
+    if(this.comment.length <= 0) return;
     let data = {
       "content": this.comment,
       "userId": this.id,

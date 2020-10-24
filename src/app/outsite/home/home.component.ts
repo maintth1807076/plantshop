@@ -13,19 +13,20 @@ export class HomeComponent implements OnInit {
   id: any;
   p: any;
   listTree: any[];
+  listTreeNew: any[];
   listBlog: any[];
   items: any[];
   totalPrice: number;
   listCategory: any[];
 
   constructor( private http: HttpClient, private service: TreeService, private router: Router,) {
-
-  }
-
-  ngOnInit(): void {
     this.loadCategory();
     this.loadData();
     this.loadDataBlog();
+  }
+
+  ngOnInit(): void {
+
   }
   loadCategory():void{
 
@@ -42,6 +43,13 @@ export class HomeComponent implements OnInit {
     this.service.getAllTree().subscribe(data => {
         //@ts-ignore
         this.listTree = data.datas ;
+      },
+      (error) => console.log(error),
+      () => console.log("Complete")
+    )
+    this.service.getAllTreePriceDesc().subscribe(data => {
+        //@ts-ignore
+        this.listTreeNew = data.datas ;
       },
       (error) => console.log(error),
       () => console.log("Complete")

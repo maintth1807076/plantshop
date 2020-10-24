@@ -49,7 +49,6 @@ export class OutsiteComponent implements OnInit {
     await this.loadScript('/assets/js/functions.js');
     await this.loadScript('/assets/plugins/range-slider/rangeslider.js');
     await this.loadScript('/assets/js/custom.js');
-
   }
 
   loadScript(scriptUrl: string) {

@@ -156,7 +156,7 @@
     <!--Product list-->
     <div class="shop">
       <div class="grid-layout grid-4-columns" data-item="grid-item">
-        <div class="grid-item" *ngFor="let item of listTree| paginate: { itemsPerPage: 12, currentPage: p, id: id  }"
+        <div class="grid-item" *ngFor="let item of listTreeNew| paginate: { itemsPerPage: 12, currentPage: p, id: id  }"
              [routerLink]="['/shop-details']" [queryParams]="{id:item.id}">
           <div class="product col-11 ml-2 border p-3 pb-5">
             <div class="product-image">
